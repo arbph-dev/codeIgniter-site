@@ -130,101 +130,6 @@ header {
 #contentLayout { flex: 1; display: flex; overflow: hidden; }
 
 
-/* =======   NAVIGATION — MOBILE FIRST       ============================================================================= */
-
-nav {
-  background-color: var(--bg-sidebar);
-  color: var(--text-sidebar);
-  display: flex;
-  flex-direction: column;
-  inset: 0;
-  overflow-x: hidden;
-  overflow-y: auto;
-  position: fixed;
-  transform: translateX(-100%);
-  transition: transform .3s ease;
-  z-index: 1000;
-}
-
-nav.open { transform: translateX(0); }
-
-  /* --------    FERMETURE MOBILE ------------ */
-nav a.closebtn {
-  align-self: flex-end;
-  font-size: 2rem;
-  line-height: 1;
-  padding: 8px 16px;
-  text-decoration: none;
-}
-
-
-/* ----- element    ARTICLE ------------------ */
-.nav-article { display: flex; flex-direction: column; width: 100%; }
-.nav-article .nav-header-row { align-items: stretch; display: flex; width: 100%; }
-
-/*  ----- element    ARTICLE/ TITRE  */
-.nav-article .nav-title { 
-  align-items : center; 
-  color : inherit;
-  display : flex;
-  flex :  1 1 auto;
-  font-size : 17px;
-  gap : 8px;
-  min-height : 48px;
-  padding : 12px 16px;
-  transition : background-color .2s ease,  color .2s ease;
-  text-decoration : none;  
-}
-
-.nav-article .nav-title:hover,.nav-article .nav-title.active { background-color: rgba(255, 255, 255, 0.12); }
-
-/* ----   BOUTON CHEVRON — MOBILE ----- */
-
-.nav-article .nav-toggle {
-  align-items: center;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  color: inherit;
-  display: flex;
-  flex: 0 0 52px;
-  font-size: 1.5rem;
-  justify-content: center;
-  line-height: 1;
-  min-height: 48px;
-  transition: transform .25s ease, background-color .2s ease;
-}
-
-.nav-article .nav-toggle:hover { background-color: rgba(255, 255, 255, 0.10);}
-.nav-article.open .nav-toggle { transform: rotate(90deg); }
-
-/* ---------   TABLE DES MATIÈRES  -------- */
-
-.nav-article .nav-toc { display: none; list-style: none; margin: 0; padding: 0; }
-
-.nav-article.open .nav-toc { display: block; }
-
-
-/* -------   LIENS DU TOC  -------------- */
-
-.nav-article .nav-toc a {
-  color: inherit;
-  display: block;
-  font-size: 0.9em;  
-  overflow: hidden;
-  padding: 8px 16px 8px 24px;
-  text-decoration: none;
-  text-overflow: ellipsis;
-  transition: background-color .2s ease, color .2s ease;  
-  white-space: nowrap;
-}
-.nav-article .nav-toc a:hover { background-color: rgba(255, 255, 255, 0.10); }
-.nav-article .nav-toc ul { list-style: none; margin: 0; padding: 0; }
-.nav-article .nav-toc ul a { font-size: 0.85em ; padding-left: 36px ; }
-.nav-article .nav-toc ul ul a { font-size: 0.8em ; opacity: 0.85 ; padding-left: 50px ; }
-/* ------   BOUTON HAMBURGER  ------ */
-.rwdnav { text-align: right ; }
-
 
 /* ───  Zone authentification dans le header ───────────────────────────────── */
 .header-auth {
@@ -691,60 +596,7 @@ nav a.closebtn {
    DESKTOP
 ============================================================================= */
 
-@media (min-width: 768px) {
 
-  nav {
-    align-items: stretch;
-    display: flex;
-    flex-direction: row;
-    overflow: visible;
-    position: relative;
-    transform: translateX(0);
-    width: 100%;
-    z-index: 100;
-  }
-
-  nav a.closebtn { display: none; }
-
-  .nav-article {
-    align-items: stretch;
-    flex-direction: row;
-    position: relative;
-    width: auto;
-  }
-
-  .nav-article .nav-header-row { height: 100%; }
-
-  .nav-article .nav-title { height: 100%; white-space: nowrap; }
-
-  .nav-article .nav-toggle { display: none;}
-  /* ------     DROPDOWN       ---------------- */
-  .nav-article .nav-toc {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    min-width: 260px;
-    max-height: 75vh;
-    overflow-y: auto;
-    background-color: var(--bg-sidebar);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
-    z-index: 200;
-  }
-  /*  plus de hover un click est nécessaire
-  .nav-article:hover .nav-toc { display: block; }
-  */
-  .nav-article.open .nav-toc { display: block; }
-  /* Hover visuel du menu principal */
-  .nav-article:hover .nav-title { background-color: rgba(255, 255, 255, 0.12); }
-  /* Liens dropdown */
-  .nav-article .nav-toc a { padding: 8px 16px; font-size: 0.88em; }
-  .nav-article .nav-toc ul a { padding-left: 30px; }
-  .nav-article .nav-toc ul ul a { padding-left: 46px; }
-  .rwdnav { display: none; }
-
-  
-}
 /* = DESKTOP END ========================================================================== */
 
 
@@ -844,6 +696,7 @@ background-color: var(--accent-hover);
   cursor: pointer;
 }
 .primary-button:hover { background-color: var(--accent-hover); }
+
 
 
 
