@@ -13,6 +13,7 @@ main
 			div.tab-headers
 			section.tab-content
 				h3
+				div
 ```
 
 ```
@@ -24,6 +25,7 @@ main > article.panel-card > div.section-tab
 main > article.panel-card > div.section-tab > div.tab-headers
 main > article.panel-card > div.section-tab > section#id.tab-content
 main > article.panel-card > div.section-tab > section#id.tab-content > h3
+main > article.panel-card > div.section-tab > section#id.tab-content > div
 ```
 ### css associe
 - panel-card
