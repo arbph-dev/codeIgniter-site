@@ -604,6 +604,21 @@ header {
 
 main { flex: 1; padding: 28px; overflow-y: auto; }
 
+main > article.panel-card > div.section-tab > section.tab-content > h3{
+  padding-top: 2vh;
+}
+
+main > article.panel-card > div.section-tab > section.tab-content > div > h4{
+  padding-top: 1.5vh;
+  color: var(--accent-hover);
+}
+
+main > article.panel-card > div.section-tab > section.tab-content > div > h5{
+  padding-top: 1vh;
+  color: var(--accent);
+}
+
+  
 .panel-card {
   background: var(--bg-card);
   border-radius: 8px;
