@@ -23,16 +23,38 @@ import ToolbarAuthPanel       from '/assets/js/ui/workbench/auth/ToolbarAuthPane
 import { initUsersRenderer } from '/assets/js/features/admin/renderer.js'
 
 
+/*
+2026-10-18 : 
+on ajoute tout les elements utiles du menu et on reogarnise PAGE_CONFIG par type selector, classe et ordre alphabétique
+voir uibase.js ligne 270 renderMenu
+
+on exploite PAGE_CONFIG en le stockant dans le constructeur - voir uibase
+
+
+ */
+
 const PAGE_CONFIG = { 
-    selectorPanel           : "article.panel-card" ,
-    offsetPanel             : 2 , //PANEL_OFFSET  due a admin et user
+    //menu
+    classNavArticle         : "nav-article", // ligne 162 et 709 ui.css
+    classNavHeader          : "nav-header-row primary-button",
+    classNavItem            : "",
+    classNavIcon            : "fa fa-fw fa-cogs",
+    classNavList            : "nav-toc",
+    classNavToggle          : "nav-toggle",
+
+    classPaginationButton   : "primary-button switch-tab-btn",
+    classPanelHeaderButton  : "tab-btn",    
     classPanelHidden        : "hidden",
+
+    offsetPanel             : 2 , //PANEL_OFFSET  due a admin et user
+
+    selectorPagination      : "div.pagination-buttons" ,
+    selectorPanel           : "article.panel-card" ,
+    selectorPanelHeader     : "div.section-tab > div.tab-headers",
     selectorPanelTitle      : "h2.panel-title",
     selectorSectionTitle    : "div.section-tab  > section.tab-content > h3",
-    selectorPagination      : "div.pagination-buttons" ,
-    classPaginationButton   : "primary-button switch-tab-btn",
-    selectorPanelHeader     : "div.section-tab > div.tab-headers",
-    classPanelHeaderButton  : "tab-btn"
+
+
 }
 
 let APP
@@ -44,13 +66,13 @@ class AppIndex extends UiBase {
      * this.readPage(PAGE_CONFIG) lit la strucutre de la page
     */
     constructor() {
-        super()
+        super(PAGE_CONFIG)
         this.setPageRef() 
-        this.readPage(PAGE_CONFIG) 
-        console.table(this.pages)
-        this.renderPagination(PAGE_CONFIG)
-        this.renderNavigation(PAGE_CONFIG)
-        this.renderMenu(PAGE_CONFIG)
+        this.readPage() 
+        //console.table(this.pages)
+        this.renderPagination()
+        this.renderNavigation()
+        this.renderMenu()
     }
 
     boot() {
