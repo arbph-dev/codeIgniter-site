@@ -39,7 +39,8 @@
 - [`/assets/js/features/auth/auth.controller.js`](/public/assets/js/features/auth/auth.controller.js)
 - [`/assets/js/features/auth/auth.store.js`](/public/assets/js/features/auth/auth.store.js)
 - [`/assets/js/features/auth/auth.service.js`](/public/assets/js/features/auth/auth.service.js)
-
+- 2026-10-16 : [`/public/assets/js/features/admin/renderer.js`](/public/assets/js/features/admin/renderer.js)
+  - voir [`app/Controllers/Api/Admin/UsersController.php`](/app/Controllers/Api/Admin/UsersController.php)
 ### workbench (partie a revoir)
 - [`/assets/js/ui/workbench/auth/ToolbarAuthPanel.js`](/public/assets/js/ui/workbench/auth/ToolbarAuthPanel.js)
 - [`/assets/js/ui/workbench/core/AuthPanelBase.js`](/public/assets/js/ui/workbench/core/AuthPanelBase.js)
@@ -48,7 +49,7 @@
 - [`app/Config/Filters.php`](/app/Config/Filters.php)
 - [`app/Config/Routes.php`](/app/Config/Routes.php)
 - [`app/Controllers/Api/AuthController.php`](/app/Controllers/Api/AuthController.php)
-
+- [`app/Controllers/Api/Admin/UsersController.php`](/app/Controllers/Api/Admin/UsersController.php)
 
 
 # Documentation
