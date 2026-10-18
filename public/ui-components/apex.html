@@ -1,42 +1,37 @@
 <!-- 
-/public/ui-components/apex.html
-
-2026-10-08 : on reserve la page aux composants
-- ligne 233 on modifie le script applciation de uiapp.js en uiapp2.js 
-- on modifie description (ligne 14 , 39) , tag titre (ligne 17 , 38) 
-
--->
+    2026-09-09 : modificaton 
+    2026-09-10 : voir pour supprimer les ul vide dans le menu nav ligne 66 et suivantes
+    2026-09-23 : intégrtion vox ligne 316 
+  -->
 <!DOCTYPE html>
 <html lang="fr" data-theme="marine">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Mise en oeuvre de la librairie apex au travers d'exemples. Les graphiques sont construits depuis des modèles et peuvent intéragir avec les scripts. La documentation est en cours de rédaction.">
+    <title>Zealot - composant ui - apex</title>
+    <meta name="description" content="composant javascript, librairie Apex Charts">
     <meta name="robots" content="index, follow">
+
+    <link rel="stylesheet" href="/assets/css/ui.css" >
+    <link rel="stylesheet" href="/assets/css/ui-nav.css" >
     
-    <title>Composant graphique APEX</title>    
-    
-    <link rel="stylesheet" href="/assets/css/uistyle.css" >
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-    <!-- Leaflet -->    
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
-    <link rel="stylesheet" href="/assets/css/GpPluginLeaflet.css"/>
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script src="https://unpkg.com/leaflet-tilelayer-wmts@1.0.0/dist/leaflet-tilelayer-wmts.js"></script>
-    <!-- Extension Géoplateforme pour Leaflet -->
-    <script src="/assets/js/plugins/GpPluginLeaflet.js"></script>
-
-
 </head>
 
 <body>
-    <!-- ====   HEADER ================================================================ -->
-    <header id="header">
+    
+    <!-- ====           HEADER         ==============================================================
+    https://github.com/arbph-dev/codeIgniter/blob/master/doc/FRONTEND/UI-header.md
+
+    on conserve les styles :  /public/assets/css/ui.css#L104-L127
+    -->
+
+    <header>
         <div class="title-layout">
-            <h1 id="appTitle">Composant graphique APEX</h1>
-            <span id="appSubtitle">Mise en oeuvre de la librairie apex au travers d'exemples. Les graphiques sont construits depuis des modèles et peuvent intéragir avec les scripts. La documentation est en cours de rédaction.</span>
+            <h1 id="appTitle">APEX</h1>
+            <span id="appSubtitle">Le composant APEX est basé sur la librairie <a href="https://apexcharts.com/" target="_blank">Apex Charts</a></span>
         </div>
 
         <div class="header-actions">
@@ -52,185 +47,93 @@
         </div>
     </header>
     <!-- ==== SIDEBAR ============================================================== 
-    on va devoir 
-        initialiser ref dom sur stack
-
-
-        
+    construction dynamique a voir apres
+    <nav id="sidebar"> 
     -->
-
-    <nav id="sidebar">
+    <nav>
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" aria-label="Fermer le menu">&times;</a>
 
 
     </nav>
     <!-- ====  CONTENU PRINCIPAL    ========================== -->
-    <main id="stack">
-
-        <div class="panel-card hidden" data-role="admin" data-index="-2">
+    <main>
+        <!-- ====  ARTICLE art-admin NE PAS TOUCHER   ========================== -->
+        <article id="art-admin" class="panel-card hidden">
             <h2 class="panel-title">Administration</h2>
             <p class="panel-description">Tableau de bord administrateur</p>
+
             <div class="section-tab">
+
                 <div class="tab-headers"></div>
-                <div id="admin-home" class="tab-content active">
-                    <h3>Admin</h3>
-                    <div id="admin-board-body"><!-- contenu ultérieur --></div>
-                </div>
+                
+                <section id="art-admin-home" class="tab-content active">
+                    <h3>Home</h3>
+                    <div id="art-admin-home-body"><!-- contenu ultérieur --></div>
+                </section>
+
+
+                <section id="art-admin-user" class="tab-content">
+                    <h3>User</h3>
+                    <div id="art-admin-user-list"><!-- contenu ultérieur --></div>
+                </section>
+
             </div>
-        </div>
 
-
-        <div class="panel-card hidden" data-role="user" data-index="-1">
+        </article>
+        <!-- ====  ARTICLE art-user NE PAS TOUCHER   ========================== -->
+        <article id="art-user" class="panel-card hidden">
             <h2 class="panel-title">Mon espace</h2>
             <p class="panel-description">Profil et inscription</p>
-            <div class="section-tab">
-                <div class="tab-headers"></div>
-                <div id="user-home" class="tab-content active">
-                    <h3>Espace utilisateur</h3>
-                    <div id="user-board-body"><!-- formulaire register OU dashboard user --></div>
-                </div>
-            </div>
-        </div>
-
-
-        <!-- ====  0 - COMPOSANTS APEX LINE ===================== -->
-        <div class="panel-card" data-index="0">
-            <h2 class="panel-title">Ligne</h2>
-            <p class="panel-description">Le graphique présenter une série en ligne</p>
 
             <div class="section-tab">
+
                 <div class="tab-headers"></div>
                 
-                <div id="apex-0" class="tab-content active">
-                    <h3>Graphique</h3>
-                    <p>Le couple selon la vistesse</p>
-                    
-                    <h4>line</h4>
-                    <div id="APEX_LIGNE_1" class="cp_apex" data-chart="line"></div>
-
-                </div>
-
-                <div id="apex-description" class="tab-content">
-                    <h3>Description</h3>
-                    <p>Le composant est importé en deux temps via cdn dans la page et dans le script de niveau application uiapp.js</p>
-                    <p>La mise en oeuvre est détaillé ici 
-                        <a 
-                            target="_blank" 
-                            href="https://github.com/arbph-dev/codeIgniter-appCms/blob/main/assets/js/components/apex_js.md">
-                                https://github.com/arbph-dev/codeIgniter-appCms/blob/main/assets/js/components/apex_js.md
-                        </a>
-                    </p>
-                    
-                    <h4>Mise en oeuvre</h4>
-                    <p>on reserve un container div</p>
-                    <p>on attribue un id au container</p>
-                    <p>on attribue OBLIGATOIRMENT une classe cp_apex</p>
-                    <p>on attribue un type de graphique via data-chart="line"</p>
-                    <code>
-                        &lt;div id="APEX_LIGNE_1" class="cp_apex" data-chart="line"&gt;&lt;/div&gt;
-                    </code>
-                </div>
-
-                <div id="apex-todo" class="tab-content">
-                    <h3>Todo</h3>
-                    <p>Décrire les graphiques et leurs utilisation</p>
-                    <p>Décrire la création des graphiques</p>
-                </div>
+                <section id="art-user-home" class="tab-content active">
+                    <h3>Board User</h3>
+                    <div id="art-user-home-body">
+                        <!-- contenu ultérieur -->
+                    </div>
+                </section>
 
             </div>
 
+        </article>
 
-        </div>
-        <!-- ====  0 - COMPOSANTS APEX + CODEVAL ===================== -->
-        <div class="panel-card hidden" data-index="1">
-            <h2 class="panel-title">Hypersynchronisme</h2>
-            <p class="panel-description">Le graphique doit présenté l'hypersynchronisme</p>
+        <!-- ====  ARTICLE 0 - APEX ===================== -->
+        <article id="art1" class="panel-card">
+            <h2 class="panel-title">Composants APEX</h2>
+            <p class="panel-description">Le composant APEX permet de créer des graphiques</p>
 
             <div class="section-tab">
+
                 <div class="tab-headers"></div>
                 
-                <div id="apex-hypersynchronisme-0" class="tab-content active">
-                    <h3>couple fonction de vistesse</h3>
-                    <p>Le couple selon la vistesse est représenté
-                        <ul>
-                            <li>par le type de graphique : moteurCouple</li>
-                            <li>en employant le composant codeval</li>
-                        </ul>
-                    </p>
-                    
-                    <div id="CODEVAL_MS1" class="cp_codeval">
-                        <div id="CODEVAL_MS1_SCRIPTCODE" class="scriptcode">
-                            <textarea rows="32">
-    let sTemp = null
-
-    const moteurExemple = new api.PHYS.MoteurAsynchrone(
-        1500, // Puissance nominale (W) - Exemple: 1.5 kW
-        230, // Tension nominale (V)
-        50, // Fréquence (Hz)
-        4, // Nombre de pôles (ex: 4 pôles pour 1500 RPM à 50Hz)
-        0.5, // Resistance Stator (Ω)
-        1.0, // Reactance Stator (Ω)
-        0.4, // Resistance Rotor (Ω)
-        0.9 // Reactance Rotor (Ω)
-    );
-    
-    // Affichage de la vitesse de synchronisme
-    sTemp = `Vitesse de synchronisme: ${moteurExemple.vitesseSynchronisme.toFixed(2)} RPM\n`;
-
-    // Génération des données pour la courbe de couple
-    //const donneesCouple = moteurExemple.genererCourbeCouple(20);
-    const donneesCouple = moteurExemple.genererCourbeCouple(100, -1.0, 1.0)
-    
-    api.plot('APEX_LIGNE_3', { data: donneesCouple });    
-
-    // Affichage des premiers points de la courbe
-    sTemp += "Premiers points de la courbe Couple-Vitesse:\n";
-    donneesCouple.slice(0, 5).forEach(point => {
-        sTemp += `Vitesse: ${point.vitesse.toFixed(2)} RPM, Couple: ${point.couple.toFixed(2)} Nm\n`;
-    });
-    const result = sTemp; 
-                            </textarea>
-                        </div>
-                    
-                        <div id="CODEVAL_MS1_RESULT" class="result"></div>
-                    
-                        <div class="cp_toolbar">
-                            <button onclick="window.eventBusPublish(event,'codeval:toggle','MS1')">Show</button>
-                            <button onclick="window.eventBusPublish(event,'codeval:eval','MS1')">Run</button>
-                        </div>
-                    </div>                      
-
-                      <h4>line</h4>
-                      <div id="APEX_LIGNE_3" class="cp_apex" data-chart="moteurCouple"></div>
-
-                </div>
-
-
-                <div id="apex-hypersynchronisme-1" class="tab-content">
-                    <h3>Todo</h3>
-                    <p>Décrire le graphique et ce qu'il represente</p>
-                    <p>Approfondir la création des graphiques</p>
-                    <p>Améliorer rendu de codeval / result avec lib table</p>
-                </div>
+                <section id="art1-s0" class="tab-content active">
+                    <h3>moteurCouple</h3>
+                    <div id="art1-s0-body">
+                        <div id="APEX_LIGNE_2" class="cp_apex" data-chart="moteurCouple"></div>
+                        <p>Revoir les graphiques disponible</p>
+                    </div>
+                </section>
 
             </div>
+        </article>
 
-
-        </div>
 
     </main>
-    <!-- ====   PAGINATION  ================================================ -->
+
     <div class="pagination-buttons"></div>
-    
     <!-- ====   FOOTER  ================================================ -->
+
     <footer>
         <div id="statusBar">
-            Automate actif : Schneider Modicon M221
+            Bienvenue site en déploiement
         </div> 
     </footer>
 
-    <!-- script  application dédié composant -->
-    <script type="module" src="/assets/js/uiapp2.js"></script>
+    <script type="module" src="/assets/js/app/cmp/uicmp-apex.js"></script>
+
 </body>
 
 </html>
