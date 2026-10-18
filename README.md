@@ -13,18 +13,46 @@
 - [ ] auth : bouton resend et essai voir [notes/2026-10-14-001](/doc/notes/2026-10-14-001.md)
 - [ ] admin regrouper les notes :
   - [TODO.md](/TODO.md)
-
-
-
-### application
+- [ ] admin : intégration V1, ok documenter , style 
+  - [doc/ADMIN#-intégration-version-1](/doc/ADMIN#-intégration-version-1)
+  - [/doc/BACKEND](//doc/BACKEND) - a ajouter au Controller
+  - documenter vendor /shield,  : group permissions
+  - documenter services a ajouter dans app config services
+- [X] [`/index.html`](/public/index.html)  : Modifier structure article/section
+- [ ] [`/index.html`](/public/index.html)  : Modifier renderMenu selon   [doc/notes/2026-10-17.md](/doc/notes/2026-10-17.md)
+- [`/assets/js/app-index.js`](/public/assets/js/app-index.js) : Gestion PAGE_CONFIG, à améliorer -> ajouter style du menu
+- [`/assets/js/uibase.js`](/public/assets/js/uibase.js) :
+  - [ ] Gestion PAGE_CONFIG, à conserver dans le constructeur
+  - [ ] déplacer les fonctions badge dans une librairie template
+  - [ ] déplacer renderUserCard dans un features et utiliser domhelper::create
+  - [ ] que faire de renderPagination
+  - [ ] déplacer les fonctions themeSwitch, fullscreenSwitch dans une librairie template
+  - [ ] ajouter une fonction elm_WriteText dans domhelper, ecrit dans un element.textContent
+- Ajout dynamique script et link dans domcontentloaded : test
+- Nav a gérer comme Toolbar ?
+- [`/public/assets/js/features/admin/renderer.js`](/public/assets/js/features/admin/renderer.js) :
+  - [ ] Séparer les parties services, et renderers, éviter controller  et bus
+- [`app/Services/Users/UserService.php`](/app/Services/Users/UserService.php)
+  - [ ] Ventiler notes papier
+- [`app/Controllers/Api/Admin/UsersController.php`](/app/Controllers/Api/Admin/UsersController.php)
+  - [ ] Ventiler notes papier
+## application
 - html
   - [`/index.html`](/public/index.html)
   - [`/ui-components/apex.html`](/public/ui-components/apex.html)
 - css
   - [`/assets/css/ui.css`](/public/assets/css/ui.css)
 - js
-  - [`/assets/js/app-index.js`](/public/assets/js/app-index.js)
-  - [`/assets/js/uibase.js`](/public/assets/js/uibase.js)
+  - [`/assets/js/app-index.js`](/public/assets/js/app-index.js) : application
+  - [`/assets/js/uibase.js`](/public/assets/js/uibase.js) : contrat application, fournit des méthodes standard, event en callback pour application , impose l'implémentation des méthodes boot 
+
+## [`/assets/js/uibase.js`](/public/assets/js/uibase.js)
+Définit le contrat application, fournit
+- des méthodes standard
+- events en callback pour application
+- impose l'implémentation des méthodes boot 
+
+
 
 ### components
 - [`/assets/js/components/apex.js`](/public/assets/js/components/apex.js)
@@ -50,7 +78,7 @@
 - [`app/Config/Routes.php`](/app/Config/Routes.php)
 - [`app/Controllers/Api/AuthController.php`](/app/Controllers/Api/AuthController.php)
 - [`app/Controllers/Api/Admin/UsersController.php`](/app/Controllers/Api/Admin/UsersController.php)
-
+- [`app/Services/Users/UserService.php`](/app/Services/Users/UserService.php)
 
 # Documentation
 ## fichiers
@@ -58,7 +86,7 @@
 
 
 
-
+template
 
 
 <!-- 
