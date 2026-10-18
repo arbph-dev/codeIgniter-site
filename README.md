@@ -47,8 +47,14 @@
 | [`/idx-dev.html`](/public/idx-dev.html) | [`/assets/js/app/app-idxdev.js`](/public/assets/js/app/app-idxdev.js) | https://zealot.fr/idx-dev.html | A modifier régulièrement  |
 | [`/ui-components/apex.html`](/public/ui-components/apex.html) | [`/assets/js/app/cmp/uicmp-apex.js`](/public/assets/js/app/cmp/uicmp-apex.js) | https://zealot.fr//ui-components/apex.html | A modifier régulièrement  |
 
+chaque section comporte un div pour monter les composants futurs
+
+
+
+
 ## css
   - [`/assets/css/ui.css`](/public/assets/css/ui.css)
+    - 2026-10-18 : ajout de classe pour les titres
   - [`/assets/css/ui.css`](/public/assets/css/ui-nav.css)
 
 ## js
