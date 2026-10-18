@@ -2,6 +2,7 @@
 
 ## UI
 2026-10-14 : refonte application
+2026-10-16 : réintégration menu
 
 ## Taches
 
@@ -12,7 +13,7 @@
 - [ ] auth : bouton resend et essai voir [notes/2026-10-14-001](/doc/notes/2026-10-14-001.md)
 - [ ] admin regrouper les notes :
   - [TODO.md](/TODO.md)
-### fichiers
+
 
 
 ### application
@@ -47,6 +48,12 @@
 - [`app/Config/Filters.php`](/app/Config/Filters.php)
 - [`app/Config/Routes.php`](/app/Config/Routes.php)
 - [`app/Controllers/Api/AuthController.php`](/app/Controllers/Api/AuthController.php)
+
+
+
+# Documentation
+## fichiers
+- [Front](https://github.com/arbph-dev/codeIgniter/blob/master/doc/FRONTEND/JS/index.md) 
 
 
 
