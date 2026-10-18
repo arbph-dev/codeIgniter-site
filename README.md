@@ -23,6 +23,7 @@
 - [`/assets/js/uibase.js`](/public/assets/js/uibase.js) :
   - [ ] Gestion PAGE_CONFIG, à conserver dans le constructeur de UIbase ? ovveride par app si besoin
   - [X] Modifier renderMenu selon   [doc/notes/2026-10-17.md](/doc/notes/2026-10-17.md)
+  - [ ] ajouter retour accueil dans le menu
   - [ ] déplacer les fonctions badge dans une librairie template
   - [ ] déplacer renderUserCard dans un features et utiliser domhelper::create
   - [ ] que faire de renderPagination
@@ -36,7 +37,10 @@
   - [ ] Ventiler notes papier
 - [`app/Controllers/Api/Admin/UsersController.php`](/app/Controllers/Api/Admin/UsersController.php)
   - [ ] Ventiler notes papier
-
+- [`/ui-components/`](/public/ui-components/)
+  - [X] Intégrer apex - [`/ui-components/apex.html`](/public/ui-components/apex.html)
+  - [ ] Intégrer callout
+  - [ ] Intégrer codeval
 
 ## application
 
@@ -74,9 +78,12 @@ Définit le contrat application, fournit
 
 
 ### components
-- [`/assets/js/components/apex.js`](/public/assets/js/components/apex.js)
-- [`/assets/js/components/codeval.js`](/public/assets/js/components/codeval.js)
-- [`/assets/js/components/callout.js`](/public/assets/js/components/callout.js)
+[`/assets/js/components/apex.js`](/public/assets/js/components/apex.js) dans [`/ui-components/apex.html`](/public/ui-components/apex.html)
+- pas de style associé
+
+[`/assets/js/components/codeval.js`](/public/assets/js/components/codeval.js)
+
+[`/assets/js/components/callout.js`](/public/assets/js/components/callout.js)
 
 ### core
 - [`/assets/js/core/domhelper.js`](/public/assets/js/core/domhelper.js)
