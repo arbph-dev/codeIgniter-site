@@ -4,10 +4,10 @@ l'arborescence evolue, on sépare le code des composants pour les évoloutions
 
 ## Structure
 
-- main
+- header [`UI-header.md`](/doc/FRONTEND/UI-header.md)
 - nav
-- header
-	- https://github.com/arbph-dev/codeIgniter/blob/master/doc/FRONTEND/UI-header.md
+- main
+	- article [`UI-panels.md`](/doc/FRONTEND/UI-panels.md) 	 
 - footer
 
 
