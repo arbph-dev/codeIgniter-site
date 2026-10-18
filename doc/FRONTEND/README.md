@@ -5,7 +5,7 @@ l'arborescence evolue, on sépare le code des composants pour les évoloutions
 ## Structure
 
 - header [`UI-header.md`](/doc/FRONTEND/UI-header.md)
-- nav
+- nav [`UI-nav.md`](/doc/FRONTEND/UI-nav.md)
 - main
 	- article [`UI-panels.md`](/doc/FRONTEND/UI-panels.md) 	 
 - footer
