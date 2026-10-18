@@ -36,21 +36,30 @@
   - [ ] Ventiler notes papier
 - [`app/Controllers/Api/Admin/UsersController.php`](/app/Controllers/Api/Admin/UsersController.php)
   - [ ] Ventiler notes papier
+
 ## application
-- html
-  - [`/index.html`](/public/index.html)
-  - [`/ui-components/apex.html`](/public/ui-components/apex.html)
-- css
+
+3 pages associées à leur script , chaque script hérite de [`/assets/js/uibase.js`](/public/assets/js/uibase.js)
+
+| Fichier | Script Application | url | Notes |
+| --- | --- | --- |  --- |
+| [`/index.html`](/public/index.html) | [`/assets/js/app-index.js`](/public/assets/js/app-index.js) | https://zealot.fr/index.html | A modifier en 1 page  |
+| [`/idx-dev.html`](/public/idx-dev.html) | [`/assets/js/app/app-idxdev.js`](/public/assets/js/app/app-idxdev.js) | https://zealot.fr/idx-dev.html | A modifier régulièrement  |
+| [`/ui-components/apex.html`](/public/ui-components/apex.html) | [`/assets/js/app/cmp/uicmp-apex.js`](/public/assets/js/app/cmp/uicmp-apex.js) | https://zealot.fr//ui-components/apex.html | A modifier régulièrement  |
+
+## css
   - [`/assets/css/ui.css`](/public/assets/css/ui.css)
-- js
-  - [`/assets/js/app-index.js`](/public/assets/js/app-index.js) : application
+  - [`/assets/css/ui.css`](/public/assets/css/ui-nav.css)
+
+## js
   - [`/assets/js/uibase.js`](/public/assets/js/uibase.js) : contrat application, fournit des méthodes standard, event en callback pour application , impose l'implémentation des méthodes boot 
 
-## [`/assets/js/uibase.js`](/public/assets/js/uibase.js)
+### [`/assets/js/uibase.js`](/public/assets/js/uibase.js)
 Définit le contrat application, fournit
 - des méthodes standard
 - events en callback pour application
 - impose l'implémentation des méthodes boot 
+
 
 
 
@@ -79,6 +88,9 @@ Définit le contrat application, fournit
 - [`app/Controllers/Api/AuthController.php`](/app/Controllers/Api/AuthController.php)
 - [`app/Controllers/Api/Admin/UsersController.php`](/app/Controllers/Api/Admin/UsersController.php)
 - [`app/Services/Users/UserService.php`](/app/Services/Users/UserService.php)
+- 2026-10-18 : [`/doc/DOMAINS`](/doc/DOMAINS)
+
+
 
 # Documentation
 ## fichiers
