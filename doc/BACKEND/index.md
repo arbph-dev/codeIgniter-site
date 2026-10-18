@@ -15,10 +15,15 @@ app/Services
 
 
 ## app/Controllers
+<!-- 
+[]()
 
 
-/public/assets/js/features/admin/renderer.js
-/app/Controllers/Api/Admin/UsersController.php
+
+-->
+2026-10-16 : Api/Admin
+- [front](/public/assets/js/features/admin/renderer.js) -+- [back](/app/Controllers/Api/Admin/UsersController.php) voir [doc/ADMIN#-intégration-version-1](/doc/ADMIN#-intégration-version-1)
+
 
 ```
 app/Controllers
