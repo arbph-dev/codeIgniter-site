@@ -8,8 +8,22 @@
 2026-10-16 : 55 directories, 208 files
 
 
-[`/assets/js/`](https://github.com/arbph-dev/codeIgniter/blob/master/public/assets/js/)
+- [`/assets/js/`](https://github.com/arbph-dev/codeIgniter/blob/master/public/assets/js/)
+- [`/assets/js/app-index.js`](https://github.com/arbph-dev/codeIgniter/blob/master/public/assets/js/app-index.js) **en cours V** : couplé a uibase.js
+- [`/assets/js/uiapp.js`](https://github.com/arbph-dev/codeIgniter/blob/master/public/assets/js/uiapp.js) _obsolète V-1_
+- [`/assets/js/uiapp2.js`](https://github.com/arbph-dev/codeIgniter/blob/master/public/assets/js/uiapp2.js) _obsolète V-1_ dédié composant
+- [`/assets/js/uibase.js`](https://github.com/arbph-dev/codeIgniter/blob/master/public/assets/js/uibase.js) **en cours V** :  contrat de  a uibase.js
+- [`/assets/js/wbapp.js`](https://github.com/arbph-dev/codeIgniter/blob/master/public/assets/js/wbapp.js) _obsolète V-2_ dédié workbook
 - [`/assets/js/admin/`](https://github.com/arbph-dev/codeIgniter/blob/master/public/assets/js/admin/)
+  - [`/assets/js/admin/bootstrap.js`](https://github.com/arbph-dev/codeIgniter/blob/master/public/assets/js/admin/bootstrap.js)
+- [`/assets/js/cms/`](https://github.com/arbph-dev/codeIgniter/blob/master/public/assets/cms/)
+  - [`/assets/js/cms/bootstrap.js`](https://github.com/arbph-dev/codeIgniter/blob/master/public/assets/cms/bootstrap.js)
+- [`/assets/js/components/`](https://github.com/arbph-dev/codeIgniter/blob/master/public/assets/components/)
+  - [`/assets/js/components/apex.js`](https://github.com/arbph-dev/codeIgniter/blob/master/public/assets/components/apex.js)  
+  - [`/assets/js/components/callout.js`](https://github.com/arbph-dev/codeIgniter/blob/master/public/assets/components/callout.js)
+  - [`/assets/js/components/codeval.js`](https://github.com/arbph-dev/codeIgniter/blob/master/public/assets/components/codeval.js)
+  - [`/assets/js/components/leaflet.js`](https://github.com/arbph-dev/codeIgniter/blob/master/public/assets/components/leaflet.js)
+  - [`/assets/js/components/mermaid.js`](https://github.com/arbph-dev/codeIgniter/blob/master/public/assets/components/mermaid.js)
 
 ```
 public/assets/js/
