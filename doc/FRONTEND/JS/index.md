@@ -5,6 +5,71 @@
   [``]()
 -->
 
+## public
+
+```
+├── favicon.ico
+├── index.html
+├── index.php
+├── info.php
+├── mail.php
+├── recherche-mot-api.html
+├── robots.txt
+├── ui-components
+│   └── apex.html
+└── ui.html
+```
+
+/favicon.ico
+index.html
+index.php
+info.php
+mail.php
+recherche-mot-api.html
+robots.txt
+  ui-components
+  apex.html
+ui.html
+
+
+https://github.com/arbph-dev/codeIgniter/blob/master/public/
+https://github.com/arbph-dev/codeIgniter/blob/master/public/
+https://github.com/arbph-dev/codeIgniter/blob/master/public/
+https://github.com/arbph-dev/codeIgniter/blob/master/public/
+https://github.com/arbph-dev/codeIgniter/blob/master/public/
+https://github.com/arbph-dev/codeIgniter/blob/master/public/
+https://github.com/arbph-dev/codeIgniter/blob/master/public/
+https://github.com/arbph-dev/codeIgniter/blob/master/public/
+https://github.com/arbph-dev/codeIgniter/blob/master/public/
+## public-assets-css
+```
+public/assets/css/
+├── GpPluginLeaflet.css
+├── cms
+│   └── article.css
+├── components
+│   ├── callout.css
+│   ├── leaflet.css
+│   ├── threejs.css
+│   ├── workbench.css
+│   └── wysedit.css
+├── style.css
+├── test_style.css
+├── test_themeA.css
+├── test_themeB.css
+├── ui.css
+├── uistyle.css
+└── workbench
+    ├── adresse.css
+    ├── dialog.css
+    ├── forms.css
+    ├── image.css
+    ├── organisation.css
+    ├── tagger.css
+    ├── theme_one.css
+    └── workbench.css
+```
+## public-assets-js
 2026-10-16 : 55 directories, 208 files
 
 
@@ -25,6 +90,9 @@
   - [`/assets/js/components/leaflet.js`](https://github.com/arbph-dev/codeIgniter/blob/master/public/assets/components/leaflet.js)
   - [`/assets/js/components/mermaid.js`](https://github.com/arbph-dev/codeIgniter/blob/master/public/assets/components/mermaid.js)
 
+/assets/js/features/
+/assets/js/features/admin/renderer.js
+- https://github.com/arbph-dev/codeIgniter/blob/master/public/assets/js/features/admin/renderer.js
 ```
 public/assets/js/
 ├── admin
