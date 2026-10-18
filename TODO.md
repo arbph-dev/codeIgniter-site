@@ -23,40 +23,6 @@ ce que cela induit
 https://github.com/arbph-dev/codeIgniter/blob/master/doc/notes/2026-10-03-001.md#-qui-fait-quoi--toolbarauthpanel-vs-authpanelbase
 
 
-**autorisation**
-a mettre par la suite
-
-```
-if (! auth()->user()?->can('admin.access'))
-```
-
-dans chaque méthode.
-
-L'accès `/api/admin/*` doit idéalement être protégé par le **filtre Shield / groupe / permission**, comme le reste de l' API.
-
- Le contrôleur ne doit pas dupliquer cette politique à chaque endpoint.
-
-```
-$routes->group('api/admin', [
-    'filter' => 'permission:admin.access',
-], static function ($routes) {
-    ...
-});
-```
-
-
-Point à vérifier avant test : 
-
-config('Auth')->tables doit bien être accessible dans ton App\Config\Auth. 
-
-Shield utilise justement une configuration de noms de tables pour identities, groups_users et permissions_user
-
-
-
-
-https://github.com/arbph-dev/codeIgniter/blob/master/vendor/codeigniter4/shield/src/Models/UserModel.php
-https://github.com/arbph-dev/codeIgniter/blob/master/vendor/codeigniter4/shield/src/Entities/User.php
-https://github.com/arbph-dev/codeIgniter/blob/master/vendor/codeigniter4/shield/src/Entities/UserIdentity.php
 
 
 **throttle** - https://github.com/arbph-dev/codeIgniter/blob/master/doc/notes/2026-10-04-001.md#%C3%A0-ne-pas-oublier--le-throttle
