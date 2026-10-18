@@ -19,10 +19,10 @@
   - documenter vendor /shield,  : group permissions
   - documenter services a ajouter dans app config services
 - [X] [`/index.html`](/public/index.html)  : Modifier structure article/section
-- [ ] [`/index.html`](/public/index.html)  : Modifier renderMenu selon   [doc/notes/2026-10-17.md](/doc/notes/2026-10-17.md)
 - [`/assets/js/app-index.js`](/public/assets/js/app-index.js) : Gestion PAGE_CONFIG, à améliorer -> ajouter style du menu
 - [`/assets/js/uibase.js`](/public/assets/js/uibase.js) :
-  - [ ] Gestion PAGE_CONFIG, à conserver dans le constructeur
+  - [ ] Gestion PAGE_CONFIG, à conserver dans le constructeur de UIbase ? ovveride par app si besoin
+  - [X] Modifier renderMenu selon   [doc/notes/2026-10-17.md](/doc/notes/2026-10-17.md)
   - [ ] déplacer les fonctions badge dans une librairie template
   - [ ] déplacer renderUserCard dans un features et utiliser domhelper::create
   - [ ] que faire de renderPagination
@@ -37,6 +37,7 @@
 - [`app/Controllers/Api/Admin/UsersController.php`](/app/Controllers/Api/Admin/UsersController.php)
   - [ ] Ventiler notes papier
 
+
 ## application
 
 3 pages associées à leur script , chaque script hérite de [`/assets/js/uibase.js`](/public/assets/js/uibase.js)
@@ -49,7 +50,10 @@
 
 chaque section comporte un div pour monter les composants futurs
 
+## html
 
+La structure est abordé ici
+- [`doc/FRONTEND/UI-panels.md`](/doc/FRONTEND/UI-panels.md)
 
 
 ## css
@@ -89,11 +93,15 @@ Définit le contrat application, fournit
 - [`/assets/js/ui/workbench/core/AuthPanelBase.js`](/public/assets/js/ui/workbench/core/AuthPanelBase.js)
 
 ## Backend
+
 - [`app/Config/Filters.php`](/app/Config/Filters.php)
 - [`app/Config/Routes.php`](/app/Config/Routes.php)
+
 - [`app/Controllers/Api/AuthController.php`](/app/Controllers/Api/AuthController.php)
+
 - [`app/Controllers/Api/Admin/UsersController.php`](/app/Controllers/Api/Admin/UsersController.php)
 - [`app/Services/Users/UserService.php`](/app/Services/Users/UserService.php)
+
 - 2026-10-18 : [`/doc/DOMAINS`](/doc/DOMAINS)
 
 
