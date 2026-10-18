@@ -18,10 +18,14 @@
  * 2026-10-12 voir ligne 204 /assets/js/uibase.js + ligne 90 /assets/js/app-index.js.js
  * 2026-10-15 : 
  * - modifier renderNavigation pour ajout de navigation de niveau article, menu des sections en haut
+* TODO 
+* 2026-10-18 : 
+ * - gestion PAGE_CONFIG, stockage dans le constructeur
+ * => a remplacer _pc 31 occurences -> this.pgc -/- Reste 1 ici => DONE 
  * 
- * 
- * TODO
- * - menu a ajouter avec pages pas les articles
+ * - renderMenu pas de sous item si un seul arrticle
+ 
+ 
  * 
  */
 
@@ -33,7 +37,9 @@ import { byId, byName , qs , qsa , create } from '/assets/js/core/domhelper.js'
 
 export class UiBase {
 
-    constructor() {
+    //constructor() {
+    constructor(pageConfig) {    
+        this.pgc = null //2026-10-18 - stocke la configuration de la page    
         // Références DOM communes
         this.main = null;
         this.menu = null;
@@ -52,6 +58,13 @@ export class UiBase {
         this.currentTheme = "marine";
         // boot guard: prevent multiple boots across subclasses
         this._booted = false;        
+
+        if (pageConfig) { this.pgc = pageConfig }
+        else{
+            throw new Error("UiBase.constructor() - pageConfig doit être fournie.")
+        }
+        
+
     }
 
     // ============================================================
@@ -115,9 +128,10 @@ export class UiBase {
             _pc.selectorPanelTitle      : "h2.panel-title",
             _pc.selectorSectionTitle    : "div.section-tab  > section.tab-content > h3",
         }
+        2026-10-18 : modifier classe UiBase this.pgc stocke PAGE_CONFIG            
     */
     
-    readPage( _pc ){
+    readPage() {
     
       let panelSections = null
       let strTemp = null
@@ -129,28 +143,28 @@ export class UiBase {
       this.currentPanel = null
       this.lastContentPanel = null
    
-        if ( this.main && _pc ) { 
+        if ( this.main && this.pgc ) { 
 
-            this.articles = qsa( _pc.selectorPanel , this.main )  // on extrait les informations de la pagearticle
+            this.articles = qsa( this.pgc.selectorPanel , this.main )  // on extrait les informations de la pagearticle
         
             this.articles.forEach((  panel , index ) => {
     
                 // les 2 panels admin et user sont omis
-                if (index >= _pc.offsetPanel ){   
+                if (index >= this.pgc.offsetPanel ){   
                     // on recherche le panel actif par defaut 0 n'a pas de classe hidden
-                    if ( !panel.classList.contains( _pc.classPanelHidden ) ) { 
+                    if ( !panel.classList.contains( this.pgc.classPanelHidden ) ) { 
                         this.currentPanel = index
                         this.lastContentPanel = index 
                     }
     
-                    strTemp = qs( _pc.selectorPanelTitle , panel).innerText       //  on recherche le titre h2 du panel p
+                    strTemp = qs( this.pgc.selectorPanelTitle , panel).innerText       //  on recherche le titre h2 du panel p
                     
                     // on recherche les div.section-tab  > div.tab-content > h3 du panel p
-                    panelSections = qsa( _pc.selectorSectionTitle , panel )
+                    panelSections = qsa( this.pgc.selectorSectionTitle , panel )
                     
                     // on construit 1 objet du panel p avec sont titre ets es sections
     
-                    off_index = ( index - _pc.offsetPanel )  
+                    off_index = ( index - this.pgc.offsetPanel )  
                     // les 2 panel admin et user sont omis il faut décaler l'index des page dans _pages
                     //off_index = ( index )
                     articleObj = { off_index , title : strTemp , sections : [] } // constuire un objet
@@ -170,17 +184,18 @@ export class UiBase {
 
     /** ------------------------------------------------------------------------------------------------------------------
      * @param {*} _pc objet PAGE_CONFIG
+     * 2026-10-18 : modifier classe UiBase this.pgc stocke PAGE_CONFIG 
      */
-    renderPagination( _pc ){
+    renderPagination() {
         let buttonTemp = null
         let pagination_buttons = null
 
-        pagination_buttons = qs( _pc.selectorPagination  , document )
+        pagination_buttons = qs( this.pgc.selectorPagination  , document )
   
         this.pages.forEach((  panel , index ) => { 
 
-            buttonTemp = create( 'button', { type: 'button', class: _pc.classPaginationButton , text: panel.title })
-            buttonTemp.addEventListener('click', () => this.switchPanel(index + _pc.offsetPanel ) ) 
+            buttonTemp = create( 'button', { type: 'button', class: this.pgc.classPaginationButton , text: panel.title })
+            buttonTemp.addEventListener('click', () => this.switchPanel(index + this.pgc.offsetPanel ) ) 
             pagination_buttons.appendChild( buttonTemp )
         })
     }
@@ -189,30 +204,32 @@ export class UiBase {
      * ajoute dans chaque panel la barrre de navigations panel
      * ajoute les buttons pour naviguer entre les sections d'un article, dans chaque articles de main
      * @param {*} _pc objet PAGE_CONFIG
-     * 2026-10-15 :
+     
+    * 2026-10-15 :
      * - on a structurer les board user et admin comme les autres on peut donc employer this.articles ici 
      * mais pas pour les menus a ajouter
-     * 
+     
+    * 2026-10-18 : modifier classe UiBase this.pgc stocke PAGE_CONFIG 
      */
 
-    renderNavigation( _pc){
+    renderNavigation() {
     
         let buttonTemp = null
         if (!this.articles) { return }
         
         this.articles.forEach((  panel , index ) => {
-            let panel_header = qs( _pc.selectorPanelHeader , this.articles[index] )   // reference sur element article
+            let panel_header = qs( this.pgc.selectorPanelHeader , this.articles[index] )   // reference sur element article
             // on recherche les div.section-tab  > div.tab-content > h3 du panel p
-            let panelSections = qsa( _pc.selectorSectionTitle , panel )
+            let panelSections = qsa( this.pgc.selectorSectionTitle , panel )
             //  on parcours les sections de  l'article
 
             panelSections.forEach((  section , sindex ) => { 
 
                 if (sindex === 0 ){ //par defaut le bouton 0 est actif 
-                    buttonTemp = create( 'button', { type: 'button', class: _pc.classPanelHeaderButton + ' active', text: section.innerText } )
+                    buttonTemp = create( 'button', { type: 'button', class: this.pgc.classPanelHeaderButton + ' active', text: section.innerText } )
                 }
                 else{
-                    buttonTemp = create( 'button', { type: 'button', class: _pc.classPanelHeaderButton , text: section.innerText } )
+                    buttonTemp = create( 'button', { type: 'button', class: this.pgc.classPanelHeaderButton , text: section.innerText } )
                 }
                 //switchSection a revoir 
                 panel_header.appendChild( buttonTemp )
@@ -224,7 +241,7 @@ export class UiBase {
 
     }
 
-
+    //-------------------------------------------------------------------------------------------------------------------------------------------------------
     /*
     initMenu devient renderMenu, on passe _pc en parametre il sera stocké par le consructeur
     this.pages et this.menu initilaisé par readPage( _pc )
@@ -241,66 +258,172 @@ export class UiBase {
     
     nav
     nav > div.nav-article
-    div.nav-header-row primary-button
-    button.nav-toggle
-    ul.nav-toc
+    nav > div.nav-article> div.nav-header-row primary-button
+    nav > div.nav-article> div.nav-header-row primary-button > button.nav-toggle
+    nav > div.nav-article> div.nav-header-row primary-button > button.nav-toggle > i
+    nav > div.nav-article> ul.nav-toc
+    nav > div.nav-article> ul.nav-toc > li
 
-    const PAGE_CONFIG = { 
-        selectorPanel           : "article.panel-card" ,
-        offsetPanel             : 2 , //PANEL_OFFSET  due a admin et user
-        classPanelHidden        : "hidden",
-        selectorPanelTitle      : "h2.panel-title",
-        selectorSectionTitle    : "div.section-tab  > section.tab-content > h3",
-        selectorPagination      : "div.pagination-buttons" ,
-        classPaginationButton   : "primary-button switch-tab-btn",
-        selectorPanelHeader     : "div.section-tab > div.tab-headers",
-        classPanelHeaderButton  : "tab-btn"
-    }
+    <div class="nav-article">
+        <div class="nav-header-row primary-button">
+            Composants APEX
+            <button class="nav-toggle" type="button">
+                <i class="fa fa-fw fa-cogs"></i>
+            </button>
+        </div>
+        <ul class="nav-toc">
+            <li>moteurCouple</li>
+        </ul>
+    </div>
+
 
     a ajouter dans PAGE_CONFIG
     - classNavArticle nav-article
-
-
+    
+    2026-10-18 : modifier classe UiBase this.pgc stocke PAGE_CONFIG 
+    2026-10-18 : gestion un seul article + 2  article usr et adm ou >= 2 articles + + 2  article usr et adm
+    
     */
-    renderMenu( _pc ){
+
+    //selectionne le mode de rendu du menu
+    renderMenu( cmd = false , struct = null ){
+
+        if (cmd != true ){
+            
+            if (this.pages.length < 1) { 
+                console.error( '/assets/js/uibase.js :: renderMenu = struct is null'); return 
+            }
+            else{
+                if (this.pages.length === 1) { 
+                    this.renderPageMenu()
+                    //console.warn('/assets/js/uibase.js :: renderMenu = mode page non implémenté')                     
+                }
+                else{
+                    this.renderArticleMenu() // articles multiples >= 2 
+                }
+            }
+        }
+        else{
+            // mode commande non implémenté
+            //  on crera une strucutre sur le modele de page => /article/section pour menu / sous menu
+            // peut etre un callback a prevoir dans la strucutre de struct ( event bus ?)
+            if (!struct){ console.error( '/assets/js/uibase.js :: renderMenu = struct is null') ; return }
+            else{
+                console.warn('/assets/js/uibase.js :: renderMenu = mode commande non implémenté')
+                return
+            }
+        }
+
+    }
+    //-------------------------------------------------------------------------------------------------------------------------------------------------------
+    // pour menu un seul article + 2  article usr et adm
+    renderPageMenu(){
+        // pour seul article de main (hors admin et user)
+        // this.pages.forEach((  panel , index )  index = 0 => panel = this.pages[0]
+        
+
+        // pour chaque section on cree un menu sans sous menu , section contient le texte du titre h3
+        this.pages[0].sections.forEach(( section , sindex) => {
+
+            //ajouter nav > div.nav-article -> container /article
+            const menu_panel = create('div', { class: this.pgc.classNavArticle })
+    
+            //ajouter - texte  => nav > div.nav-article> div.nav-header-row primary-button
+            const menu_panel_item = create('div', { class: this.pgc.classNavHeader  , text: section  })
+
+
+            // ajoute texte au container /section
+            menu_panel.appendChild( menu_panel_item )
+            // ajoute container /article au menu (nav)
+            this.menu.appendChild( menu_panel )
+            
+            // affecte un event au container /article
+            menu_panel.addEventListener('click', (e) => { 
+                e.preventDefault() ; e.stopPropagation()
+                console.log(`menu clic section : ${sindex}`)
+                // affiche les sections de article , ecrit dans la barre de statut
+                this.statusWrite( `Onglet actif : ${ this.pages[0].title }` )
+                this.switchSection( sindex )
+                // selon client SI PC on ferme le div.nav-article SINON on ferme nav  
+                if (window.innerWidth > 768){ menu_panel.classList.remove( 'open' ) } else{ closeNav() }   
+            })
+            
+            // sur pc si souris sort du container /section on le cache
+            menu_panel.addEventListener('mouseleave', () => {
+              console.log(`leave menu : ${sindex}`)
+              if (window.innerWidth > 768){ menu_panel.classList.remove('open') }
+            })     
+
+        })
+
+    }
+    
+    //-------------------------------------------------------------------------------------------------------------------------------------------------------
+    // pour menu page avec >= 2 articles + + 2  article usr et adm
+    renderArticleMenu(){
+
+        // pour chaque article de main (hors admin et user)
         this.pages.forEach((  panel , index ) => {
-        
-            const menu_panel = create('div', { class: 'nav-article' })
-        
-            const menu_panel_item = create('div', { class: 'nav-header-row  primary-button'  , text: panel.title  })
-        
-            const menu_panel_item_button = create('button', { class: 'nav-toggle', type: 'button' })
-            menu_panel_item_button.setAttribute( 'aria-expanded', false)
-            const menu_panel_item_i = create('i', { class: 'fa fa-fw fa-cogs' })
+
+            //ajouter nav > div.nav-article -> container /article
+            const menu_panel = create('div', { class: this.pgc.classNavArticle })
+
+            //ajouter - texte  => nav > div.nav-article> div.nav-header-row primary-button
+            const menu_panel_item = create('div', { class: this.pgc.classNavHeader  , text: panel.title  })
             
-            const sub_menu = create( 'ul', { class: 'nav-toc'}) // ****            
+            //ajouter - button apres texte  => nav > div.nav-article> div.nav-header-row primary-button > button.nav-toggle
+            const menu_panel_item_button = create('button', { class: this.pgc.classNavToggle, type: 'button' })
+                   
+            // SUPPRESSION a valider            
+            //menu_panel_item_button.setAttribute( 'aria-expanded', false) ??
             
+            //ajouter icone dans bouton  => nav > div.nav-article> div.nav-header-row primary-button > button.nav-toggle > i
+            const menu_panel_item_i = create('i', { class: this.pgc.classNavIcon })
+            
+            //ajouter liste sous menu => nav > div.nav-article> ul.nav-toc
+            
+            const sub_menu = create( 'ul', { class: this.pgc.classNavList }) // ****            
+            
+            //ajouter item à sous menu nav > div.nav-article> ul.nav-toc > li    
             panel.sections.forEach(( section , sindex) => {
-
-                const subitem  = create( 'li', { text: section } )
+                let subitem = null // item 
+                // test si classe définit
+                if ( this.pgc.classNavItem && this.pgc.classNavItem != "" ) {
+                    subitem  = create( 'li', { text: section , class: this.pgc.classNavItem } )
+                }
+                else{ subitem  = create( 'li', { text: section } ) }
+                //ajouter item
                 sub_menu.appendChild(subitem)
-
+                //ajouter event
                 subitem.addEventListener('click', (e) => {
-                    e.preventDefault()
-                    e.stopPropagation()
-                          
-                    this.switchPanel(index + _pc.offsetPanel ) // on utilse _pages donc + _pc.offsetPanel
-                    this.statusWrite( `Onglet actif : ${this.pages[index].title}` )
-                    this.switchSection(sindex)
-                    
-                    if (window.innerWidth > 768){ menu_panel.classList.remove('open') } else{ closeNav() }           
+                    e.preventDefault() ; e.stopPropagation()
+                    // affiche l'article panel , ecrit dans la barre de statut  , affiche la section de l'article   
+                    this.switchPanel( index + this.pgc.offsetPanel ) // on utilse _pages donc + this.pgc.offsetPanel
+                    this.statusWrite( `Onglet actif : ${ this.pages[index].title }` )
+                    this.switchSection( sindex )
+                    // selon client SI PC on ferme le div.nav-article SINON on ferme nav  
+                    if (window.innerWidth > 768){ menu_panel.classList.remove( 'open' ) } else{ closeNav() }           
                 })
 
             })
-            menu_panel_item_button.appendChild(menu_panel_item_i) // construit le bouton
-            menu_panel_item.appendChild(menu_panel_item_button) // ajoute le bouton
-            menu_panel.appendChild(menu_panel_item)
-            menu_panel.appendChild(sub_menu)
-          
-            this.menu.appendChild(menu_panel) //ajoute le menu
-
+            // ajoute icone au bouton
+            menu_panel_item_button.appendChild( menu_panel_item_i ) 
+            
+            // ajoute le bouton + icone  au texte (titre article)
+            menu_panel_item.appendChild( menu_panel_item_button ) 
+            
+            // ajoute texte + bouton+icone au container /article
+            menu_panel.appendChild( menu_panel_item )
+            
+            // ajoute liste sous menu  au container /article
+            menu_panel.appendChild( sub_menu )
+            
+            // ajoute container /article au menu (nav)
+            this.menu.appendChild( menu_panel )
+            // affecte un event au container /article
             menu_panel.addEventListener('click', () => { console.log(`menu clic panel : ${index}`) ; this.openMenuPanel(index) })
-        
+            
+            // sur pc si souris sort du container /article on le cache
             menu_panel.addEventListener('mouseleave', () => {
               console.log(`leave menu : ${index}`)
               if (window.innerWidth > 768){ menu_panel.classList.remove('open') }
@@ -310,7 +433,7 @@ export class UiBase {
 
     }
 
-
+    //-------------------------------------------------------------------------------------------------------------------------------------------------------
     /*
     // Navigation entre articles
     // Affiche un article identifié par son index dans this.articles. L'index est celui de la liste complète, boards compris.
