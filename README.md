@@ -40,7 +40,10 @@
 - [`/ui-components/`](/public/ui-components/)
   - [X] Intégrer apex - [`/ui-components/apex.html`](/public/ui-components/apex.html) pas de style, import du CDN en html head - https://zealot.fr/ui-components/apex.html
   - [X] Intégrer callout - [`/ui-components/callout.html`](/public/ui-components/callout.html) style sans RWD - https://zealot.fr/ui-components/callout.html
-  - [ ] Intégrer codeval
+  - [X] Intégrer codeval - https://zealot.fr/ui-components/codeval.html
+    - [`/ui-components/codeval.html`](/public/ui-components/codeval.html)
+    - [`/assets/js/app/cmp/uicmp-apex.js`](/public/assets/js/app/cmp/uicmp-apex.js)
+    - [`/assets/css/cmp/codeval.css`](/public/assets/css/cmp/codeval.css)
 
 ## application
 
