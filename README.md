@@ -38,8 +38,8 @@
 - [`app/Controllers/Api/Admin/UsersController.php`](/app/Controllers/Api/Admin/UsersController.php)
   - [ ] Ventiler notes papier
 - [`/ui-components/`](/public/ui-components/)
-  - [X] Intégrer apex - [`/ui-components/apex.html`](/public/ui-components/apex.html)
-  - [ ] Intégrer callout
+  - [X] Intégrer apex - [`/ui-components/apex.html`](/public/ui-components/apex.html) pas de style, import du CDN en html head
+  - [X] Intégrer callout - [`/ui-components/callout.html`](/public/ui-components/callout.html) style sans RWD
   - [ ] Intégrer codeval
 
 ## application
@@ -64,7 +64,7 @@ La structure est abordé ici
   - [`/assets/css/ui.css`](/public/assets/css/ui.css)
     - 2026-10-18 : ajout de classe pour les titres
     - 2026-10-18 : extraction classe nav [`/assets/css/ui-nav.css`](/public/assets/css/ui-nav.css)
-    - 2026-10-19 : extraction des styles callout ligne 549 à 589
+    - 2026-10-19 : extraction des styles callout ligne 549 à 589 - 
   - [`/assets/css/ui-nav.css`](/public/assets/css/ui-nav.css)
   - [`/assets/css/cmp/callout.css`](/public/assets/css/cmp/callout.css), pas de rwd et nécessite ui.md `:root`
   
