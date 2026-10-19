@@ -18,7 +18,7 @@
   - [/doc/BACKEND](//doc/BACKEND) - a ajouter au Controller
   - documenter vendor /shield,  : group permissions
   - documenter services a ajouter dans app config services
-- [X] [`/index.html`](/public/index.html)  : Modifier structure article/section
+- [X] [`/index.html`](/public/index.html)  : Modifier structure article/section - https://zealot.fr/index.html
 - [`/assets/js/app-index.js`](/public/assets/js/app-index.js) : Gestion PAGE_CONFIG, à améliorer -> ajouter style du menu
 - [`/assets/js/uibase.js`](/public/assets/js/uibase.js) :
   - [ ] Gestion PAGE_CONFIG, à conserver dans le constructeur de UIbase ? ovveride par app si besoin
@@ -38,8 +38,8 @@
 - [`app/Controllers/Api/Admin/UsersController.php`](/app/Controllers/Api/Admin/UsersController.php)
   - [ ] Ventiler notes papier
 - [`/ui-components/`](/public/ui-components/)
-  - [X] Intégrer apex - [`/ui-components/apex.html`](/public/ui-components/apex.html) pas de style, import du CDN en html head
-  - [X] Intégrer callout - [`/ui-components/callout.html`](/public/ui-components/callout.html) style sans RWD
+  - [X] Intégrer apex - [`/ui-components/apex.html`](/public/ui-components/apex.html) pas de style, import du CDN en html head - https://zealot.fr/ui-components/apex.html
+  - [X] Intégrer callout - [`/ui-components/callout.html`](/public/ui-components/callout.html) style sans RWD - https://zealot.fr/ui-components/callout.html
   - [ ] Intégrer codeval
 
 ## application
@@ -64,7 +64,7 @@ La structure est abordé ici
   - [`/assets/css/ui.css`](/public/assets/css/ui.css)
     - 2026-10-18 : ajout de classe pour les titres
     - 2026-10-18 : extraction classe nav [`/assets/css/ui-nav.css`](/public/assets/css/ui-nav.css)
-    - 2026-10-19 : extraction des styles callout ligne 549 à 589 - 
+    - 2026-10-19 : extraction des styles callout ligne 549 à 589 - modif [`/index.html`](/public/index.html) et [`/ui-components/callout.html`](/public/ui-components/callout.html)
   - [`/assets/css/ui-nav.css`](/public/assets/css/ui-nav.css)
   - [`/assets/css/cmp/callout.css`](/public/assets/css/cmp/callout.css), pas de rwd et nécessite ui.md `:root`
   
