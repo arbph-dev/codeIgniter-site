@@ -1,0 +1,200 @@
+<!-- 
+    2026-09-09 : modificaton 
+    2026-09-10 : voir pour supprimer les ul vide dans le menu nav ligne 66 et suivantes
+    2026-09-23 : intégrtion vox ligne 316 
+  -->
+<!DOCTYPE html>
+<html lang="fr" data-theme="marine">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zealot - composants - codeval</title>
+    <meta name="description" content="composant javascript pour les calculs">
+    <meta name="robots" content="index, follow">
+
+    <link rel="stylesheet" href="/assets/css/ui.css" >
+    <link rel="stylesheet" href="/assets/css/ui-nav.css" >
+    <!-- <link rel="stylesheet" href="/assets/css/cmp/callout.css" > -->
+    <link rel="stylesheet" href="/assets/css/cmp/codeval.css" >
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+</head>
+
+<body>
+    
+    <!-- ====           HEADER         ==============================================================
+    https://github.com/arbph-dev/codeIgniter/blob/master/doc/FRONTEND/UI-header.md
+
+    on conserve les styles :  /public/assets/css/ui.css#L104-L127
+    -->
+
+    <header>
+        <div class="title-layout">
+            <h1 id="appTitle">Page principale</h1>
+            <span id="appSubtitle">Portail personnel en déploiement</span>
+        </div>
+
+        <div class="header-actions">
+            <button class="rwdnav" type="button" onclick="openNav()" aria-label="Ouvrir le menu">
+                <i class="fa fa-bars" aria-hidden="true"></i>
+            </button>
+            <button id="themeBtn" type="button">Thème nature</button>
+            <button id="fullscreenBtn" type="button">Plein écran</button>
+        </div>
+
+        <div class="header-auth">
+            
+        </div>
+    </header>
+    <!-- ==== SIDEBAR ============================================================== 
+    construction dynamique a voir apres
+    <nav id="sidebar"> 
+    -->
+    <nav>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" aria-label="Fermer le menu">&times;</a>
+
+
+    </nav>
+    <!-- ====  CONTENU PRINCIPAL    ========================== -->
+    <main>
+        <!-- ====  ARTICLE art-admin NE PAS TOUCHER   ========================== -->
+        <article id="art-admin" class="panel-card hidden">
+            <h2 class="panel-title">Administration</h2>
+            <p class="panel-description">Tableau de bord administrateur</p>
+
+            <div class="section-tab">
+
+                <div class="tab-headers"></div>
+                
+                <section id="art-admin-home" class="tab-content active">
+                    <h3>Home</h3>
+                    <div id="art-admin-home-body"><!-- contenu ultérieur --></div>
+                </section>
+
+
+                <section id="art-admin-user" class="tab-content">
+                    <h3>User</h3>
+                    <div id="art-admin-user-list"><!-- contenu ultérieur --></div>
+                </section>
+
+            </div>
+
+        </article>
+        <!-- ====  ARTICLE art-user NE PAS TOUCHER   ========================== -->
+        <article id="art-user" class="panel-card hidden">
+            <h2 class="panel-title">Mon espace</h2>
+            <p class="panel-description">Profil et inscription</p>
+
+            <div class="section-tab">
+
+                <div class="tab-headers"></div>
+                
+                <section id="art-user-home" class="tab-content active">
+                    <h3>Board User</h3>
+                    <div id="art-user-home-body">
+                        <!-- contenu ultérieur -->
+                    </div>
+                </section>
+
+            </div>
+
+        </article>
+
+        <!-- ====  ARTICLE 0 - CALLOUT ===================== -->
+        <article id="art0" class="panel-card">
+            <h2 class="panel-title">Composant CODEVAL</h2>
+            <p class="panel-description">Le composant CODEVAL permet de réaliser des calculs, une liaions APEX est pris en charge pour les graphiques</p>
+
+            <div class="section-tab">
+
+                <div class="tab-headers"></div>
+                
+                <section id="art0-s0" class="tab-content active">
+                    <h3>Moteur asynchrone</h3>
+                    
+                    <div id="art0-s0-body">
+                        
+                        <div id="CODEVAL_MS1" class="cp_codeval">
+                            <div id="CODEVAL_MS1_SCRIPTCODE" class="scriptcode">
+                                <textarea rows="32">
+let sTemp = null
+
+const moteurExemple = new api.PHYS.MoteurAsynchrone(
+    1500, // Puissance nominale (W) - Exemple: 1.5 kW
+    230, // Tension nominale (V)
+    50, // Fréquence (Hz)
+    4, // Nombre de pôles (ex: 4 pôles pour 1500 RPM à 50Hz)
+    0.5, // Resistance Stator (Ω)
+    1.0, // Reactance Stator (Ω)
+    0.4, // Resistance Rotor (Ω)
+    0.9 // Reactance Rotor (Ω)
+);
+
+// Affichage de la vitesse de synchronisme
+sTemp = `Vitesse de synchronisme: ${moteurExemple.vitesseSynchronisme.toFixed(2)} RPM\n`;
+
+// Génération des données pour la courbe de couple
+//const donneesCouple = moteurExemple.genererCourbeCouple(20);
+const donneesCouple = moteurExemple.genererCourbeCouple(100, -1.0, 1.0)
+
+api.plot('APEX_LIGNE_3', { data: donneesCouple });    
+
+// Affichage des premiers points de la courbe
+sTemp += "Premiers points de la courbe Couple-Vitesse:\n";
+donneesCouple.slice(0, 5).forEach(point => {
+    sTemp += `Vitesse: ${point.vitesse.toFixed(2)} RPM, Couple: ${point.couple.toFixed(2)} Nm\n`;
+});
+const result = sTemp; 
+                                </textarea>
+                            </div>
+                        
+                            <div id="CODEVAL_MS1_RESULT" class="result"></div>
+                        
+                            <div class="cp_toolbar">
+                                <button onclick="window.eventBusPublish(event,'codeval:toggle','MS1')">Show</button>
+                                <button onclick="window.eventBusPublish(event,'codeval:eval','MS1')">Run</button>
+                            </div>
+                        </div>                      
+    
+                          <h4>line</h4>
+                          <div id="APEX_LIGNE_3" class="cp_apex" data-chart="moteurCouple"></div>
+
+                    </div>
+                </section>
+
+
+                <section id="art0-s1" class="tab-content">
+                    <h3>Documentation</h3>
+                    
+                    <div id="art0-s1-body">
+
+                        <h4>Todo</h4>
+                        Séparation des styles, amélioration ajout icone en ::before<br/><br/>
+                        Documenter<br/>
+                        structure du bloc , classes associé<br/>
+                        gestion des id, proposer amélioration numérotation automatique à l'initialisation<br/>
+
+                    </div>
+                </section>
+
+            </div>
+        </article>
+
+    </main>
+
+    <div class="pagination-buttons"></div>
+    <!-- ====   FOOTER  ================================================ -->
+
+    <footer>
+        <div id="statusBar">
+            Bienvenue site en déploiement
+        </div> 
+    </footer>
+
+    <script type="module" src="/assets/js/app/cpd/apexcodeval.js"></script>
+
+</body>
+
+</html>
