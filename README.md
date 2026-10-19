@@ -44,10 +44,15 @@
     - [`/ui-components/codeval.html`](/public/ui-components/codeval.html)
     - [`/assets/js/app/cmp/uicmp-apex.js`](/public/assets/js/app/cmp/uicmp-apex.js)
     - [`/assets/css/cmp/codeval.css`](/public/assets/css/cmp/codeval.css)
+  - [X] Intégrer mermaid - https://zealot.fr/ui-components/mermaid.html
+    - [`/ui-components/mermaid.html`](/public/ui-components/mermaid.html)
+    - [`/assets/js/app/cmp/uicmp-mermaid.js`](/public/assets/js/app/cmp/uicmp-mermaid.js)
   - Intéraction de Composant
-    - Apex et Codeval :
+    - Apex et Codeval : https://zealot.fr/ui-components/apex-codeval.html
       - [`/ui-components/apex-codeval.html`](/public/ui-components/apex-codeval.html)
       - [`/assets/js/app/cpd/apexcodeval.js`](/public/assets/js/app/cpd/apexcodeval.js)
+
+
 
 
 
