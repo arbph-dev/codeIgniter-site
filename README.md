@@ -66,7 +66,7 @@ La structure est abordé ici
     - 2026-10-18 : extraction classe nav [`/assets/css/ui-nav.css`](/public/assets/css/ui-nav.css)
     - 2026-10-19 : extraction des styles callout ligne 549 à 589
   - [`/assets/css/ui-nav.css`](/public/assets/css/ui-nav.css)
-  - [`/assets/css/cmp/callout.css`](/public/assets/css/cmp/callout.css), pas de rwd
+  - [`/assets/css/cmp/callout.css`](/public/assets/css/cmp/callout.css), pas de rwd et nécessite ui.md `:root`
   
 pas de rwd
 
