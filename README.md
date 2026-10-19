@@ -38,11 +38,15 @@
 - [`app/Controllers/Api/Admin/UsersController.php`](/app/Controllers/Api/Admin/UsersController.php)
   - [ ] Ventiler notes papier
 - [`/ui-components/`](/public/ui-components/)
-  - [X] Intégrer apex - [`/ui-components/apex.html`](/public/ui-components/apex.html) pas de style, import du CDN en html head - https://zealot.fr/ui-components/apex.html
-  - [X] Intégrer callout - [`/ui-components/callout.html`](/public/ui-components/callout.html) style sans RWD - https://zealot.fr/ui-components/callout.html
+  - [X] Intégrer apex - https://zealot.fr/ui-components/apex.html
+    - [`/ui-components/apex.html`](/public/ui-components/apex.html) pas de style, import du CDN en html head
+    - [`/assets/js/app/cmp/uicmp-apex.js`](/public/assets/js/app/cmp/uicmp-apex.js)
+  - [X] Intégrer callout style sans RWD - https://zealot.fr/ui-components/callout.html
+    - [`/ui-components/callout.html`](/public/ui-components/callout.html)
+    - [`/assets/js/app/cmp/uicmp-callout.js`](/public/assets/js/app/cmp/uicmp-callout.js)
   - [X] Intégrer codeval - https://zealot.fr/ui-components/codeval.html
     - [`/ui-components/codeval.html`](/public/ui-components/codeval.html)
-    - [`/assets/js/app/cmp/uicmp-apex.js`](/public/assets/js/app/cmp/uicmp-apex.js)
+    - [`/assets/js/app/cmp/uicmp-codeval.js`](/public/assets/js/app/cmp/uicmp-codeval.js)
     - [`/assets/css/cmp/codeval.css`](/public/assets/css/cmp/codeval.css)
   - [X] Intégrer mermaid - https://zealot.fr/ui-components/mermaid.html
     - [`/ui-components/mermaid.html`](/public/ui-components/mermaid.html)
@@ -50,7 +54,7 @@
   - Intéraction de Composant
     - Apex et Codeval : https://zealot.fr/ui-components/apex-codeval.html
       - [`/ui-components/apex-codeval.html`](/public/ui-components/apex-codeval.html)
-      - [`/assets/js/app/cpd/apexcodeval.js`](/public/assets/js/app/cpd/apexcodeval.js)
+      - [`/assets/js/app/cpd/apexcodeval.js`](/public/assets/js/app/cpd/apexcodeval.js), import du CDN en js
 
 
 
