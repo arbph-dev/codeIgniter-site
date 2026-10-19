@@ -63,7 +63,12 @@ La structure est abordé ici
 ## css
   - [`/assets/css/ui.css`](/public/assets/css/ui.css)
     - 2026-10-18 : ajout de classe pour les titres
-  - [`/assets/css/ui.css`](/public/assets/css/ui-nav.css)
+    - 2026-10-18 : extraction classe nav [`/assets/css/ui-nav.css`](/public/assets/css/ui-nav.css)
+    - 2026-10-19 : extraction des styles callout ligne 549 à 589
+  - [`/assets/css/ui-nav.css`](/public/assets/css/ui-nav.css)
+  - [`/assets/css/cmp/callout.css`](/public/assets/css/cmp/callout.css), pas de rwd
+  
+pas de rwd
 
 ## js
   - [`/assets/js/uibase.js`](/public/assets/js/uibase.js) : contrat application, fournit des méthodes standard, event en callback pour application , impose l'implémentation des méthodes boot 
