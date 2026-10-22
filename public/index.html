@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="/assets/css/ui.css" >
     <link rel="stylesheet" href="/assets/css/ui-nav.css" >
     <link rel="stylesheet" href="/assets/css/cmp/callout.css" >
-        
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
@@ -60,7 +60,7 @@
     <main id="stack"> 
     -->
     <main>
-        <article id="art-admin" class="panel-card hidden">
+        <article id="art-admin" class="panel-card">
             <h2 class="panel-title">Administration</h2>
             <p class="panel-description">Tableau de bord administrateur</p>
 
@@ -96,7 +96,7 @@
             </div>
         </div>
         -->
-        <article id="art-user" class="panel-card hidden">
+        <article id="art-user" class="panel-card">
             <h2 class="panel-title">Mon espace</h2>
             <p class="panel-description">Profil et inscription</p>
 
@@ -117,7 +117,7 @@
 
 
         <!-- ====  0 - ACCEUIL===================== -->
-        <article id="art0" class="panel-card">
+        <article id="art0" class="panel-card active">
             <h2 class="panel-title">Actualités</h2>
             <p class="panel-description">Les dernières informations</p>
 
@@ -130,9 +130,9 @@
                     <div id="art0-s0-body">
                         <h4>Application</h4>
                         L'application necessite une page, les librairies, un script application, le css
-
                         la strcuture des dossiers sera documentées sur github
-
+                        <h5>Evolution</h5>
+                        Modification de UIBase : configuration de page par défaut
                         <ul>
                             <li><a href="https://zealot.fr/index.html">https://zealot.fr/index.html</a> ce fichie, utilise un script application, contenu à refondre</li>
                             <li><a href="https://zealot.fr/idx-dev.html">Index dévellopement</a> - déplacer la liste des composants dans ce document</li>
@@ -141,9 +141,18 @@
                         <h4>Composants</h4>
                         Les composants seront listés dans cette section. On illustrera leur mise en oeuvre au travers d'exemple et une section à réservé dans chaque document
                         <ul>
+
                             <li><a href="https://zealot.fr/ui-components/apex.html">Composant APEX - passage en app</a></li>
                             <li><a href="https://zealot.fr/ui-components/callout.html">Composant CALLOUT - passage en app</a></li>
+                            <li><a href="https://zealot.fr/ui-components/codeval.html">Composant CODEVAL - passage en app</a></li>
+                            <li><a href="https://zealot.fr/ui-components/leaflet.html">Composant LEAFLET - passage en app</a></li>
                         </ul>
+
+                        <h4>Intéraction entre composants</h4>
+                        <ul>
+                            <li><a href="https://zealot.fr/ui-components/apex-codeval.html">Intéraction APEX - CODEVAL</a></li>
+                        </ul>
+
                     </div>
                 </section>
 
@@ -189,175 +198,79 @@
             </div>
         </article>
 
-        <!-- ====  1 - APEX ===================== -->
-        <article id="art1" class="panel-card hidden">
-            <h2 class="panel-title">Composants APEX</h2>
-            <p class="panel-description">Le composant APEX permet de créer des graphiques</p>
+        <!-- ====  0 - ACCEUIL===================== -->
+        <article id="art1" class="panel-card">
+            <h2 class="panel-title">Métiers</h2>
+            <p class="panel-description">Un parcours de plus de 20 ans dans différents secteurs d'activité m'a permis d'aborder plusieurs spépcialité.<br>
+                Electricien de formation j'ai assez vite compris que l'éléctricien ne faisait pas tout et que l'exploitation nécessite polyvalence ,organistaion et rigueur<br/>
+                Mon premeir emploi au sein d'une entreprise pétrochimique m'a permis de démontrer ces qualités en sécurisant l'outil de production et les énergies. Débauché par Dalkia, je suis passé de la PME au site SEVESO 2.<br/>
+                L'exploitation est un métier qui permet d'allier la conduite, la maintenance et les travaux. Sur le site de SPONTEX j'ai obtenu des résultats mesurés par et chiffrales<br/>
+                Dalkia m'a permis de découvrir de nombreux secteurs d'activités avec des contraintes similaires dont la disponibilité et la sécurité<br/>
+            </p>
 
             <div class="section-tab">
 
                 <div class="tab-headers"></div>
                 
                 <section id="art1-s0" class="tab-content active">
-                    <h3>moteurCouple</h3>
+                    <h3>Secteurs d'activité</h3>
                     <div id="art1-s0-body">
-                        <div id="APEX_LIGNE_2" class="cp_apex" data-chart="moteurCouple"></div>
-                        <p>Revoir les graphiques disponible</p>
+                        <h4>Industrie</h4>
+                        Mon métier d'élécticien m'a permis d'aborder l'automatisme et de trandsformer mes connaissances techniques en compétences.<br/>
+                        AIGLON m'a permis de découvrir la maintenance en appuyant les équipes de production. Dans cet environnement j'ai géré les énergies et sécurisé l'exploitation.<br/>
+                        Autonome j'ai encadré diférents intervenants, certains m'ont permis de progresser; d'autres comme l'APAVE m'ont pemris de faire reconnaitres mes compétences malgré ma "jeunesse".<br/>
+                        Monsieur MAILLET, Gilles PASTOORS ont apprécié mon autonomie et le travail réalisé. Ils m'ont invité à rejoindre l'équipe de SPONTEX.<br/>
+                        SPONTEX m'a permis de progresser significativment dans de nombreux domaines et de maitriser les énergies.<br/>
+                        Des éxpériences dans les secteurs éléctronique chez EOLANE, en agroalimentaire : Capitaine COOK, Hénaff m'ont permis de déployer mes compétences dans le domaine industriel
+                        
+                        <h4>Tertiaire</h4>
+                        En intégrant DALKIA Atlantique j'ai pu découvrir d'autes secteurs d'activité. Mon passage chez VERLINGUE m'a permis de démontrer ma polyvalence.
+
+
+                        <h4>Sanitaire et social</h4>
+                        Les hôpitaux, des associations comme Kan Ar Mor et les EPHAD ont des besoins en énérgie et la rigueur garantit une continutité de service et la sécurité des personnes
                     </div>
                 </section>
 
+                <section id="art1-s1" class="tab-content">
+                    <h3>Technologies</h3>
+                    <div id="art1-s1-body">
+                        <ul>
+                            <li>Air comprimé : production, distribution et utilités</li>
+                            <li>Chauffage : production, distribution et utilités</li>
+                            <li>Electrotechnique : courant fort, cournt faible, automatisme et régulation</li>
+                            <li>Foid : production, distribution, utilitées</li>
+                            <li>Exploitation : maintenance, méthodes, controles et suivi reglementaire</li>
+                            <li>Traitment d'eau : production, distribution et utilités</li>
+                            <li>Sécurité : incendie, surveillance d'athmospèrer, intrusion, télésurveillance</li>
+                            <li>Vapeur : production, distribution, utilitées</li>
+                        </ul>
+                        <!-- 
+                            main
+                        -->
+
+                    </div>
+                </section>
+
+                <section id="art1-s3" class="tab-content">
+                    <h3>Réalisations</h3>
+                    <div id="art1-s3-body">
+                        <h4>Air comprimé</h4>
+                        
+                        <ul>
+                        <li>SPONTEX : diagnostique d'un défaut de conception, recherhce de fuite</li>
+                        <li>SPONTEX : amélioration des performances et ratio de production</li>
+                        <li>AIGLON : amélioration de la disponibilité</li>
+                        <li>CAPITAINE COOK, EOLANE : économie d'énergie</li>
+                        </ul>
+
+                        <h4>Chauffage</h4>
+                    </div>
+                </section>
             </div>
         </article>
 
-        <!-- ====  2 - CODEVAL ===================== -->
-        <article id="art2" class="panel-card hidden">
-            <h2 class="panel-title">Composants CODEVAL</h2>
-            <p class="panel-description">Le composant CODEVAL permet de réaliser des calculs et de créer des graphiques</p>
 
-            <div class="section-tab">
-
-                <div class="tab-headers"></div>
-                
-                <section id="art2-s0" class="tab-content active">
-                    <h3>Correction gaz</h3>
-                    <div id="art2-s0-body">
-                        <p>proposer des exemples avec api</p>
-                        <h4>Correction volume gaz</h4>
-                        On dispose des index compteurs IDX1 et IDX2.<br/>   
-                        On connait P2 pression et T2 température du gaz distribué<br/>
-                        On a des conditions de référence P1 et T1<br/>
-                        <br/>
-                        On ramène le volume distribué à un volume normal. F est le facteur de conversion pour retrouver le volume corrigé 
-                        <div id="CODEVAL_CVG5" class="cp_codeval">
-                            <div id="CODEVAL_CVG5_SCRIPTCODE" class="scriptcode">
-                                <textarea rows="14">
-const P2_rel_bar = 0.3
-const P2_abs_bar = P2_rel_bar + 1
-const P2_abs_pa = P2_abs_bar * 101325
-const P1_abs_pa = 101325
-const T2_degc = 20
-const T1_K = 288.15
-const T2_K = T2_degc + 273.15
-const IDX1 = 2500420
-const IDX2 = 2500620
-const V2 = IDX2 - IDX1
-const F = ( P2_abs_pa / P1_abs_pa ) * ( T1_K / T2_K)
-const V1 = V2 * F
-const result = "Volume corrigé = " + V1 + " Nm3 ; F = " + F
-                                </textarea>
-                            </div>
-                        
-                            <div id="CODEVAL_CVG5_RESULT" class="result"></div>
-                        
-                            <div class="cp_toolbar">
-                                <button onclick="window.eventBusPublish(event,'codeval:toggle','CVG5')">Show</button>
-                                <button onclick="window.eventBusPublish(event,'codeval:eval','CVG5')">Run</button>
-                            </div>                        
-                        </div>
-                    </div>
-                </section>
-
-                <section id="art2-s1" class="tab-content">
-                    <h3>Moteur asynchrone</h3>
-                    <div id="art2-s1-body">
-
-                        <div id="CODEVAL_MS1" class="cp_codeval">
-                            <div id="CODEVAL_MS1_SCRIPTCODE" class="scriptcode">
-                                <textarea rows="32">
-let sTemp = null
-
-const moteurExemple = new api.PHYS.MoteurAsynchrone(
-    1500, // Puissance nominale (W) - Exemple: 1.5 kW
-    230, // Tension nominale (V)
-    50, // Fréquence (Hz)
-    4, // Nombre de pôles (ex: 4 pôles pour 1500 RPM à 50Hz)
-    0.5, // Resistance Stator (Ω)
-    1.0, // Reactance Stator (Ω)
-    0.4, // Resistance Rotor (Ω)
-    0.9 // Reactance Rotor (Ω)
-);
-
-// Affichage de la vitesse de synchronisme
-sTemp = `Vitesse de synchronisme: ${moteurExemple.vitesseSynchronisme.toFixed(2)} RPM\n`;
-
-// Génération des données pour la courbe de couple
-//const donneesCouple = moteurExemple.genererCourbeCouple(20);
-const donneesCouple = moteurExemple.genererCourbeCouple(100, -1.0, 1.0)
-
-api.plot('APEX_LIGNE_3', { data: donneesCouple });    
-
-// Affichage des premiers points de la courbe
-sTemp += "Premiers points de la courbe Couple-Vitesse:\n";
-donneesCouple.slice(0, 5).forEach(point => {
-    sTemp += `Vitesse: ${point.vitesse.toFixed(2)} RPM, Couple: ${point.couple.toFixed(2)} Nm\n`;
-});
-const result = sTemp; 
-                                </textarea>
-                            </div>
-                        
-                            <div id="CODEVAL_MS1_RESULT" class="result"></div>
-                        
-                            <div class="cp_toolbar">
-                                <button onclick="window.eventBusPublish(event,'codeval:toggle','MS1')">Show</button>
-                                <button onclick="window.eventBusPublish(event,'codeval:eval','MS1')">Run</button>
-                            </div>
-                        </div>                      
-    
-                          <h4>line</h4>
-                          <div id="APEX_LIGNE_3" class="cp_apex" data-chart="moteurCouple"></div>
-      
-
-                    </div>
-                </section>
-
-            </div>
-        </article>
-
-        <!-- ====  3 - CALLOUT ===================== -->
-        <article id="art3" class="panel-card hidden">
-            <h2 class="panel-title">Composants CALLOUT</h2>
-            <p class="panel-description">Le composant CALLOUT permet de gérer du contenu spécifique</p>
-
-            <div class="section-tab">
-
-                <div class="tab-headers"></div>
-                
-                <section id="art3-s0" class="tab-content active">
-                    <h3>Callout</h3>
-                    
-                    <div id="art3-s0-body">
-
-                        <p>4 types disponibles</p>
-
-                        <h4>info</h4>
-                        <div id="CO_1" class="cp_callout cp_callout--info">
-                            <strong class="cp_callout_title" style="cursor: pointer;">Attention</strong>
-                            <div class="cp_callout_content" style="display: block;">Ceci est un callout de test de type <strong>info</strong>.2026-07-07 : Mise en production. Ajouter initCallout dans le bootstrap</div>
-                        </div>
-
-                        <h4>warning</h4>
-                        <div id="CO_2" class="cp_callout cp_callout--warning">
-                            <strong class="cp_callout_title" style="cursor: pointer;">Attention</strong>
-                            <div class="cp_callout_content" style="display: block;">Ceci est un callout de test de type <strong>warning</strong>.2026-07-07 : Mise en production. Ajouter initCallout dans le bootstrap</div>
-                        </div>
-
-                        <h4>danger</h4>
-                        <div id="CO_3" class="cp_callout cp_callout--danger">
-                            <strong class="cp_callout_title" style="cursor: pointer;">Attention</strong>
-                            <div class="cp_callout_content" style="display: block;">Ceci est un callout de test de type <strong>danger</strong>.2026-07-07 : Mise en production. Ajouter initCallout dans le bootstrap</div>
-                        </div>
-
-                        <h4>tip</h4>
-                        <div id="CO_4" class="cp_callout cp_callout--tip">
-                            <strong class="cp_callout_title" style="cursor: pointer;">Attention</strong>
-                            <div class="cp_callout_content" style="display: block;">Ceci est un callout de test de type <strong>tip</strong>.2026-07-07 : Mise en production. Ajouter initCallout dans le bootstrap</div>
-                        </div>
-
-                    </div>
-                </section>
-
-            </div>
-        </article>
 
     </main>
 
