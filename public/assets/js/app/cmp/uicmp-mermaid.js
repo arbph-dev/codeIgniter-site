@@ -14,34 +14,13 @@ import { initMermaid } from '/assets/js/components/mermaid.js'
 
 // import { bus } from '/assets/js/core/eventBus.js'
 
-const PAGE_CONFIG = { 
-    //menu
-    classNavArticle         : "nav-article", // ligne 162 et 709 ui.css
-    classNavHeader          : "nav-header-row primary-button",
-    classNavItem            : "",
-    classNavIcon            : "fa fa-fw fa-cogs",
-    classNavList            : "nav-toc",
-    classNavToggle          : "nav-toggle",
-
-    classPaginationButton   : "primary-button switch-tab-btn",
-    classPanelHeaderButton  : "tab-btn",    
-    classPanelHidden        : "hidden",
-
-    offsetPanel             : 2 , //PANEL_OFFSET  due a admin et user
-
-    selectorPagination      : "div.pagination-buttons" ,
-    selectorPanel           : "article.panel-card" ,
-    selectorPanelHeader     : "div.section-tab > div.tab-headers",
-    selectorPanelTitle      : "h2.panel-title",
-    selectorSectionTitle    : "div.section-tab  > section.tab-content > h3",
-}
 
 let APP
 
 class AppIndex extends UiBase {
 
     constructor() {
-        super(PAGE_CONFIG)
+        super()
         this.setPageRef() 
         this.readPage() 
         this.renderNavigation()
