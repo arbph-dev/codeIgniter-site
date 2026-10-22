@@ -528,65 +528,6 @@ header {
 /* =============================================================================
    COMPOSANTS 
 ============================================================================= */
-.cp_codeval { 
-  border: 1px solid var(--border-color);
-  border-radius: 5px;
-  overflow: hidden; 
-  display: block;
-}
-
-.cp_codeval .titre { 
-  background-color: var(--accent);
-  color: var(--text-header);
-  cursor: pointer;
-  padding: 10px; 
-}
-
-.cp_codeval .result { display: none; padding: 10px; }
-.cp_codeval .scriptcode { display: block ; padding: 10px; }
-.cp_codeval .scriptcode textarea { height: 200px; width: 100%; overflow-y: auto; }
-
-/* ======   callout - Structure     ============================================== */
-.cp_callout {
-    border: 1px solid #5f5e5e;
-    margin: 1rem 0;
-    border-radius: 5px;
-    overflow: hidden;
-}
-
-.cp_callout_title {
-    display: block;
-    padding: 8px 12px;
-    font-weight: bold;
-}
-
-.cp_callout_content {
-    padding: 10px 12px;
-}
-
-/* ========= callout -    Variantes  ============================================ */
-
-/*  ---- info ---- */
-.cp_callout--info { border-color: var(--col-info); }
-.cp_callout--info .cp_callout_title { background: var(--col-info); color: var(--col-info-secondary); }
-.cp_callout--info .cp_callout_content { background: var(--col-info-secondary); color: var(--col-info); }
-
-/* ---- warning ----- */
-.cp_callout--warning { border-color: var(--col-warning); }
-.cp_callout--warning .cp_callout_title { background  : var(--col-warning); color : var(--col-warning-secondary); }
-.cp_callout--warning .cp_callout_content { background  : var(--col-warning-secondary); color : var(--col-warning); }
-
-/* ---- danger ----- */
-.cp_callout--danger { border-color: var(--col-danger); }
-.cp_callout--danger .cp_callout_title { background  : var(--col-danger); color : var(--col-danger-secondary); }
-.cp_callout--danger .cp_callout_content { background  : var(--col-danger-secondary); color : var(--col-danger); }
-
-/* ---- tip ----- */
-.cp_callout--tip { border-color: var(--col-note); }
-.cp_callout--tip .cp_callout_title { background  : var(--col-note); color : var(--col-note-secondary); }
-.cp_callout--tip .cp_callout_content { background  : var(--col-note-secondary); color : var(--col-note); }
-
-
 
 /* leaflet voir /refactoring/assets/css/components/leaflet.css ------------------------------------------------ */
 .cp_leaflet { width:100%; height:400px; }
@@ -618,18 +559,25 @@ main > article.panel-card > div.section-tab > section.tab-content > div > h5{
   color: var(--accent);
 }
 
-  
+
+/*panel-card active*/
+/*panel-card active*/
 .panel-card {
   background: var(--bg-card);
   border-radius: 8px;
   padding: 28px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-  display: flex;
+/*  display: flex; */
+  display: none;
   flex-direction: column;
   gap: 18px;
 }
-
+/*
 .panel-card.hidden { display: none; }
+
+*/
+.panel-card.active { display: flex; }
+
 
 .panel-title { font-size: 1.5rem; }
 
@@ -673,6 +621,14 @@ input[type="text"], input[type="number"], select {
   width: 100%;
   max-width: 300px;
 }
+
+
+
+
+
+
+
+
 
 /* ============== container buttons ============== */
 .pagination-buttons {
