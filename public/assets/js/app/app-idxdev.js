@@ -32,7 +32,7 @@ on exploite PAGE_CONFIG en le stockant dans le constructeur - voir uibase
 
 
  */
-
+/*
 const PAGE_CONFIG = { 
     //menu
     classNavArticle         : "nav-article", // ligne 162 et 709 ui.css
@@ -55,7 +55,7 @@ const PAGE_CONFIG = {
     selectorSectionTitle    : "div.section-tab  > section.tab-content > h3",
 
 
-}
+}*/
 
 let APP
 
@@ -66,7 +66,8 @@ class AppIndex extends UiBase {
      * this.readPage(PAGE_CONFIG) lit la strucutre de la page
     */
     constructor() {
-        super(PAGE_CONFIG)
+        super()
+        //super(PAGE_CONFIG) 
         this.setPageRef() 
         this.readPage() 
         //console.table(this.pages)
