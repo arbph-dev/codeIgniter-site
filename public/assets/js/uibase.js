@@ -519,18 +519,16 @@ export class UiBase {
 
         //this.articles.forEach( (item , i)  => { item.classList.toggle("hidden", i !== index ) })
         
-
-        this.articles.forEach( (item , i)  => { item.classList.toggle( this.pgc.classPanelActive , i === index ) })
-   
         /* 2026-10-22
+        this.articles.forEach( (item , i)  => { item.classList.toggle( this.pgc.classPanelActive , i === index ) })
+        */          
         this.articles.forEach((item, i) => {
-            const active = i === index;
-            item.classList.toggle(this.pgc.classPanelActive, active);
-            item.classList.remove("active", !active);
-          });
-          */
+            const isActive = i === index;
+            item.classList.toggle(this.pgc.classPanelActive, isActive);
+        });
           
-        /* 2026-10-22 this.currentArticle = index */
+          
+
 
         this.currentArticle = index
         this.currentSection = 0
