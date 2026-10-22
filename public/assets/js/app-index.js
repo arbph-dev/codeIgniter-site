@@ -8,10 +8,11 @@
 "use strict"
 
 import { UiBase } from '/assets/js/uibase.js'
+/* 
 import { initApex } from '/assets/js/components/apex.js'
 import { initCodeVal } from '/assets/js/components/codeval.js'
 import { initCallout} from '/assets/js/components/callout.js'
-
+*/
 //ajout de auth
 import { bus } from '/assets/js/core/eventBus.js'
 
@@ -33,29 +34,6 @@ on exploite PAGE_CONFIG en le stockant dans le constructeur - voir uibase
 
  */
 
-const PAGE_CONFIG = { 
-    //menu
-    classNavArticle         : "nav-article", // ligne 162 et 709 ui.css
-    classNavHeader          : "nav-header-row primary-button",
-    classNavItem            : "",
-    classNavIcon            : "fa fa-fw fa-cogs",
-    classNavList            : "nav-toc",
-    classNavToggle          : "nav-toggle",
-
-    classPaginationButton   : "primary-button switch-tab-btn",
-    classPanelHeaderButton  : "tab-btn",    
-    classPanelHidden        : "hidden",
-
-    offsetPanel             : 2 , //PANEL_OFFSET  due a admin et user
-
-    selectorPagination      : "div.pagination-buttons" ,
-    selectorPanel           : "article.panel-card" ,
-    selectorPanelHeader     : "div.section-tab > div.tab-headers",
-    selectorPanelTitle      : "h2.panel-title",
-    selectorSectionTitle    : "div.section-tab  > section.tab-content > h3",
-
-
-}
 
 let APP
 
@@ -66,7 +44,7 @@ class AppIndex extends UiBase {
      * this.readPage(PAGE_CONFIG) lit la strucutre de la page
     */
     constructor() {
-        super(PAGE_CONFIG)
+        super()
         this.setPageRef() 
         this.readPage() 
         //console.table(this.pages)
@@ -81,9 +59,7 @@ class AppIndex extends UiBase {
             
 
         console.info("AppIndex :: boot() = success")
-        initApex()
-        initCodeVal()
-        initCallout()
+        //initApex()        initCodeVal()        initCallout()
 
 
         initAuthController() // /public/assets/js/features/auth/auth.controller.js
