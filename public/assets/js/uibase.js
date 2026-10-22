@@ -27,7 +27,7 @@
  
  2026-10-21 : TODO
     remplacer les  variables ,  les noms doivent coller a la strucutre
-        this.currentArticle = null au lieu de  this.currentPanel = null 
+        this.currentArticle = null au lieu de  this.currentArticle = null 
 
     initialisation avec null , permet de savoir si affecté par utilisateur ou pas
         this.currentSection = null doit ramplacer this.currentSection = 0
@@ -85,13 +85,10 @@ const PAGE_CFG1 = {
     classNavIcon            : "fa fa-fw fa-cogs",
     classNavList            : "nav-toc",
     classNavToggle          : "nav-toggle",
-
     classPaginationButton   : "primary-button switch-tab-btn",
     classPanelHeaderButton  : "tab-btn",    
-//    classPanelHidden        : "hidden",
     classPanelActive        : "active",
     offsetPanel             : 2 , //PANEL_OFFSET  due a admin et user
-
     selectorPagination      : "div.pagination-buttons" ,
     selectorPanel           : "article.panel-card" ,
     selectorPanelHeader     : "div.section-tab > div.tab-headers",
@@ -99,25 +96,14 @@ const PAGE_CFG1 = {
     selectorSectionTitle    : "div.section-tab  > section.tab-content > h3",
 }
 
-// classMenuActive = "open" puis "active" 
-/*
-this.pgc.classMenuActive
-
-on recherche le texte open
-uibase.js  : 448 , 454 , 505 , 529 , 659 , 672
-ui.css : 17 , 65 , 68 , 135
-
-on remplace 
-uibase.js - open par this.pgc.classMenuActive
-
-*/
-// classPanelHidden a supprimer 
-
-
-
 export class UiBase {
 
     //constructor() {
+/*
+    constructor(pageConfig = {}) {
+        this.pgc = { ...DEFAULT_PAGE_CFG, ...pageConfig };
+*/
+
     constructor(pageConfig = PAGE_CFG1 ) {    
         this.pgc = null //2026-10-18 - stocke la configuration de la page    
         // Références DOM communes
@@ -129,21 +115,17 @@ export class UiBase {
         this.fullscreenButton = null
         
         this.articles = [] // ref aux elements de structure necessaire ??
-        
-        // this.currentArticle = null // les noms doivent coller a la strucutre
-        this.currentPanel = null 
-        
+        this.pages = [] //  pour menu  <> this.articles 
+
+        this.currentArticle = null 
         // this.currentSection = null // null si not se <> valeur numérique
         this.currentSection = 0
         this.lastContentPanel = null // doit servir pour retourner au panneau de contenu apres admin / user board
 
-        this.pages = [] //  pour menu  <> this.articles 
+   
         this.paginationMain = false // pour switchSection
-
-
         this.currentTheme = "marine";
-        // boot guard: prevent multiple boots across subclasses
-        this._booted = false;        
+        this._booted = false;           // boot guard: prevent multiple boots across subclasses
 
         if (pageConfig) { this.pgc = pageConfig }
         else{
@@ -217,65 +199,41 @@ export class UiBase {
         2026-10-18 : modifier classe UiBase this.pgc stocke PAGE_CONFIG        
     */
     
-    readPage() {
-    
-      let panelSections = null
-      let strTemp = null
-      let off_index
-      let articleObj = null
-      //reset  
-      this.pages = []
-      this.articles = []
-      this.currentPanel = null
-      this.lastContentPanel = null
-   
-        if ( this.main && this.pgc ) { 
 
-            this.articles = qsa( this.pgc.selectorPanel , this.main )  // on extrait les informations de la pagearticle
-        
-            this.articles.forEach((  panel , index ) => {
-    
-                // les 2 panels admin et user sont omis
-                if (index >= this.pgc.offsetPanel ){   
-                    
-                    // on recherche le panel actif par defaut => pas de classe hidden
-                    /*
-                    if ( !panel.classList.contains( this.pgc.classPanelHidden ) ) { 
-                        this.currentPanel = index
-                        this.lastContentPanel = index 
-                    }
-                    */
+    readPage(){
+        if (!this.main || !this.pgc) return;
 
-                    if ( panel.classList.contains( this.pgc.classPanelActive ) ) { 
-                        this.currentPanel = index
-                        this.lastContentPanel = index 
-                    }
-                    
-                    
-                    strTemp = qs( this.pgc.selectorPanelTitle , panel).innerText       //  on recherche le titre h2 du panel p
-                    
-                    // on recherche les div.section-tab  > div.tab-content > h3 du panel p
-                    panelSections = qsa( this.pgc.selectorSectionTitle , panel )
-                    
-                    // on construit 1 objet du panel p avec sont titre ets es sections
+        this.pages = [];
+        this.articles = qsa(this.pgc.selectorPanel, this.main);
     
-                    off_index = ( index - this.pgc.offsetPanel )  
-                    // les 2 panel admin et user sont omis il faut décaler l'index des page dans _pages
-                    //off_index = ( index )
-                    articleObj = { off_index , title : strTemp , sections : [] } // constuire un objet
-                    
-                    // on stocke l'objet dans _pages
-                    this.pages.push( articleObj )
-                    
-                    //  on ajoute les sections a l'objet
-                    panelSections.forEach((  section , sindex ) => { 
-                        this.pages[ off_index ].sections.push( section.innerText ) 
-                    })      
-                } 
-            })
+        this.articles.forEach((article, index) => {
+          if (index < this.pgc.offsetPanel) return;
     
+          const title = qs(this.pgc.selectorPanelTitle, article)?.innerText?.trim() ?? "";
+          const sectionNodes = qsa(this.pgc.selectorSectionTitle, article);
+          const sections = sectionNodes.map(node => node.innerText.trim());
+    
+          const page = {
+            offIndex: index - this.pgc.offsetPanel,
+            title,
+            sections,
+            element: article,
+          };
+    
+          this.pages.push(page);
+    
+          if (article.classList.contains(this.pgc.classPanelActive)) {
+            this.currentArticle = index;
+            this.lastContentPanel = index;
+          }
+        });
+    
+        if (this.currentArticle === null && this.pages.length > 0) {
+          this.currentArticle = this.pgc.offsetPanel;
+          this.lastContentPanel = this.currentArticle;
         }
     }
+
 
     /** ------------------------------------------------------------------------------------------------------------------
      * @param {*} _pc objet PAGE_CONFIG
@@ -391,6 +349,9 @@ export class UiBase {
 
     //selectionne le mode de rendu du menu
     renderMenu( cmd = false , struct = null ){
+
+        //2026-10-22.5 : 
+        this.menu.innerHTML = "";
 
         if (cmd != true ){
             
@@ -558,9 +519,22 @@ export class UiBase {
 
         //this.articles.forEach( (item , i)  => { item.classList.toggle("hidden", i !== index ) })
         
+
         this.articles.forEach( (item , i)  => { item.classList.toggle( this.pgc.classPanelActive , i === index ) })
-        
-        this.currentPanel = index
+   
+        /* 2026-10-22
+        this.articles.forEach((item, i) => {
+            const active = i === index;
+            item.classList.toggle(this.pgc.classPanelActive, active);
+            item.classList.remove("active", !active);
+          });
+          */
+          
+        /* 2026-10-22 this.currentArticle = index */
+
+        this.currentArticle = index
+        this.currentSection = 0
+        this.switchSection(0)
 
         if (!["art-admin", "art-user"].includes(article.id)) { this.lastContentPanel = index }
 
@@ -586,23 +560,23 @@ export class UiBase {
     
     switchSection(index) {
         
-        if (this.currentPanel === null) return false;
+        if (this.currentArticle === null) return false;
 
-        const sections = qsa( "div.section-tab > section.tab-content" , this.articles[this.currentPanel] )
+        const sections = qsa( "div.section-tab > section.tab-content" , this.articles[this.currentArticle] )
                 
         const section = sections[index];
 
         if (!section) { console.warn(`Section introuvable pour l'index ${index}.`); return false}
 
-        sections.forEach( c => c.classList.remove("active") )
+        sections.forEach( el => el.classList.remove("active") )
         sections[index].classList.add("active")
 
-        const buttons = qsa( "div.section-tab > div.tab-headers > button.tab-btn" , this.articles[this.currentPanel] )
-        buttons.forEach( b => b.classList.remove("active") )
+        const buttons = qsa( "div.section-tab > div.tab-headers > button.tab-btn" , this.articles[this.currentArticle] )
+        buttons.forEach( btn => btn.classList.remove("active") )
         buttons[index].classList.add("active")
 
         this.currentSection = index;
-        this.onSectionShown(this.currentPanel , this.currentSection );
+        this.onSectionShown(this.currentArticle , this.currentSection );
         return true;
     }
 
