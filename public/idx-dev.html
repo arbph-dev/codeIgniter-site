@@ -102,7 +102,7 @@
 
         <!-- ====  ARTICLE 0 - ========================== -->
         
-        <article id="art0" class="panel-card">
+        <article id="art0" class="panel-card active">
             <h2 class="panel-title">Actualités</h2>
             <p class="panel-description">Les dernières informations</p>
 
@@ -113,29 +113,74 @@
                 <section id="art0-s0" class="tab-content active">
                     <h3>Dernièrement</h3>
                     <div id="art0-s0-body">
-                        Deux décisions à garder en tête
 
-                        - switchPanel(index) utilise l’index dans la liste complète des articles. La pagination et le menu devront donc convertir leur index de page en index d’article, ou appeler une méthode dédiée par référence d’article.
+                        Evolution de la structure des documents<br/>
+                        Evolution des scripts uibase, creation du dossier app<br/>
+                        Creation idx-dev.html , script associé app/app-idxdev.js<br/>
+
+                        <h4>Documentation</h4>
+                            <h5>structure du document</h5>
+                                <a href="https://github.com/arbph-dev/codeIgniter-site/blob/master/doc/FRONTEND/UI-header.md" target="_blank">/doc/FRONTEND/UI-header.md</a>
+                                <br/>    
+
+                            
+
+
+
+                        <h4>Separation css pour refactoring</h4>
+                        On doit séparer les classes css pour refactoring et gerer RWD en mobile  first<br/>
+                        Actuellment on a 
+                        <ul>
+                            <li>/assets/css/ui.css</li> qui contient les styles a revoir
+                            <li>/assets/css/ui-nav : Le sstyles de la barre de navigation</li>
+                            <li>/assets/css/cmp/callout.css</li>
+                            <li>/assets/css/cmp/codeval.css</li>
+                            <li>/assets/css/cmp/leaflet.css</li>
+                        </ul>
                         
-                        - Le contrat utilise les identifiants art-admin et art-user déjà présents dans index.html, plutôt que de supposer que les deux premiers articles sont toujours les boards d’authentification.
-                        
-                        Prochaine étape : intégrer cette base dans app-index.js, en conservant initApex(), initCodeVal(), l’initialisation de l’authentification et le comportement Leaflet existants. Avant de brancher la navigation, il faudra vérifier que domelements.js fournit bien les articles dans l’ordre attendu.
+                        <h4>Intégration application et composants</h4>
+                            <ul>
+                                <li><a href="https://zealot.fr/ui-components/apex.html">apex</a>composant avec page html ,css et script minimaux, pas d'authentification.</li>
+                                <li><a href="https://zealot.fr/ui-components/callout.html">callout</a>composant avec page html ,css et script minimaux, pas d'authentification.</li>
+                                <li><a href="https://zealot.fr/ui-components/codeval.html">codeval</a>composant avec page html ,css et script minimaux, pas d'authentification.</li>
+                                <li><a href="https://zealot.fr/ui-components/apex-codeval.html">apex et codeval</a>interaction entre apex et codeval.</li>
+                                <li><a href="https://zealot.fr/ui-components/leaflet.html">leaflet</a>carte leaflet</li>
+                                <li><a href="https://zealot.fr/ui-components/mermaid.html">mermaid</a>organisation, gantt, kanban.</li>
+                            </ul>
+
+                        <h4>Modification script uibase.js</h4>
+                        <ul>
+                            <li>Définition d'une configuration de base : PAGE_CFG1, on multipliait cette définitioon dans les script application, elle est maintenant centralisé</li>
+                            <li>Fix : gestion article et panel admin et user. Le menu a été mofidifé pour afficher le contenu après visulaisation des panels user et admin</li>
+                            <li>Fix : harmonisation script et css, on utilisait active, hidden et open pour la visibilité des élements.</li>
+                        </ul>
+                        <h4>Modification style ui.css</h4>
+                        <ul>
+                            <li>Fix : harmonisation des classes css articles et sections, on utilisait active et hidden pour la visibilité des élements. reste menu et open</li>
+                        </ul>                                                       
                     </div>
                 </section>
 
                 <section id="art0-s1" class="tab-content">
-                    <h3>Déploiement</h3>
+                    <h3>Notes</h3>
                     <div id="art0-s1-body">
+
+                        <h4>Tâches</h4>
                         <ul>
-                            <li>Modification de la struture du document HTML</li>
-                            <li>Intégration des style</li>
-                            <li>Création des script uibase.js et app-index.js</li>
+                            <li>Séparation des css : créer les fichiers associés aux composants</li>
+                            <li>Intégration application et composants</li>
+                            <li>script uibase.js à documenter, dossier app</li>
+                            <li>lister les fichiers à conserver, épurer les versions précédentes</li>
                         </ul>
                         <!-- 
-                            main
+                            
+                        <li><b>/index.html</b> - <b>/assets/js/app-index.js</b></li>
+                        <li><b>/ui-components/apex.html</b> - <b>/assets/js/app/cmp/uicmp-apex.js</b></li>
+                        <li><b>/ui-components/callout.html</b> - <b>/assets/js/app/cmp/uicmp-callout.js</b></li>
+                        <li><b>/ui-components/codeval.html</b> - <b>/assets/js/app/cmp/uicmp-codeval.js</b></li>
+                        <li><b>/ui-components/leaflet.html</b> - <b>/assets/js/app/cmp/uicmp-leaflet.js</b></li>
+                        <li><b>/ui-components/apex-codeval.html</b> - <b>/assets/js/app/cpd/apexcodeval.js</b></li>
                         -->
-                        <h4>struture du document</h4>
-
                     </div>
                 </section>
 
