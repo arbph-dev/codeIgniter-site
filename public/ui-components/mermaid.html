@@ -60,7 +60,7 @@
     <!-- ====  CONTENU PRINCIPAL    ========================== -->
     <main>
         <!-- ====  ARTICLE art-admin NE PAS TOUCHER   ========================== -->
-        <article id="art-admin" class="panel-card hidden">
+        <article id="art-admin" class="panel-card">
             <h2 class="panel-title">Administration</h2>
             <p class="panel-description">Tableau de bord administrateur</p>
 
@@ -83,7 +83,7 @@
 
         </article>
         <!-- ====  ARTICLE art-user NE PAS TOUCHER   ========================== -->
-        <article id="art-user" class="panel-card hidden">
+        <article id="art-user" class="panel-card">
             <h2 class="panel-title">Mon espace</h2>
             <p class="panel-description">Profil et inscription</p>
 
@@ -103,7 +103,7 @@
         </article>
 
         <!-- ====  ARTICLE 0 - CALLOUT ===================== -->
-        <article id="art0" class="panel-card">
+        <article id="art0" class="panel-card active">
             <h2 class="panel-title">Composants MERMAID</h2>
             <p class="panel-description">Le composant MERMAID permet de créer des graphiques</p>
 
@@ -180,10 +180,8 @@
                                     mot.renderer.js--)-ui : affichage des données en tableau
                                 end
                             </pre>
-                          
-                            <button id="executeButton" name="executeButton" onclick="mermaid_Run('mmG1')">Exécuter</button>
-    
-
+                        </div>
+                        <button id="executeButton" name="executeButton" onclick="mermaid_Run('mmG1')">Exécuter</button>
                     </div>
                 </section>
 

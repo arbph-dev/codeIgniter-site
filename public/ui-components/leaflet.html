@@ -1,0 +1,171 @@
+<!-- 
+    2026-09-09 : modificaton 
+    2026-09-10 : voir pour supprimer les ul vide dans le menu nav ligne 66 et suivantes
+    2026-09-23 : intégrtion vox ligne 316 
+  -->
+<!DOCTYPE html>
+<html lang="fr" data-theme="marine">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zealot - composants - codeval</title>
+    <meta name="description" content="composant javascript pour les calculs">
+    <meta name="robots" content="index, follow">
+
+    <link rel="stylesheet" href="/assets/css/ui.css" >
+    <link rel="stylesheet" href="/assets/css/ui-nav.css" >
+    <!-- <link rel="stylesheet" href="/assets/css/cmp/callout.css" > -->
+    <!-- <link rel="stylesheet" href="/assets/css/cmp/codeval.css" > -->
+    <!-- <link rel="stylesheet" href="/assets/css/cmp/leaflet.css" > -->
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <!-- Leaflet -->    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+    <link rel="stylesheet" href="/assets/css/GpPluginLeaflet.css"/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-tilelayer-wmts@1.0.0/dist/leaflet-tilelayer-wmts.js"></script>
+    <!-- Extension Géoplateforme pour Leaflet -->
+    <script src="/assets/js/plugins/GpPluginLeaflet.js"></script>
+
+</head>
+
+<body>
+    
+    <!-- ====           HEADER         ==============================================================
+    https://github.com/arbph-dev/codeIgniter/blob/master/doc/FRONTEND/UI-header.md
+
+    on conserve les styles :  /public/assets/css/ui.css#L104-L127
+    -->
+
+    <header>
+        <div class="title-layout">
+            <h1 id="appTitle">Page principale</h1>
+            <span id="appSubtitle">Portail personnel en déploiement</span>
+        </div>
+
+        <div class="header-actions">
+            <button class="rwdnav" type="button" onclick="openNav()" aria-label="Ouvrir le menu">
+                <i class="fa fa-bars" aria-hidden="true"></i>
+            </button>
+            <button id="themeBtn" type="button">Thème nature</button>
+            <button id="fullscreenBtn" type="button">Plein écran</button>
+        </div>
+
+        <div class="header-auth">
+            
+        </div>
+    </header>
+    <!-- ==== SIDEBAR ============================================================== 
+    construction dynamique a voir apres
+    <nav id="sidebar"> 
+    -->
+    <nav>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" aria-label="Fermer le menu">&times;</a>
+
+
+    </nav>
+    <!-- ====  CONTENU PRINCIPAL    ========================== -->
+    <main>
+        <!-- ====  ARTICLE art-admin NE PAS TOUCHER   ========================== -->
+        <article id="art-admin" class="panel-card">
+            <h2 class="panel-title">Administration</h2>
+            <p class="panel-description">Tableau de bord administrateur</p>
+
+            <div class="section-tab">
+
+                <div class="tab-headers"></div>
+                
+                <section id="art-admin-home" class="tab-content active">
+                    <h3>Home</h3>
+                    <div id="art-admin-home-body"><!-- contenu ultérieur --></div>
+                </section>
+
+
+                <section id="art-admin-user" class="tab-content">
+                    <h3>User</h3>
+                    <div id="art-admin-user-list"><!-- contenu ultérieur --></div>
+                </section>
+
+            </div>
+
+        </article>
+        <!-- ====  ARTICLE art-user NE PAS TOUCHER   ========================== -->
+        <article id="art-user" class="panel-card">
+            <h2 class="panel-title">Mon espace</h2>
+            <p class="panel-description">Profil et inscription</p>
+
+            <div class="section-tab">
+
+                <div class="tab-headers"></div>
+                
+                <section id="art-user-home" class="tab-content active">
+                    <h3>Board User</h3>
+                    <div id="art-user-home-body">
+                        <!-- contenu ultérieur -->
+                    </div>
+                </section>
+
+            </div>
+
+        </article>
+
+        <!-- ====  ARTICLE 0 - CALLOUT ===================== -->
+        <article id="art0" class="panel-card active">
+            <h2 class="panel-title">Composant LEAFLET</h2>
+            <p class="panel-description">Le composant LEAFLET permet d'afficher des cartes</p>
+
+            <div class="section-tab">
+
+                <div class="tab-headers"></div>
+                
+                <section id="art0-s0" class="tab-content active">
+                    <h3>Carte</h3>
+                    
+                    <div id="art0-s0-body">
+
+                        <h4>carte 1</h4>
+                        <div id="MAP_1" class="cp_leaflet" data-lat="47.82" data-lng="-4.3" data-zoom="14"></div>
+
+                        <button onclick="window.leafletList()">Liste</button>
+
+                    </div>
+
+                </section>
+
+
+                <section id="art0-s1" class="tab-content">
+                    <h3>Documentation</h3>
+                    
+                    <div id="art0-s1-body">
+
+                        <h4>Todo</h4>
+                        gérer le premier affichage<br/>
+                        Séparation des styles, amélioration ajout icone en ::before<br/><br/>
+                        Documenter<br/>
+                        structure du bloc , classes associé<br/>
+                        gestion des id, proposer amélioration numérotation automatique à l'initialisation<br/>
+
+                    </div>
+                </section>
+
+            </div>
+        </article>
+
+    </main>
+
+    <div class="pagination-buttons"></div>
+    <!-- ====   FOOTER  ================================================ -->
+
+    <footer>
+        <div id="statusBar">
+            Bienvenue site en déploiement
+        </div> 
+    </footer>
+
+    <script type="module" src="/assets/js/app/cmp/uicmp-leaflet.js"></script>
+
+</body>
+
+</html>
