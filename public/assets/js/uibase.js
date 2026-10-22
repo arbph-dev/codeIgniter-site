@@ -25,7 +25,48 @@
  * 
  * - renderMenu pas de sous item si un seul arrticle
  
- 
+ 2026-10-21 : TODO
+    remplacer les  variables ,  les noms doivent coller a la strucutre
+        this.currentArticle = null au lieu de  this.currentPanel = null 
+
+    initialisation avec null , permet de savoir si affecté par utilisateur ou pas
+        this.currentSection = null doit ramplacer this.currentSection = 0
+
+modifier les article classes hidden en active
+        <article id="art0" class="panel-card">
+        <article id="art-user" class="panel-card hidden">
+    deviendrait 
+        <article id="art0" class="panel-card active">
+        <article id="art-user" class="panel-card">
+
+    implique 
+        modif css 
+            panel-card + hidden
+            panel-card active a ajouter
+
+        modif html
+            dans tous les docs ? supprimer hidden, ajouter active sur un article
+            voir stratégie
+
+        modif js
+            pageconfig => classPanelActive :"active"  doit remplacer classPanelHidden : "hidden",
+            readPage
+            switchPanel
+
+ajouter les sections active a pages ??
+    lors de init du doc on affecte 
+    lors du switch paenl retour par défaut ?
+
+ajouter les id a pages ??
+
+stratégie 
+    laisser gerer dans html , risque d'erreur
+    
+    config par defaut article 2,section 0
+
+    config app dans constructeur 
+        this.currentArticle = null
+        this.currentSection 
  * 
  */
 
@@ -35,25 +76,70 @@ import { byId, byName , qs , qsa , create } from '/assets/js/core/domhelper.js'
 //import { readPage } from "/assets/js/core/domelements.js";//this.main
 
 
+const PAGE_CFG1 = { 
+    //menu
+    classMenuActive         : "active" , // puis "active"
+    classNavArticle         : "nav-article", // ligne 162 et 709 ui.css
+    classNavHeader          : "nav-header-row primary-button",
+    classNavItem            : "",
+    classNavIcon            : "fa fa-fw fa-cogs",
+    classNavList            : "nav-toc",
+    classNavToggle          : "nav-toggle",
+
+    classPaginationButton   : "primary-button switch-tab-btn",
+    classPanelHeaderButton  : "tab-btn",    
+//    classPanelHidden        : "hidden",
+    classPanelActive        : "active",
+    offsetPanel             : 2 , //PANEL_OFFSET  due a admin et user
+
+    selectorPagination      : "div.pagination-buttons" ,
+    selectorPanel           : "article.panel-card" ,
+    selectorPanelHeader     : "div.section-tab > div.tab-headers",
+    selectorPanelTitle      : "h2.panel-title",
+    selectorSectionTitle    : "div.section-tab  > section.tab-content > h3",
+}
+
+// classMenuActive = "open" puis "active" 
+/*
+this.pgc.classMenuActive
+
+on recherche le texte open
+uibase.js  : 448 , 454 , 505 , 529 , 659 , 672
+ui.css : 17 , 65 , 68 , 135
+
+on remplace 
+uibase.js - open par this.pgc.classMenuActive
+
+*/
+// classPanelHidden a supprimer 
+
+
+
 export class UiBase {
 
     //constructor() {
-    constructor(pageConfig) {    
+    constructor(pageConfig = PAGE_CFG1 ) {    
         this.pgc = null //2026-10-18 - stocke la configuration de la page    
         // Références DOM communes
-        this.main = null;
-        this.menu = null;
-        this.footer = null;
-        this.footerStatus = null;
-        this.themeButton = null;
-        this.fullscreenButton = null;
+        this.main = null
+        this.menu = null
+        this.footer = null
+        this.footerStatus = null
+        this.themeButton = null
+        this.fullscreenButton = null
         
-        this.articles = []; // ref aux elements de structure necessaire ??
-        this.currentPanel = null;
-        this.currentSection = 0;
-        this.lastContentPanel = null;
+        this.articles = [] // ref aux elements de structure necessaire ??
+        
+        // this.currentArticle = null // les noms doivent coller a la strucutre
+        this.currentPanel = null 
+        
+        // this.currentSection = null // null si not se <> valeur numérique
+        this.currentSection = 0
+        this.lastContentPanel = null // doit servir pour retourner au panneau de contenu apres admin / user board
 
         this.pages = [] //  pour menu  <> this.articles 
+        this.paginationMain = false // pour switchSection
+
 
         this.currentTheme = "marine";
         // boot guard: prevent multiple boots across subclasses
@@ -116,7 +202,7 @@ export class UiBase {
         window.closeNav = () => this.closeNav()
     }
 
-    /**
+    /** --------------------------------------------------------------------------------------------------------------------------------------------
      * List la structure de la page pricnipalement depuis les titres
      * @param {*} _main reference a `body > main`
      * @param {*} _pc objet PAGE_CONFIG 
@@ -128,7 +214,7 @@ export class UiBase {
             _pc.selectorPanelTitle      : "h2.panel-title",
             _pc.selectorSectionTitle    : "div.section-tab  > section.tab-content > h3",
         }
-        2026-10-18 : modifier classe UiBase this.pgc stocke PAGE_CONFIG            
+        2026-10-18 : modifier classe UiBase this.pgc stocke PAGE_CONFIG        
     */
     
     readPage() {
@@ -151,12 +237,21 @@ export class UiBase {
     
                 // les 2 panels admin et user sont omis
                 if (index >= this.pgc.offsetPanel ){   
-                    // on recherche le panel actif par defaut 0 n'a pas de classe hidden
+                    
+                    // on recherche le panel actif par defaut => pas de classe hidden
+                    /*
                     if ( !panel.classList.contains( this.pgc.classPanelHidden ) ) { 
                         this.currentPanel = index
                         this.lastContentPanel = index 
                     }
-    
+                    */
+
+                    if ( panel.classList.contains( this.pgc.classPanelActive ) ) { 
+                        this.currentPanel = index
+                        this.lastContentPanel = index 
+                    }
+                    
+                    
                     strTemp = qs( this.pgc.selectorPanelTitle , panel).innerText       //  on recherche le titre h2 du panel p
                     
                     // on recherche les div.section-tab  > div.tab-content > h3 du panel p
@@ -198,6 +293,7 @@ export class UiBase {
             buttonTemp.addEventListener('click', () => this.switchPanel(index + this.pgc.offsetPanel ) ) 
             pagination_buttons.appendChild( buttonTemp )
         })
+        this.paginationMain = true        
     }
     
     /** ------------------------------------------------------------------------------------------------------------------
@@ -210,8 +306,15 @@ export class UiBase {
      * mais pas pour les menus a ajouter
      
     * 2026-10-18 : modifier classe UiBase this.pgc stocke PAGE_CONFIG 
-     */
 
+    * 2026-10-21 : la section 0 de l'article est active par défaut
+    renderNavigation construit la barre de navigation de chaque article
+    elle ajoute un bouton par sections , le bouton 0 est mis en évidence mais on ne tient pas compte de la structure html
+    console.log( "uibase.js (234) :: renderNavigation =>  article " + index  + " section " + sindex + " active "+   section.classList.contains("active") );
+    le test echoue car panelSections et section sont en fait des div.section-tab  > div.tab-content > h3 du panel 
+    la lecture de la structure doit etre fait dans readPage
+
+    */
     renderNavigation() {
     
         let buttonTemp = null
@@ -224,6 +327,7 @@ export class UiBase {
             //  on parcours les sections de  l'article
 
             panelSections.forEach((  section , sindex ) => { 
+
 
                 if (sindex === 0 ){ //par defaut le bouton 0 est actif 
                     buttonTemp = create( 'button', { type: 'button', class: this.pgc.classPanelHeaderButton + ' active', text: section.innerText } )
@@ -341,17 +445,18 @@ export class UiBase {
             menu_panel.addEventListener('click', (e) => { 
                 e.preventDefault() ; e.stopPropagation()
                 console.log(`menu clic section : ${sindex}`)
+                this.switchPanel( this.pgc.offsetPanel ) // on affiche article 0 en tenant compte de s2 panels admin et users
                 // affiche les sections de article , ecrit dans la barre de statut
                 this.statusWrite( `Onglet actif : ${ this.pages[0].title }` )
                 this.switchSection( sindex )
                 // selon client SI PC on ferme le div.nav-article SINON on ferme nav  
-                if (window.innerWidth > 768){ menu_panel.classList.remove( 'open' ) } else{ closeNav() }   
+                if (window.innerWidth > 768){ menu_panel.classList.remove( this.pgc.classMenuActive ) } else{ closeNav() }   
             })
             
             // sur pc si souris sort du container /section on le cache
             menu_panel.addEventListener('mouseleave', () => {
               console.log(`leave menu : ${sindex}`)
-              if (window.innerWidth > 768){ menu_panel.classList.remove('open') }
+              if (window.innerWidth > 768){ menu_panel.classList.remove( this.pgc.classMenuActive ) }
             })     
 
         })
@@ -402,7 +507,7 @@ export class UiBase {
                     this.statusWrite( `Onglet actif : ${ this.pages[index].title }` )
                     this.switchSection( sindex )
                     // selon client SI PC on ferme le div.nav-article SINON on ferme nav  
-                    if (window.innerWidth > 768){ menu_panel.classList.remove( 'open' ) } else{ closeNav() }           
+                    if (window.innerWidth > 768){ menu_panel.classList.remove( this.pgc.classMenuActive ) } else{ closeNav() }           
                 })
 
             })
@@ -426,7 +531,7 @@ export class UiBase {
             // sur pc si souris sort du container /article on le cache
             menu_panel.addEventListener('mouseleave', () => {
               console.log(`leave menu : ${index}`)
-              if (window.innerWidth > 768){ menu_panel.classList.remove('open') }
+              if (window.innerWidth > 768){ menu_panel.classList.remove( this.pgc.classMenuActive ) }
             })            
 
         })
@@ -451,12 +556,14 @@ export class UiBase {
 
         if (!article) { console.warn(`Article introuvable pour l'index ${index}.`); return false }
 
-        this.articles.forEach( (item , i)  => { item.classList.toggle("hidden", i !== index ) })
+        //this.articles.forEach( (item , i)  => { item.classList.toggle("hidden", i !== index ) })
+        
+        this.articles.forEach( (item , i)  => { item.classList.toggle( this.pgc.classPanelActive , i === index ) })
+        
         this.currentPanel = index
 
         if (!["art-admin", "art-user"].includes(article.id)) { this.lastContentPanel = index }
 
-        this.currentSection = 0;
         this.onPanelShown(index);// Le comportement spécifique est délégué à l'application.
         return true;
     }
@@ -478,16 +585,19 @@ export class UiBase {
     // Affiche une section de l'article courant. Les sections sont des éléments section.tab-content.
     
     switchSection(index) {
-        if (!this.currentPanel === null) return false;
+        
+        if (this.currentPanel === null) return false;
+
         const sections = qsa( "div.section-tab > section.tab-content" , this.articles[this.currentPanel] )
-        const buttons = qsa( "div.section-tab > div.tab-headers > button.tab-btn" , this.articles[this.currentPanel] )
+                
         const section = sections[index];
 
         if (!section) { console.warn(`Section introuvable pour l'index ${index}.`); return false}
 
         sections.forEach( c => c.classList.remove("active") )
         sections[index].classList.add("active")
-        
+
+        const buttons = qsa( "div.section-tab > div.tab-headers > button.tab-btn" , this.articles[this.currentPanel] )
         buttons.forEach( b => b.classList.remove("active") )
         buttons[index].classList.add("active")
 
@@ -524,18 +634,18 @@ export class UiBase {
     async fullscreenSwitch() {
         try {
             if (!document.fullscreenElement) {
-                await document.documentElement.requestFullscreen();
+                await document.documentElement.requestFullscreen()
             } else {
-                await document.exitFullscreen();
+                await document.exitFullscreen()
             }
         } catch (error) {
-            console.warn("Plein écran indisponible :", error);
+            console.warn("Plein écran indisponible :", error)
         }
     }
 
     statusWrite(message) {
         if (this.footerStatus) {
-            this.footerStatus.textContent = message;
+            this.footerStatus.textContent = message
         }
         else{
             console.log(message)
@@ -546,34 +656,18 @@ export class UiBase {
     // Menu responsive
     // ============================================================
 
-    openNav() {
-        this.menu?.classList.add("open");
-    }
+    openNav() { this.menu?.classList.add( this.pgc.classMenuActive ) }
 
-    closeNav() {
-        this.menu?.classList.remove("open");
-    }
-
-
-    /*  
-    _menu :
-    - la fonction openMenuPanel devient une méthode
-    - la référence initialisée, par setPageRef,  menu devient this.menu
-    -   _menu = byName( "nav", document )[0] - this.menu = byName( "nav", document )[0] => ok
-    */
+    closeNav() { this.menu?.classList.remove( this.pgc.classMenuActive ) }
 
     openMenuPanel(index) {
         const menuPanels = qsa('.nav-article', this.menu )
-        menuPanels.forEach((menupanel, i) => { menupanel.classList.toggle('open', i === index) })
+        menuPanels.forEach((menupanel, i) => { menupanel.classList.toggle( this.pgc.classMenuActive , i === index) })
     }
-
-
-
 
     // ============================================================
     // Authentification et montage applicatif
     // ============================================================
-
     mountApplication() {
         // Point d'extension après authentification.
     }
