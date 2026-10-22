@@ -14,7 +14,7 @@ nav {
   z-index: 1000;
 }
 
-nav.open { transform: translateX(0); }
+nav.active { transform: translateX(0); }
 
   /* --------    FERMETURE MOBILE ------------ */
 nav a.closebtn {
@@ -62,10 +62,10 @@ nav a.closebtn {
   transition: transform .25s ease, background-color .2s ease;
 }
 .nav-article .nav-toggle:hover { background-color: rgba(255, 255, 255, 0.10);}
-.nav-article.open .nav-toggle { transform: rotate(90deg); }
+.nav-article.active .nav-toggle { transform: rotate(90deg); }
 /* ---------   TABLE DES MATIÈRES  -------- */
 .nav-article .nav-toc { display: none; list-style: none; margin: 0; padding: 0; }
-.nav-article.open .nav-toc { display: block; }
+.nav-article.active .nav-toc { display: block; }
 /* -------   LIENS DU TOC  -------------- */
 .nav-article .nav-toc a {
   color: inherit;
@@ -132,7 +132,7 @@ nav a.closebtn {
   /*  plus de hover un click est nécessaire
   .nav-article:hover .nav-toc { display: block; }
   */
-  .nav-article.open .nav-toc { display: block; }
+  .nav-article.active .nav-toc { display: block; }
   /* Hover visuel du menu principal */
   .nav-article:hover .nav-title { background-color: rgba(255, 255, 255, 0.12); }
   /* Liens dropdown */
