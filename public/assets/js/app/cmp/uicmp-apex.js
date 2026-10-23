@@ -25,7 +25,7 @@ class AppIndex extends UiBase {
         super()
         this.setPageRef() 
         this.readPage() 
-        //this.renderNavigation()
+        this.renderNavigation()
         this.renderMenu()
     }
 
