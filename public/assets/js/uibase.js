@@ -227,10 +227,15 @@ export class UiBase {
             this.lastContentPanel = index;
           }
         });
-    
-        if (this.currentArticle === null && this.pages.length > 0) {
-          this.currentArticle = this.pgc.offsetPanel;
-          this.lastContentPanel = this.currentArticle;
+        
+        // affiche le permeir article par défaut
+        if (this.currentArticle === null && this.pages.length > this.pgc.offsetPanel ) {
+
+            this.currentArticle = this.pgc.offsetPanel
+            this.lastContentPanel = this.currentArticle
+            if (this.articles[currentArticle]) { this.switchPanel(currentArticle) }
+            else{this.statusWrite("Erreur de configuration,aucune page de contenu") }
+
         }
     }
 
