@@ -15,4 +15,9 @@
   
   .cp_codeval .result { display: none; padding: 10px; }
   .cp_codeval .scriptcode { display: block ; padding: 10px; }
+  
+  /*
   .cp_codeval .scriptcode textarea { height: 200px; width: 100%; overflow-y: auto; }
+  */
+
+  .cp_codeval .scriptcode textarea { width: 100%; overflow-y: auto; }
