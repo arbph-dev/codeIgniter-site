@@ -114,7 +114,48 @@ const CHARTS = {
                 yaxis : { title: { text: 'Couple (Nm)' }, labels: { formatter: value => Number(value).toFixed(0) } }
             }
         )
+    },
+
+
+    LDCH(payload = {}) {
+
+        const series = payload.series ?? [
+            { name: 'Pied et Pente (Radiateur)', data: [65,50,35,20] },
+            { name: 'Loi 2 Points (Linéaire)', data: [80,60,40,20] },
+            { name: 'Loi 4 Points (Non-linéaire)', data: [77,53,35,20] }
+        ]
+
+        return {
+            chart: {
+                type: 'line',
+                height: 420,
+                toolbar: { show: false },
+                zoom: { enabled: false }
+            },
+            series,
+            xaxis: {
+                categories: [-10, 0, 10, 20],
+                title: { text: 'T° Extérieure (°C)' }
+            },
+            yaxis: {
+                min: 15,
+                max: 85,
+                title: { text: 'T° Départ (°C)' }
+            },
+            stroke: { width: 3, curve: 'straight' },
+            markers: { size: 4 },
+            title: {
+                text: 'Comparatif des Lois de Chauffe (Départ Eau vs Extérieur)',
+                align: 'left'
+            },
+            grid: { show: true },
+            legend: { position: 'bottom' },
+            tooltip: { shared: true, intersect: false },
+            dataLabels: { enabled: false }
+        }
     }
+
+
 }
 
 
