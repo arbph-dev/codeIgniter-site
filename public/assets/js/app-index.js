@@ -11,8 +11,10 @@ import { UiBase } from '/assets/js/uibase.js'
 /* 
 import { initApex } from '/assets/js/components/apex.js'
 import { initCodeVal } from '/assets/js/components/codeval.js'
-import { initCallout} from '/assets/js/components/callout.js'
+
 */
+import { initCallout} from '/assets/js/components/callout.js'
+
 //ajout de auth
 import { bus } from '/assets/js/core/eventBus.js'
 
@@ -86,7 +88,7 @@ class AppIndex extends UiBase {
         
         bus.publish('auth:check')
 
-
+        initCallout()
 
     }
     onPanelShown(artIdx) { console.info("AppIndex :: onPanelShown() = artIdx " + artIdx) }
