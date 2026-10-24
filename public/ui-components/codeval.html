@@ -152,11 +152,533 @@ const result = "Volume corrigé = " + V1 + " Nm3 ; F = " + F
                     </div>
                 </section>
 
-
                 <section id="art0-s1" class="tab-content">
-                    <h3>Documentation</h3>
+                    <h3>pH et concentration</h3>
                     
                     <div id="art0-s1-body">
+                        <h4>pH ou potentiel d'hydrogène</h4>
+                            <p>
+                                Le pH mesure l'alcalinité ou l'acidité d'une solution. Il varie de 0 à 14 à 20°C.<br>
+                                En dessous de 7 : acide. À 7 : neutre. Au dessus de 7 : basique.<br>
+                                <br>
+                                On détermine le pH depuis une concentration d'ions hydronium H3O+<br>
+                                <blockquote>
+                                    pH = -log[H3O+] 
+                                </blockquote>
+
+                                le pOH indique la concentration des ions hydroxides OH-<br>
+                                <blockquote>
+                                    pOH = -log[OH-] 
+                                </blockquote>
+
+                                pH et pOH sont liés et peuvent se déterminer avec la constante d'équilibre et son pKe
+                                <blockquote>
+                                    pKe = pH + pOH = 14
+                                </blockquote>
+                            </p>
+            
+                        <h4>Constante d'équilibre Ke</h3>
+                            <p>
+                                La constante d'équilibre vaut 10⁻¹⁴<br>
+                                La constante d'équilibre est le produit des concentrations<br>
+                                <blockquote>
+                                    Ke = [H3O+] * [OH-] = 10⁻¹⁴
+                                </blockquote>
+                                
+                                La notation pH , pOH et pKe sont faites pour simplier les calculs et leur interprétations
+                                <blockquote>
+                                    pKe = pH + pOH = 14
+                                </blockquote>
+                                
+                                Pour une solution très acide : pH=0 , pKe = 0 + pOH = 14 donc pOH=14.
+                                Pour une solution très basique pH=14 , pKe = 14 donc pOH=0
+        
+                            </p>
+
+                        <!-- Codeval : concentration → pH -->
+                        <div id="CODEVAL_pH1" class="cp_codeval">
+                            <div id="CODEVAL_pH1_TITRE" class="titre">pH depuis la concentration [H3O+]</div>
+                            <div id="CODEVAL_pH1_SCRIPTCODE" class="scriptcode">
+                                <textarea rows="4" cols="40">
+        const CH3O = 0.0000001
+        const pH = -1 * Math.log10(CH3O)
+        const result = "pH = " + pH
+                                </textarea>
+                                <!-- <button id="executeButton_pH1" name="executeButton" onclick="evaluateCode('pH1')">Exécuter</button> -->
+                            </div>
+                            <div id="CODEVAL_pH1_RESULT" class="result"></div>
+                            <!-- 
+                            supprimer le bouton apres textarea
+                            ajouter toolbar et modifier le code des boutons
+                                pour parametre on prend id du container : CODEVAL_pH1 on supprime CODEVAL_ => pH1
+                            
+                            le composant à évolué maintenant result doit etre employé
+
+                                const result = "Volume corrigé = " + V1 + " Nm3 ; F = " + F
+                            donc "pH = " + pH => const result = "pH = " + pH
+                            -->
+                            <div class="cp_toolbar">
+                                <button onclick="window.eventBusPublish(event,'codeval:toggle','pH1')">Show</button>
+                                <button onclick="window.eventBusPublish(event,'codeval:eval','pH1')">Run</button>
+                            </div>                               
+                        </div>
+
+
+                        <div id="CODEVAL_pH2" class="cp_codeval">
+                            <div id="CODEVAL_pH2_TITRE" class="titre">Concentration [H3O+] depuis le pH</div>
+                            <div id="CODEVAL_pH2_SCRIPTCODE" class="scriptcode">
+                                <textarea rows="4" cols="40">
+    const pH = 7
+    const CH3O = Math.pow(10, -1 * pH)
+    const result = "[H3O+] = " + CH3O + " mol/L"
+                                </textarea>
+
+                            </div>
+                            <div id="CODEVAL_pH2_RESULT" class="result"></div>
+                            <div class="cp_toolbar">
+                                <button onclick="window.eventBusPublish(event,'codeval:toggle','pH2')">Show</button>
+                                <button onclick="window.eventBusPublish(event,'codeval:eval','pH2')">Run</button>
+                            </div>   
+                    </div>
+                </section>                
+                <!-- =============================================================================================================== -->                
+
+                <section id="art0-s2" class="tab-content">
+                    <h3>Concentration, quantité d'espèces et valence</h3>
+                    <div id="art0-s2-body">
+                        Dans une solution de CaCO3 dont la concentration serait de 1 mol/L ; la quantité de matière serait de 1 mole pour un litre. 1 mole de CaCO3 à une masse de 100g.<br>
+                        Avec 1 mol/L on a donc 1 x 100g pour un litre, la quantité de CaCO3 est donc de 100g/L.<br>            
+                        <br>
+                        Les concentrations se calculent depuis des mesures par titrage.<br>
+                        Cette notion est importante, lors des titrages colorométriques on emploi des solutions de concentrations connues pour déterminer la contentration d'une autre espece.<br>
+                        <br>
+                    
+    
+                        On utilise des unités différentes selon le spécialités, il faut savoir les exploiter.<br>
+                        <br>
+                        L'untié du traittment d'eau , le degré français °f , est la plus précise.<br>
+                        <br>
+                        Pour des raisons de simplicité les fournisseurs parlent en equivalent eq ou milli equivalent meq<br>
+                        Cette grandeur impose de prendre en compte la valence V des especes.<br>
+                        <blockquote>
+                            Ca2+ a une valence V de 2; il faut 2 eq d'électrons pour réagir avec une mole de Ca2+
+                        </blockquote>
+                        <br>           
+    
+                        Enfin les chimistes emploie les unités normalisé du Système Internatiionnal en mole et mol/L<br>
+                        <br>
+                        Une petite synthèse permettra de retrouver les quantités selon les différentes unités de concentration
+                        <table id="data-table" class="cp_table">
+                            <thead>
+                                <tr>
+                                    <td>mol</td>
+                                    <td>eq</td>
+                                    <td>meq</td>
+                                    <td>°f</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>1 / V</td>
+                                    <td>1000 / V</td>
+                                    <td>5000 / V</td>
+                                </tr>                    
+                            </tbody>
+                        </table>
+
+
+                        On peut comparer les unités de concentration<br>
+                        <br>
+                        Dans le cas du CaCO3<br>
+                        Masse molaire 100g/mol<br>
+                        Ca 2+ et CO3 2- , valence V=2<br>
+    
+                        <!-- Codeval : concentration → pH -->
+                        <div id="CODEVAL_CE1" class="cp_codeval">
+                            <div id="CODEVAL_CE1_TITRE" class="titre">masse et concentration en eq</div>
+                            <div id="CODEVAL_CE1_SCRIPTCODE" class="scriptcode">
+                                <textarea rows="6" cols="40">
+    const mm = 100
+    const V = 2
+    const ceq = mm /  V
+    const result = "1 eq => correspond à une masse de " + ceq + " g"
+                                </textarea>
+                            </div>
+                            <div id="CODEVAL_CE1_RESULT" class="result"></div>
+                            <div class="cp_toolbar">
+                                <button onclick="window.eventBusPublish(event,'codeval:toggle','CE1')">Show</button>
+                                <button onclick="window.eventBusPublish(event,'codeval:eval','CE1')">Run</button>
+                            </div>   
+                        </div>
+    
+                        
+                        <!-- Codeval : concentration → pH -->
+                        <div id="CODEVAL_CF1" class="cp_codeval">
+                            <div id="CODEVAL_CF1_TITRE" class="titre">masse et concentration en °f</div>
+                            <div id="CODEVAL_CF1_SCRIPTCODE" class="scriptcode">
+                                <textarea rows="6" cols="40">
+    const mm = 100
+    const V = 2
+    const cgl = mm / ( V * 5000 )
+    const result = "1°f correspond à une masse de " + cgl + " g de"
+                                </textarea>
+                            </div>
+                            <div id="CODEVAL_CF1_RESULT" class="result"></div>
+                            <div class="cp_toolbar">
+                                <button onclick="window.eventBusPublish(event,'codeval:toggle','CF1')">Show</button>
+                                <button onclick="window.eventBusPublish(event,'codeval:eval','CF1')">Run</button>
+                            </div>   
+
+                        </div>
+
+
+
+
+                    </div>
+                </section>    
+
+
+                <!-- =============================================================================================================== -->                
+
+                <section id="art0-s3" class="tab-content">
+                    <h3>Débit et Vitesse de passage</h3>
+                    <div id="art0-s3-body">
+
+                        Les vitesse de passage de l'eau dans les couches de résines sont liés aux débits et donc aux pression d'alimentation.<br>
+                        Les échangeurs ioniques, généralement de forme cylindrique, ont un diamètre intérieur permettant de déterminer la section de passage<br>
+                        <br>
+                        La vitesse de passage s'exprime en m/h<br>
+                        Certains constructeurs indiqueront un Beads Volume per hour, BV/h, qui permet de faire abstraction des vitesses de passage.<br>
+                        Cependant c'est un indicateur à ne pas négliger, plus les vitesse ssont rduites meilleure seront les échanges.
+                        <br>
+                        La vitesse de passage se calcule en faisant le rapport du débit à la section de passage. 
+            
+                            <blockquote>
+                               Vp = q / S
+                            </blockquote>
+            
+                         Avec :<br>
+                         - un débit q de 75 m3/h<br> 
+                         - une section de 2 m2 <br>
+                         on obtient une vitesse de passage de 37,5 m/h.<br>        
+                            <!-- Codeval : concentration → pH -->
+                            <div id="CODEVAL_VP1" class="cp_codeval">
+                                <div id="CODEVAL_VP1_TITRE" class="titre">vitesse de passage depuis le débit</div>
+                                <div id="CODEVAL_VP1_SCRIPTCODE" class="scriptcode">
+                                    <textarea rows="6" cols="40">
+            const q = 75
+            const S = 2
+            const Vp = q / S
+            const result = "Vitesse de passage Vp = " + Vp + " m/h"
+                                    </textarea>
+                                </div>
+                                <div id="CODEVAL_VP1_RESULT" class="result"></div>
+                            </div>
+                            <div class="cp_toolbar">
+                                <button onclick="window.eventBusPublish(event,'codeval:toggle','VP1')">Show</button>
+                                <button onclick="window.eventBusPublish(event,'codeval:eval','VP1')">Run</button>
+                            </div>                              
+                            
+
+                    </div>
+                </section>    
+
+                <!-- =============================================================================================================== -->                
+
+                <section id="art0-s4" class="tab-content">
+                    <h3>Volumes et concentrations</h3>
+                    <div id="art0-s4-body">
+                        En production on utilise des régénérants très actifs car fortmement concentrés: acide sulfurique, acide chlorydrque, soude<br>
+                        Ces régénérants sont injectés par des pompes dans de l'eau, la qualité de dcette eau influe évidmeent sur la qualité de régénération<br>
+                        <br>
+                        Nous allons déterminer la concentration de régénérant dans l'eau<br>
+                        on régénérée les résines avec un débit d'eau de 50m3/h 
+        
+                        <h4>eau d'alimentation</h4>
+                        L'eau d'alimentation puisé et filtré : on mesure TH = 30°f<br>
+                        La valence des ions calcium Ca2+ et magnésium Mg2+ vaut 2 , on a donc 2 fois plus de charge électronique que de matière<br>
+                        On considère que [Ca2+] =4/5 du TH total soit [Ca2+] = 2,4 mmol/L<br>
+
+                        <h5>concentration de calcium</h5>
+                        <!-- Codeval : concentration de calcium [Ca2+] -->
+                        <div id="CODEVAL_CCA1" class="cp_codeval">
+                            <div id="CODEVAL_CCA1_TITRE" class="titre">concentration de calcium [Ca2+] en mmol/L</div>
+                            <div id="CODEVAL_CCA1_SCRIPTCODE" class="scriptcode">
+                                <textarea rows="6" cols="40">
+        const TH = 30
+        const V = 2
+        const Rcamg = 0.8
+        const C = TH / (V * 5000)
+        const Cca = C * Rcamg *1000
+        const Cmg = C * (1- Rcamg)*1000
+        const result = "[Ca2+] = " + Cca + " mmol/L"
+                                </textarea>
+                            </div>
+                            <div id="CODEVAL_CCA1_RESULT" class="result"></div>
+                            CCA1
+                            <div class="cp_toolbar">
+                                <button onclick="window.eventBusPublish(event,'codeval:toggle','CCA1')">Show</button>
+                                <button onclick="window.eventBusPublish(event,'codeval:eval','CCA1')">Run</button>
+                            </div>                               
+                        </div>
+
+                        <hr/>
+                        Maintenant en pratique :<br>
+                        - les fournisseurs préfére les equivlaents : eq<br>
+                        - on parle en m3<br>
+        
+                        <div id="CODEVAL_CCA2" class="cp_codeval">
+                            <div id="CODEVAL_CCA2_TITRE" class="titre">concentration de calcium [Ca2+] en eq/m3</div>
+                            <div id="CODEVAL_CCA2_SCRIPTCODE" class="scriptcode">
+                                <textarea rows="6" cols="40">
+        const TH = 30
+        const Rcamg = 0.8
+        const C = TH / 5000
+        const Cca = C * Rcamg *1000
+        const Cmg = C * (1- Rcamg)*1000
+        const result = "[Ca2+] = " + Cca + " eq/m3"
+                                </textarea>
+                            </div>
+                            <div id="CODEVAL_CCA2_RESULT" class="result"></div>
+                            <div class="cp_toolbar">
+                                <button onclick="window.eventBusPublish(event,'codeval:toggle','CCA2')">Show</button>
+                                <button onclick="window.eventBusPublish(event,'codeval:eval','CCA2')">Run</button>
+                            </div>                                
+                        </div>
+
+                        <br>
+                        Dans l'eau brute on observe une concentration de [SO4 2-] de 30 mg/L soit une concentration de 0,3125 mmol/L. <br>
+                        Nous négligerons cette concentration. L'analyse n'ayant qu'une valeur indicative; elle ne peut servir de mesure.<br>              
+                        <br>
+                        <div id="CODEVAL_CSO4" class="cp_codeval">
+                            <div id="CODEVAL_CSO4_TITRE" class="titre">concentration de sulfate [SO4 2-] en eq/m3</div>
+                            <div id="CODEVAL_CSO4_SCRIPTCODE" class="scriptcode">
+                                <textarea rows="6" cols="40">
+        const cmgl = 30
+        const V = 2
+        const mm = 96
+        const Cmmol = cmgl / mm
+        const Ceqm3 = Cmmol * V  
+        const result = "[SO4 2-] = " + Cmmol + " mmol/L ou " + Ceqm3 + " eq/m3"
+                                </textarea>
+                            </div>
+                            <div id="CODEVAL_CSO4_RESULT" class="result"></div>
+
+                            <div class="cp_toolbar">
+                                <button onclick="window.eventBusPublish(event,'codeval:toggle','CSO4')">Show</button>
+                                <button onclick="window.eventBusPublish(event,'codeval:eval','CSO4')">Run</button>
+                            </div>                              
+                        </div>
+        
+        
+                        <h4>régénérant</h4>
+                        On utilise l'acide sulfurique H2SO4 à 96% soit 18.5 mol/L. On peut convertir la concentration de régénérant en eq/m3<br>
+                        On ignore la deuxieme acidité de H2SO4. le calcul d eph est donné a titre inidcatif; a ces concentrations le pese acide est nécessaire<br>
+                        <br>On considere que 2 H3O+ et SO4 2- se dissocie totalement.<br>
+                        <br>
+                        <div id="CODEVAL_CH2SO4" class="cp_codeval">
+                            <div id="CODEVAL_CH2SO4_TITRE" class="titre">concentration de régénérant [H3O+]</div>
+                            <div id="CODEVAL_CH2SO4_SCRIPTCODE" class="scriptcode">
+                                <textarea rows="6" cols="40">
+        const cmol = 18.5
+        const V = 2
+        const Ceqm3 = cmol * V  * 1000
+        const result = "[H3O+] = " + Ceqm3 + " eq/m3"
+                                </textarea>
+                            </div>
+                            <div id="CODEVAL_CH2SO4_RESULT" class="result"></div>
+                            
+                            <div class="cp_toolbar">
+                                <button onclick="window.eventBusPublish(event,'codeval:toggle','CH2SO4')">Show</button>
+                                <button onclick="window.eventBusPublish(event,'codeval:eval','CH2SO4')">Run</button>
+                            </div>                              
+                        </div>
+                        Les limites du pH vont de 0 à 14 , avec de telle concentrations on ne peux plus utiliser le pH<br/>
+                        La densité se mesure avec un pèse acide 
+                        <div id="CODEVAL_pH3" class="cp_codeval">
+                            <div id="CODEVAL_pH3_TITRE" class="titre">pH du regenerant H2SO4 96% Volume [H3O+]</div>
+                            <div id="CODEVAL_pH3_SCRIPTCODE" class="scriptcode">
+                                <textarea rows="6" cols="40">
+    const CH3O = 18.5
+    const pH = -1 * Math.log10(CH3O)
+    const result = "pH = " + pH
+                                </textarea>
+                            </div>
+                            <div id="CODEVAL_pH3_RESULT" class="result"></div>
+
+                            <div class="cp_toolbar">
+                                <button onclick="window.eventBusPublish(event,'codeval:toggle','pH3')">Show</button>
+                                <button onclick="window.eventBusPublish(event,'codeval:eval','pH3')">Run</button>
+                            </div>                                  
+                        </div>                        
+                        
+                        
+                        <h4>débits</h4>
+                        Le régénérant est injecté à 240 L/h ou 0.24 m3/h dilué dans l'eau d'alimentation qui circule à 50 m3/h.<br>
+                        Soit pour une heure.<br>
+                        <blockquote>
+                           [Reg] = ( V acide x  [H2SO4] ) / ( V eau + V acide) = 0,0883758 mol/L.
+                        </blockquote>
+                        <br>
+                        On détermine le pH du régénérant depuis sa concentration [Reg]
+        
+                        <div id="CODEVAL_REG" class="cp_codeval">
+                            <div id="CODEVAL_REG_TITRE" class="titre">Contentration H2SO4 du régénrant [REG]</div>
+                            <div id="CODEVAL_REG_SCRIPTCODE" class="scriptcode">
+                                <textarea rows="6" cols="40">
+    const CH2SO4 = 18.5
+    const Va = 240
+    const Ve = 50000
+    const CReg = ( Va * CH2SO4) / ( Ve + Va)
+    const pH = -1 * Math.log10(CReg)
+    const result = "[REG] (H2So4) " + CReg + " mol/L ; pH = " + pH
+                                </textarea>
+
+                            </div>
+                            <div id="CODEVAL_REG_RESULT" class="result"></div>
+                            
+                            <div class="cp_toolbar">
+                                <button onclick="window.eventBusPublish(event,'codeval:toggle','REG')">Show</button>
+                                <button onclick="window.eventBusPublish(event,'codeval:eval','REG')">Run</button>
+                            </div>                                  
+                        </div>
+        
+
+                        
+            
+                        
+                    </div>
+                </section>    
+
+                <!-- =============================================================================================================== -->
+                <section id="art0-s5" class="tab-content">
+                    <h3>Constante de solubilité Ks</h3>
+                    <div id="art0-s5-body">
+                        <h4>sulfate de calcium</h4>
+                
+                        Comme le sel de mer peut saturer une saumure, le sulfate de calcium en exces precipite et forme du platre.<br>                
+                        Le platre précipite quant sa concentration devient supérieure à la constante de solubilité Ks<br>
+                        <br>
+                        Cette constante s'exprime ainsi pour une eau pure ou exempte de calcium et de sulfates<br>  
+                        Le produit des concentrations Ks, est donné pour une températrure de référence.<br>
+                        <br>
+                        <blockquote>
+                            Ks= [ Ca 2+ ] * [SO4 2-] = 0,0000314
+                        </blockquote>
+                        
+                        <br>
+                        Pour éviter la précipitation de CaSO4 il ne fau pas dépasser une concentation de SO42- tel que :<br>
+                        <blockquote>
+                            [SO4 2-] = Ks / [ Ca 2+ ]
+                        </blockquote>
+        
+                        <h4>eau d'alimentation</h4>
+                        Maintenant nous reprenons nos données :<br>
+                        <br> 
+                        La concentration de calcium et de magnésium est de : 30°f équivalent à  30/5000 = 0,006 eq/L.<br>
+                        La valence des ions Ca2+ et Mg2+ vaut 2.<br>
+                        On a donc 2 fois plus de charge électronique que de matière donc<br>
+                        <blockquote>
+                            [ Ca 2+ ] + [ Mg 2+ ] = 0,003 mol/L<br>
+                        </blockquote>
+                        <br>
+                        On considère que [ Ca 2+ ] =4/5 du TH total soit [ Ca 2+ ] = 0,0024 mol/L<br>
+                        Ou encore [ Ca 2+ ] * V / 1000 = 4.8 eq/m3
+
+                        <div id="CODEVAL_CCA20" class="cp_codeval">
+                            <div id="CODEVAL_CCA20_TITRE" class="titre">concentration de calcium [Ca2+]</div>
+                            <div id="CODEVAL_CCA20_SCRIPTCODE" class="scriptcode">
+                                <textarea rows="6" cols="40">
+        const TH = 30
+        const Rcamg = 0.8
+        const C = TH / 5000
+        const Cca = C * Rcamg *1000
+        const Cmg = C * (1- Rcamg)*1000
+        const result = "[Ca2+] = " + Cca + " eq/m3"
+                                </textarea>
+                            </div>
+                            <div id="CODEVAL_CCA20_RESULT" class="result"></div>
+                            <div class="cp_toolbar">
+                                <button onclick="window.eventBusPublish(event,'codeval:toggle','CCA20')">Show</button>
+                                <button onclick="window.eventBusPublish(event,'codeval:eval','CCA20')">Run</button>
+                            </div>                               
+                        </div>
+                        
+                        
+                        
+                        
+                        <br>
+                        <a href="https://www.periodni.com/fr/constantes_du_produit_de_solubilite.html">Produit de solubilité</a> pour le sulfate de calcium dihydraté CaSO4.2H2O @ 25°c =	3.14.10-5   
+                   
+
+                        Pour éviter la précipitation de CaSO4 il ne faudrait pas dépasser une concentration de SO42- tel que :<br>
+                        <blockquote>
+                            [SO4 2-] = Ks / [ Ca 2+ ] = 0,0000314 / 0,0024 = 0,013 mol/L
+                        </blockquote>
+                        <br>
+                        Dans l'eau brute on observe une concentration de [SO4 2-] de 30 mg/L<br>
+                        Soit une concentration de 0,03 /96 = 0,0003125 mol/L.<br> 
+                        Nous négligerons cette concentration. L'analyse n'ayant qu'une valeur indicative ne peut servir de mesure. Dans le cas contraire, elle serait déduite<br>                       
+                        
+                        <div id="CODEVAL_KSSO4" class="cp_codeval">
+                            <div id="CODEVAL_KSSO4_TITRE" class="titre">concentration maxi de [SO4 2-]</div>
+                            <div id="CODEVAL_KSSO4_SCRIPTCODE" class="scriptcode">
+                                <textarea rows="9" cols="40">
+        const KsCaSo4 = 0.0000314
+        const TH = 30
+        const Rcamg = 0.8
+        const C = TH / 5000
+        const Ccaeq = C * Rcamg 
+        const V = 2
+        const Ccamol = Ccaeq / V
+        const Cso4mol =  KsCaSo4 / Ccamol
+        const result = "[Ca2+] = " + Ccamol + " mol/L ,[SO4 2-] MAXI = " + Cso4mol + " mol/L"
+                                </textarea>
+                            </div>
+                            <div id="CODEVAL_KSSO4_RESULT" class="result"></div>
+                            <div class="cp_toolbar">
+                                <button onclick="window.eventBusPublish(event,'codeval:toggle','KSSO4')">Show</button>
+                                <button onclick="window.eventBusPublish(event,'codeval:eval','KSSO4')">Run</button>
+                            </div>                              
+                        </div>
+
+                        <h4>Régénérant</h4>
+                        Nous régénérons avec une dilution de H2SO4 à 96% tel que : [H3O+] = [SO4 2-] = 0,0883758 mol/L.<br> 
+                        On a donc une concentration [SO4 2-] près de 7 fois plus importante que la limite de précipitation calculée précédemment.<br> 
+                        <br> 
+                        De part le process la précipitation du sulfate est inévitable
+        
+                        <div id="CODEVAL_RSO4" class="cp_codeval">
+                            <div id="CODEVAL_RSO4_TITRE" class="titre">Rapport [REG] / [SO4 2-]</div>
+                            <div id="CODEVAL_RSO4_SCRIPTCODE" class="scriptcode">
+                                <textarea rows="6" cols="40">
+        const KsCaSo4 = 0.0000314
+        const Ccamol = 0.0024
+        const Creg =  0.0883758
+        const Cso4mol =  KsCaSo4 / Ccamol
+        const rapport = Creg / Cso4mol
+        const result = "Rapport [REG] / [SO4 2-] MAXI = " + rapport  
+                                </textarea>
+                            </div>
+                            <div id="CODEVAL_RSO4_RESULT" class="result"></div>
+                            <div class="cp_toolbar">
+                                <button onclick="window.eventBusPublish(event,'codeval:toggle','RSO4')">Show</button>
+                                <button onclick="window.eventBusPublish(event,'codeval:eval','RSO4')">Run</button>
+                            </div>                              
+                        </div>
+        
+
+
+
+                
+                    </div>
+                </section>    
+                <!-- =============================================================================================================== -->
+                <section id="art0-sx" class="tab-content">
+                    <h3>Documentation</h3>
+                    
+                    <div id="art0-sx-body">
 
                         <h4>Todo</h4>
                         Séparation des styles, amélioration ajout icone en ::before<br/><br/>
@@ -166,6 +688,15 @@ const result = "Volume corrigé = " + V1 + " Nm3 ; F = " + F
 
                     </div>
                 </section>
+
+
+
+
+
+
+
+
+
 
             </div>
         </article>
