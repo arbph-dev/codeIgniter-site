@@ -303,8 +303,22 @@ Intégrer carousel
 </section>
 ```
 
+## TODO-2026-10-25-006
 
+documenter les sélecteurs de champ de querySelector
 
+```js
+    // Interception du form PHP existant (cas où JS charge après le HTML Shield)
+    const phpForm = document.querySelector('.auth-form[action="/login"]')
+    if (phpForm) {
+        phpForm.addEventListener('submit', (e) => {
+            e.preventDefault()
+            const email    = phpForm.querySelector('[name="email"]')?.value?.trim()
+            const password = phpForm.querySelector('[name="password"]')?.value?.trim()
+            if (email && password) bus.publish('auth:login', { email, password })
+        })
+    }
+```
 
 
 
