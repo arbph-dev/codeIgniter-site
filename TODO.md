@@ -53,6 +53,9 @@ les fichiers actuels
         import { initAuthController } from '/assets/js/features/auth/auth.controller.js'
       - [auth.store.js](/public/assets/js/features/auth/auth.store.js)
         import { authStore } from '/assets/js/features/auth/auth.store.js'
+
+  - **/assets/js/libs/**
+	- [/assets/js/libs/physics.js](/public/assets/js/libs/physics.js)        
   - **/assets/js/ui/**
     - **/assets/js/ui/workbench/**
       - **/assets/js/ui/workbench/auth/**
@@ -64,6 +67,9 @@ les fichiers actuels
 
 <!-- 
 
+
+
+
 on doit codifier les todo
 
 YYYY-MM-DD-XXX
@@ -73,6 +79,12 @@ Codeval et phy
 
 
 https://github.com/arbph-dev/codeIgniter-appCms/blob/main/documentation/ROADMAP/SectionPanel.js
+
+
+
+- /assets/js/libs/
+  
+
 
 
 # Points importants
