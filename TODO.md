@@ -79,7 +79,7 @@ dépendances :
 
 ## CAROUSEL
 mis en œuvre dans
-- **url**: https://zealot.fr/ui-components/carousel.html - **src**: [/ui-components/apex.html](/public/ui-components/carousel.html)
+- **url**: https://zealot.fr/ui-components/carousel.html - **src**: [/ui-components/carousel.html](/public/ui-components/carousel.html)
 dépendances :
 - [/assets/js/components/carousel.js](/public/assets/js/components/carousel.js)
 - ['/assets/js/components/carousel/CarouselManager.js'](/public/assets/js/components/carousel/CarouselManager.js)
