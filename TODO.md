@@ -76,6 +76,19 @@ dépendances :
 - [/assets/js/components/apex.js](/public/assets/js/components/codeval.js)
 
 
+
+## CAROUSEL
+mis en œuvre dans
+- **url**: https://zealot.fr/ui-components/carousel.html - **src**: [/ui-components/apex.html](/public/ui-components/carousel.html)
+dépendances :
+- [/assets/js/components/carousel.js](/public/assets/js/components/carousel.js)
+- ['/assets/js/components/carousel/CarouselManager.js'](/public/assets/js/components/carousel/CarouselManager.js)
+- ['/assets/js/components/carousel/Carousel.js'](/public/assets/js/components/carousel/Carousel.js)
+- [eventBus.js](/public/assets/js/core/eventBus.js)
+	- import { bus }       from '/assets/js/core/eventBus.js'
+
+
+
 ## CODEVAL
 mis en œuvre dans
 - **url**: https://zealot.fr/ui-components/codeval.html - **src**: [/ui-components/apex.html](/public/ui-components/codeval.html)
@@ -214,6 +227,9 @@ dépendances :
 	- [/assets/js/components/codeval.js](/public/assets/js/components/codeval.js) intégrer https://convert.js.org/
 - [ ] TODO 2026-10-25-004
 	- [mermaid.html](/public/ui-components/mermaid.html) ajouter diagramme de Gantt, test evenement ok
+- [ ] TODO 2026-10-25-005
+	- Intégrer carousel
+
 
 ## TODO-2026-10-25-003
 intégrer une libaririe de conversion
@@ -253,6 +269,41 @@ https://www.npmjs.com/package/convert-units
 	click cl2 call mermaid_printArguments("test1", "test2", 3)
 	click cl3 call window.mermaid_printTask(cl3)
 ```
+
+
+
+## TODO-2026-10-25-005
+Intégrer carousel
+- modifier script [/assets/js/components/carousel.js](/public/assets/js/components/carousel.js) , supprimer les fonctions ihmCarouselPrev et ihmCarouselNext
+
+```html
+<section id="art0-s0" class="tab-content active">
+	<h3>Callout - info</h3>
+	
+	<div id="art0-s0-body" style="width:400px">
+
+		<div id="CAROUSEL_1" class="cp_carousel">
+			<img src="/assets/img/technologies/chimie/securite/pictogram-SGH01.svg">
+			<img src="/assets/img/technologies/chimie/securite/pictogram-SGH02.svg">
+			<img src="/assets/img/technologies/chimie/securite/pictogram-SGH03.svg">
+			<img src="/assets/img/technologies/chimie/securite/pictogram-SGH04.svg">
+			<img src="/assets/img/technologies/chimie/securite/pictogram-SGH05.svg">
+			<img src="/assets/img/technologies/chimie/securite/pictogram-SGH06.svg">
+			<img src="/assets/img/technologies/chimie/securite/pictogram-SGH07.svg">
+			<img src="/assets/img/technologies/chimie/securite/pictogram-SGH08.svg">
+			<img src="/assets/img/technologies/chimie/securite/pictogram-SGH09.svg">
+		</div>
+		<button onclick="window.eventBusPublish( event, 'carousel:prev', '1' )">&lt;-</button>
+		<button onclick="window.eventBusPublish( event, 'carousel:run', { id: '1', interval: 3000 } )">START</button>
+		<button onclick="window.eventBusPublish( event, 'carousel:stop' , '1' )">STOP</button>
+		<button onclick="window.eventBusPublish( event, 'carousel:next' , '1' )">-&gt;</button>
+	</div>
+</section>
+```
+
+
+
+
 
 
 <!--
