@@ -1,7 +1,7 @@
 
 # 2026-10-25
 
-Reprise des travaux n doit géré l'évolution de la partie Frontend
+Reprise des travaux on doit géré l'évolution de la partie Frontend
 
 On a des 
 - workbench
@@ -12,31 +12,52 @@ On a des
 
 les fichiers actuels
 
+
+
 - **/**
-- [index.html](public/index.html)
-- [idx-dev.html](public/idx-dev.html)
+- [index.html](/public/index.html)
+- [idx-dev.html](/public/idx-dev.html)
 
 - **/ui-components/**
-- [apex-codeval.html](public/ui-components/apex-codeval.html)
-- [apex.html](public/ui-components/apex.html)
-- [callout.html](public/ui-components/callout.html)
-- [codeval.html](public/ui-components/codeval.html)
-- [leaflet.html](public/ui-components/leaflet.html)
-- [mermaid.html](public/ui-components/mermaid.html)
+- [apex-codeval.html](/public/ui-components/apex-codeval.html)
+- [apex.html](/public/ui-components/apex.html)
+- [callout.html](/public/ui-components/callout.html)
+- [codeval.html](/public/ui-components/codeval.html)
+- [leaflet.html](/public/ui-components/leaflet.html)
+- [mermaid.html](/public/ui-components/mermaid.html)
 
 - **/assets/js/**
-- [app-index.js](public/assets/js/app-index.js)
-- [uibase.js](public/assets/js/uibase.js)
+- [app-index.js](/public/assets/js/app-index.js)
+- [uibase.js](/public/assets/js/uibase.js)
   - /assets/js/app/
     - /assets/js/app/cmp/
-      - [uicmp-apex.js](public/assets/js/app/cmp/uicmp-apex.js)
-      - [uicmp-callout.js](public/assets/js/app/cmp/uicmp-callout.js)
-      - [uicmp-codeval.js](public/assets/js/app/cmp/uicmp-codeval.js)
-      - [uicmp-leaflet.js](public/assets/js/app/cmp/uicmp-leaflet.js)
-      - [uicmp-mermaid.js](public/assets/js/app/cmp/uicmp-mermaid.js)
+      - [uicmp-apex.js](/public/assets/js/app/cmp/uicmp-apex.js)
+      - [uicmp-callout.js](/public/assets/js/app/cmp/uicmp-callout.js)
+      - [uicmp-codeval.js](/public/assets/js/app/cmp/uicmp-codeval.js)
+      - [uicmp-leaflet.js](/public/assets/js/app/cmp/uicmp-leaflet.js)
+      - [uicmp-mermaid.js](/public/assets/js/app/cmp/uicmp-mermaid.js)
     - /assets/js/app/cpd/
-      - [apexcodeval.js](public/assets/js/app/cpd/apexcodeval.js)  
+      - [apexcodeval.js](/public/assets/js/app/cpd/apexcodeval.js)  
 
+  - **/assets/js/core/**
+    - [eventBus.js](/public/assets/js/core/eventBus.js)
+    - [domhelper.js](/public/assets/js/core/domhelper.js)
+        import { byId, byName , qs , qsa , create , notice } from '/assets/js/core/domhelper.js'
+
+  - **/assets/js/features/**
+    - **/assets/js/features/admin/**
+      - [renderer.js](/assets/js/features/admin/renderer.js)
+        import { initUsersRenderer } from '/assets/js/features/admin/renderer.js'
+    - **/assets/js/features/auth/**
+      - [auth.controller.js](/public/assets/js/features/auth/auth.controller.js)
+        import { initAuthController } from '/assets/js/features/auth/auth.controller.js'
+      - [auth.store.js](/public/assets/js/features/auth/auth.store.js)
+        import { authStore } from '/assets/js/features/auth/auth.store.js'
+  - **/assets/js/ui/**
+    - **/assets/js/ui/workbench/**
+      - **/assets/js/ui/workbench/auth/**
+        - [ToolbarAuthPanel.js]()
+          import ToolbarAuthPanel from '/assets/js/ui/workbench/auth/ToolbarAuthPanel.js'
 
 
 ---
