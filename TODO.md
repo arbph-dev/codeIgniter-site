@@ -246,6 +246,7 @@ https://www.npmjs.com/package/convert-units
 
 ## TODO-2026-10-25-004
 - ajouter diagramme de Gantt + test evenement ok
+- voir https://mermaid.ai/open-source/syntax/gantt.html et https://mermaid.ai/open-source/syntax/gantt.html#interaction
 
 ```
 	click cl1 href "https://mermaidjs.github.io/"
