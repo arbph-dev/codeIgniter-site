@@ -29,14 +29,14 @@ les fichiers actuels
 - **/assets/js/**
 - [app-index.js](/public/assets/js/app-index.js)
 - [uibase.js](/public/assets/js/uibase.js)
-  - /assets/js/app/
-    - /assets/js/app/cmp/
+  - **/assets/js/app/**
+    - **/assets/js/app/cmp/**
       - [uicmp-apex.js](/public/assets/js/app/cmp/uicmp-apex.js)
       - [uicmp-callout.js](/public/assets/js/app/cmp/uicmp-callout.js)
       - [uicmp-codeval.js](/public/assets/js/app/cmp/uicmp-codeval.js)
       - [uicmp-leaflet.js](/public/assets/js/app/cmp/uicmp-leaflet.js)
       - [uicmp-mermaid.js](/public/assets/js/app/cmp/uicmp-mermaid.js)
-    - /assets/js/app/cpd/
+    - **/assets/js/app/cpd/**
       - [apexcodeval.js](/public/assets/js/app/cpd/apexcodeval.js)  
 
   - **/assets/js/core/**
