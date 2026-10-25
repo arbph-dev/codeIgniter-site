@@ -18,6 +18,27 @@ const result = `there are ${timeRemainig} mL in 1 L`
 	</div>                              
 </div>
 
+<!--  Strucuture OBSOLETE 
+<div id="CODEVAL_ACBFPH2" class="cp_codeval">
+	<div id="CODEVAL_ACBFPH2_TITRE" class="titre"> Volume eau Vb = 1</div>
+	<div id="CODEVAL_ACBFPH2_SCRIPTCODE" class="scriptcode">
+		<textarea rows="6" cols="40">
+const CH3OI = 0.2
+const VB = 1
+const V = VB + 1
+const CH3OB = VB * Math.pow(10,-7)
+const CH3O = ( CH3OI + CH3OB ) / V
+const pH = -1 * Math.log10(CH3O)
+"[H3O+] = " +  CH3O + " pH = " + pH
+		</textarea>
+		<button id="executeButton_ACBFPH2" name="executeButton" onclick="evaluateCode('ACBFPH2')">Exécuter</button>
+	</div>
+	<div id="CODEVAL_ACBFPH2_RESULT" class="result"></div>
+</div>                                 
+
+
+
+-->
 ```
 
 
