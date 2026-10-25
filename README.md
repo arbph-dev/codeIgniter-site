@@ -1,6 +1,63 @@
 # codeIgniter
 
 ## UI
+- 2026-10-14 : refonte front end
+- 2026-10-16 : réintégration des composants
+- 2026-10-18 : ajout de classe pour les titres
+- 2026-10-18 : extraction classe nav
+- 2026-10-19 : extraction des styles callout
+- 2026-10-25 :  application
+
+Index en cours : [`/index.html`](/public/index.html)
+
+### Composants
+
+### APEX
+- [`/ui-components/apex.html`](/public/ui-components/apex.html)
+- [`documentation apex`](/doc/FRONTEND/UI/COMPONENTS/APEX.md)
+
+### CALLOUT
+- [`/ui-components/callout.html`](/public/ui-components/callout.html)
+- [`documentation callout`](/doc/FRONTEND/UI/COMPONENTS/CALLOUT.md)
+
+### CAROUSEL
+- [`/ui-components/carousel.html`](/public/ui-components/carousel.html)
+- [`documentation carousel`](/doc/FRONTEND/UI/COMPONENTS/CAROUSEL.md)
+
+### CODEVAL
+**url**: https://zealot.fr/ui-components/codeval.html
+
+**src**:
+- [/ui-components/codeval.html](/public/ui-components/codeval.html)
+-
+- **doc** [`documentation codeval`](/doc/FRONTEND/UI/COMPONENTS/CODEVAL.md)
+
+
+### MERMAID
+**url**: https://zealot.fr/ui-components/mermaid.html 
+
+**src**: 
+- [/ui-components/codeval.html](/public/ui-components/mermaid.html) : page de démonstration mermaid (flux et gantt)
+- [uicmp-mermaid.js](/public/assets/js/app/cmp/uicmp-mermaid.js) : script application de la page 
+- [mermaid.js](/public/assets/js/components/mermaid.js) : le composant
+
+**doc** [`documentation codeval`](/doc/FRONTEND/UI/COMPONENTS/MERMAID.md)
+
+
+
+
+## css
+- [`/assets/css/ui.css`](/public/assets/css/ui.css)
+- [`/assets/css/ui-nav.css`](/public/assets/css/ui-nav.css)
+    
+  - [`/assets/css/ui-nav.css`](/public/assets/css/ui-nav.css)
+  - [`/assets/css/cmp/callout.css`](/public/assets/css/cmp/callout.css), pas de rwd et nécessite ui.md `:root`
+  
+pas de rwd
+
+<!-- 
+
+## UI
 2026-10-14 : refonte application
 2026-10-16 : réintégration menu
 
