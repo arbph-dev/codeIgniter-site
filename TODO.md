@@ -191,7 +191,7 @@ exemple - [apex-codeval.html](/public/ui-components/apex-codeval.html)
 #TODO
 
 - [ ] TODO 2026-10-25-001
-	- [/assets/js/components/apex.js](/public/assets/js/components/codeval.js) créer des librairies comme PHYS avec les éléments ajoutés (calcul de traitment d'eau) voir [apex-codeval.html](/public/ui-components/apex-codeval.html)
+	- [/assets/js/components/apex.js](/public/assets/js/components/codeval.js) créer des librairies comme PHYS avec les éléments ajoutés (calcul de traitment d'eau) voir [apex-codeval.html](/public/ui-components/codeval.html)
 - [ ] TODO 2026-10-25-002
 	- [/assets/js/components/apex.js](/public/assets/js/components/codeval.js) créer une librairie depuis PLOT en gérant le type de graphique
 
