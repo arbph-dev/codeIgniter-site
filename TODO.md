@@ -1,3 +1,46 @@
+
+# 2026-10-25
+
+Reprise des travaux n doit géré l'évolution de la partie Frontend
+
+On a des 
+- workbench
+- features
+- sectionpanel
+
+
+
+les fichiers actuels
+
+- **/**
+- [index.html](public/index.html)
+- [idx-dev.html](public/idx-dev.html)
+
+- **/ui-components/**
+- [apex-codeval.html](public/ui-components/apex-codeval.html)
+- [apex.html](public/ui-components/apex.html)
+- [callout.html](public/ui-components/callout.html)
+- [codeval.html](public/ui-components/codeval.html)
+- [leaflet.html](public/ui-components/leaflet.html)
+- [mermaid.html](public/ui-components/mermaid.html)
+
+- **/assets/js/**
+- [app-index.js](public/assets/js/app-index.js)
+- [uibase.js](public/assets/js/uibase.js)
+  - /assets/js/app/
+    - /assets/js/app/cmp/
+      - [uicmp-apex.js](public/assets/js/app/cmp/uicmp-apex.js)
+      - [uicmp-callout.js](public/assets/js/app/cmp/uicmp-callout.js)
+      - [uicmp-codeval.js](public/assets/js/app/cmp/uicmp-codeval.js)
+      - [uicmp-leaflet.js](public/assets/js/app/cmp/uicmp-leaflet.js)
+      - [uicmp-mermaid.js](public/assets/js/app/cmp/uicmp-mermaid.js)
+    - /assets/js/app/cpd/
+      - [apexcodeval.js](public/assets/js/app/cpd/apexcodeval.js)  
+
+
+
+---
+
 # Points importants
 
 comment devenir superadmin car distinction existante : admin, superadmin
