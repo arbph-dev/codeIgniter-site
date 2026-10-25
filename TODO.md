@@ -81,6 +81,7 @@ dépendances :
 mis en œuvre dans
 - **url**: https://zealot.fr/ui-components/carousel.html - **src**: [/ui-components/carousel.html](/public/ui-components/carousel.html)
 dépendances :
+- [/assets/css/cmp/carousel.css](/public/assets/css/cmp/carousel.css)
 - [/assets/js/components/carousel.js](/public/assets/js/components/carousel.js)
 - ['/assets/js/components/carousel/CarouselManager.js'](/public/assets/js/components/carousel/CarouselManager.js)
 - ['/assets/js/components/carousel/Carousel.js'](/public/assets/js/components/carousel/Carousel.js)
@@ -275,7 +276,7 @@ https://www.npmjs.com/package/convert-units
 ## TODO-2026-10-25-005
 Intégrer carousel
 - modifier script [/assets/js/components/carousel.js](/public/assets/js/components/carousel.js) , supprimer les fonctions ihmCarouselPrev et ihmCarouselNext
-
+- séparer css [/assets/css/cmp/carousel.css](/public/assets/css/cmp/carousel.css)
 ```html
 <section id="art0-s0" class="tab-content active">
 	<h3>Callout - info</h3>
