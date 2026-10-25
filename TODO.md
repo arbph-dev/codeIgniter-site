@@ -16,6 +16,7 @@ les fichiers actuels
   - [apex-codeval.html](/public/ui-components/apex-codeval.html)
   - [apex.html](/public/ui-components/apex.html)
   - [callout.html](/public/ui-components/callout.html)
+  - [carousel.html](/public/ui-components/carousel.html) 
   - [codeval.html](/public/ui-components/codeval.html)
   - [leaflet.html](/public/ui-components/leaflet.html)
   - [mermaid.html](/public/ui-components/mermaid.html)
