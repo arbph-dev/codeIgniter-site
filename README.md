@@ -1,6 +1,6 @@
-# codeIgniter
+# application codeIgniter
 
-## UI
+**Historique**
 - 2026-10-14 : refonte front end
 - 2026-10-16 : réintégration des composants
 - 2026-10-18 : ajout de classe pour les titres
@@ -12,11 +12,9 @@
 ## Application
 **url**: https://zealot.fr/index.html
 
-**src** : 
-- Index en cours : [`/index.html`](/public/index.html)
+**src** : structure [`/index.html`](/public/index.html) et script application :  [`/assets/js/app-index.js`](/public/assets/js/app-index.js)
 
-**documentation**
-[APP/index.md](doc/FRONTEND/UI/APP/index.md)
+**documentation** :[APP/index.md](doc/FRONTEND/UI/APP/index.md)
 
 
 
