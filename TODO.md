@@ -33,6 +33,11 @@ les fichiers actuels
     - **/assets/js/app/cpd/**
       - [apexcodeval.js](/public/assets/js/app/cpd/apexcodeval.js)  
 
+- **/assets/js/components/**
+	- [codeval.js](/public/assets/js/components/codeval.js)
+
+
+
   - **/assets/js/core/**
     - [eventBus.js](/public/assets/js/core/eventBus.js)
     - [domhelper.js](/public/assets/js/core/domhelper.js)
@@ -188,9 +193,18 @@ exemple - [apex-codeval.html](/public/ui-components/apex-codeval.html)
 ```
 
 
+## MERMAID
+mis en œuvre dans
+- **url**: https://zealot.fr/ui-components/apex.html - **src**: [mermaid.html](/public/ui-components/mermaid.html)
+
+dépendances :
+	- [uicmp-mermaid.js](/public/assets/js/app/cmp/uicmp-mermaid.js)
+	- [mermaid.js](/public/assets/js/components/mermaid.js)
+
+
 ---
 
-#TODO
+# TODO
 
 - [ ] TODO 2026-10-25-001
 	- [/assets/js/components/codeval.js](/public/assets/js/components/codeval.js) créer des librairies comme PHYS avec les éléments ajoutés (calcul de traitment d'eau) voir [apex-codeval.html](/public/ui-components/codeval.html)
@@ -198,6 +212,43 @@ exemple - [apex-codeval.html](/public/ui-components/apex-codeval.html)
 	- [/assets/js/components/codeval.js](/public/assets/js/components/codeval.js) créer une librairie depuis PLOT en gérant le type de graphique
 - [ ] TODO 2026-10-25-003
 	- [/assets/js/components/codeval.js](/public/assets/js/components/codeval.js) intégrer https://convert.js.org/
+- [ ] TODO 2026-10-25-004
+	- [mermaid.html](/public/ui-components/mermaid.html) ajouter diagramme de Gantt, test evenement ok
+
+## TODO-2026-10-25-003
+intégrer https://convert.js.org/
+
+librairie via CDN
+```js
+    import convert from "https://cdn.skypack.dev/convert@5";
+    import convert from "https://esm.run/convert@5";
+    import convert from "https://cdn.jsdelivr.net/npm/convert@5";
+    import convert from "https://unpkg.com/convert@5";
+
+const result = `there are ${convert(55_800, 'seconds').to('hours')} hours remaining`
+```
+
+### convert.js
+https://convert.js.org/ - https://github.com/jonahsnider/convert
+- + mise en oeuvre aisée via CDN<br/>
+- - Ne permet pas de gérer d'autres unités comme la concentration<br/>
+
+### convert-units
+https://www.npmjs.com/package/convert-units
+- + mise en oeuvre aisée via CDN<br/>
+- + Permet gérer d'autres unités comme la concentration<br/>
+
+
+
+## TODO-2026-10-25-004
+- ajouter diagramme de Gantt + test evenement ok
+
+```
+	click cl1 href "https://mermaidjs.github.io/"
+	click cl2 call mermaid_printArguments("test1", "test2", 3)
+	click cl3 call window.mermaid_printTask(cl3)
+```
+
 
 <!--
 
