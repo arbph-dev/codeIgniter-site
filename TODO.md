@@ -216,7 +216,7 @@ dépendances :
 	- [mermaid.html](/public/ui-components/mermaid.html) ajouter diagramme de Gantt, test evenement ok
 
 ## TODO-2026-10-25-003
-intégrer https://convert.js.org/
+intégrer une libaririe de conversion
 
 - librairie via CDN dans [/assets/js/components/codeval.js](/public/assets/js/components/codeval.js)
 ```js
@@ -234,13 +234,13 @@ const availableApi = {
 
 ### convert.js => abdandon
 https://convert.js.org/ - https://github.com/jonahsnider/convert
-- + mise en oeuvre aisée via CDN<br/>
-- - Ne permet pas de gérer d'autres unités comme la concentration<br/>
+- mise en œuvre aisée via CDN 
+- Ne permet pas de gérer d'autres unités comme la concentration
 
 ### convert-units => OK
 https://www.npmjs.com/package/convert-units
-- + mise en oeuvre aisée via CDN<br/>
-- + Permet gérer d'autres unités comme la concentration<br/>
+- mise en oeuvre aisée via CDN
+- Permet gérer d'autres unités comme la concentration
 
 
 
