@@ -1,0 +1,274 @@
+<!-- 
+    2026-09-09 : modificaton 
+    2026-09-10 : voir pour supprimer les ul vide dans le menu nav ligne 66 et suivantes
+    2026-09-23 : intégrtion vox ligne 316 
+  -->
+<!DOCTYPE html>
+<html lang="fr" data-theme="marine">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zealot - page principale</title>
+    <meta name="description" content="Portail personnel en déploiement">
+    <meta name="robots" content="index, follow">
+
+    <link rel="stylesheet" href="/assets/css/ui.css" >
+    <link rel="stylesheet" href="/assets/css/ui-nav.css" >
+    <link rel="stylesheet" href="/assets/css/cmp/callout.css" >
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+</head>
+
+<body>
+    
+    <!-- ====           HEADER         ==============================================================
+    https://github.com/arbph-dev/codeIgniter/blob/master/doc/FRONTEND/UI-header.md
+
+    on conserve les styles :  /public/assets/css/ui.css#L104-L127
+    -->
+
+    <header>
+        <div class="title-layout">
+            <h1 id="appTitle">Page principale</h1>
+            <span id="appSubtitle">Portail personnel en déploiement</span>
+        </div>
+
+        <div class="header-actions">
+            <button class="rwdnav" type="button" onclick="openNav()" aria-label="Ouvrir le menu">
+                <i class="fa fa-bars" aria-hidden="true"></i>
+            </button>
+            <button id="themeBtn" type="button">Thème nature</button>
+            <button id="fullscreenBtn" type="button">Plein écran</button>
+        </div>
+
+        <div class="header-auth">
+            
+        </div>
+    </header>
+    <!-- ==== SIDEBAR ============================================================== 
+    construction dynamique a voir apres
+    <nav id="sidebar"> 
+    -->
+    <nav>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" aria-label="Fermer le menu">&times;</a>
+
+
+    </nav>
+    <!-- ====  CONTENU PRINCIPAL    ========================== 
+    <main id="stack"> 
+    -->
+    <main>
+        <article id="art-admin" class="panel-card">
+            <h2 class="panel-title">Administration</h2>
+            <p class="panel-description">Tableau de bord administrateur</p>
+
+            <div class="section-tab">
+
+                <div class="tab-headers"></div>
+                
+                <section id="art-admin-home" class="tab-content active">
+                    <h3>Home</h3>
+                    <div id="art-admin-home-body"><!-- contenu ultérieur --></div>
+                </section>
+
+
+                <section id="art-admin-user" class="tab-content">
+                    <h3>User</h3>
+                    <div id="art-admin-user-list"><!-- contenu ultérieur --></div>
+                </section>
+
+            </div>
+
+        </article>
+
+        <!-- 
+        <div class="panel-card hidden" data-role="admin" data-index="-2">
+            <h2 class="panel-title">Administration</h2>
+            <p class="panel-description">Tableau de bord administrateur</p>
+            <div class="section-tab">
+                <div class="tab-headers"></div>
+                <div id="admin-home" class="tab-content active">
+                    <h3>Admin</h3>
+                    <div id="admin-board-body">contenu ultérieur</div>
+                </div>
+            </div>
+        </div>
+        -->
+        <article id="art-user" class="panel-card">
+            <h2 class="panel-title">Mon espace</h2>
+            <p class="panel-description">Profil et inscription</p>
+
+            <div class="section-tab">
+
+                <div class="tab-headers"></div>
+                
+                <section id="art-user-home" class="tab-content active">
+                    <h3>Board User</h3>
+                    <div id="art-user-home-body">
+                        <!-- contenu ultérieur -->
+                    </div>
+                </section>
+
+            </div>
+
+        </article>
+
+
+        <!-- ====  0 - ACCEUIL===================== -->
+        <article id="art0" class="panel-card active">
+            <h2 class="panel-title">Actualités</h2>
+            <p class="panel-description">L'application html et les scripts sont stabilisés.Un choix devient nécessaire, les publications doivent être référencées.<br>
+                Le choix d'une API pour le contenu est peu judicieux à ce stade. Les templates peuvent etre un bon choix voir le controleur technologies qui inclut les contenus.<br>
+                Les composants doivent être réintégrés en priorité, ils sont mis en ouevre dans les pages et leur fonctionnement peut imposer des modifcations dans l'application.<br>
+            </p>
+
+            <div class="section-tab">
+
+                <div class="tab-headers"></div>
+                
+                <section id="art0-s0" class="tab-content active">
+                    <h3>Fichiers</h3>
+                    <div id="art0-s0-body">
+                        <h4>Application</h4>
+                        L'application necessite :
+                        <ul>
+                            <li>une page html</li>
+                            <li>un script application qui hérite du script uibase.js</li>
+                            <li>des feuilles de style css</li>
+                        </ul>
+                        La strcuture des dossiers sera documentées sur github
+
+                        <h5>Evolution</h5>
+                        Stablisation uibase.js : terminée , <a href="https://github.com/arbph-dev/codeIgniter-site/blob/master/public/assets/js/uibase.js">code source</a><br>
+                        La configuration de page par défaut a été déplacée des script applications à uibase.js<br>
+                        Les feuilles de style sont réparties dans des fichiers séparées lors de la réintégration des fonctions et composants<br> 
+                        <br>
+
+                        Cette page <a href="https://zealot.fr/index.html">https://zealot.fr/index.html</a>, utilise un script application <a href="https://github.com/arbph-dev/codeIgniter-site/blob/master/public/assets/js/app-index.js">/assets/js/app-index.js</a>. Le script application étend <a href="https://github.com/arbph-dev/codeIgniter-site/blob/master/public/assets/js/uibase.js">/assets/js/uibase.js</a><br>
+                        <br>                            
+                        Ajout de lois de chauffe dans le <a href="https://zealot.fr/ui-components/apex.html">composant APEX</a>    
+
+                        
+                        <h4>Composants</h4>
+                        Les composants seront listés dans cette section. On illustrera leur mise en oeuvre au travers d'exemple et une section à réservée dans chaque document
+                        <ul>
+
+                            <li>
+                                <ul>
+                                    <li><a href="https://zealot.fr/ui-components/apex.html" target="_blank">composant APEX</a></li>
+                                    <li><a href="https://github.com/arbph-dev/codeIgniter-site/blob/master/public/ui-components/apex.html" target="_blank">code source de la page</a></li>
+                                    <li><a href="https://github.com/arbph-dev/codeIgniter-site/blob/master/public/assets/js/app/cmp/uicmp-apex.js" target="_blank">code source du script application</a></li>
+                                </ul>
+
+                                <ul>
+                                    <li><a href="https://zealot.fr/ui-components/callout.html" target="_blank">Composant CALLOUT</a></li>
+                                    <li><a href="https://github.com/arbph-dev/codeIgniter-site/blob/master/public/ui-components/callout.html" target="_blank">code source de la page</a></li>
+                                    <li><a href="https://github.com/arbph-dev/codeIgniter-site/blob/master/public/assets/js/app/cmp/uicmp-callout.js" target="_blank">code source du script application</a></li>
+                                </ul>
+                            
+                                <ul>
+                                    <li><a href="https://zealot.fr/ui-components/codeval.html" target="_blank">Composant CODEVAL</a></li>
+                                    <li><a href="https://github.com/arbph-dev/codeIgniter-site/blob/master/public/ui-components/codeval.html" target="_blank">code source de la page</a></li>
+                                    <li><a href="https://github.com/arbph-dev/codeIgniter-site/blob/master/public/assets/js/app/cmp/uicmp-codeval.js" target="_blank">code source du script application</a></li>
+                                </ul>
+
+                                <ul>
+                                    <li><a href="https://zealot.fr/ui-components/leaflet.html" target="_blank">Composant LEAFLET</a></li>
+                                    <li><a href="https://github.com/arbph-dev/codeIgniter-site/blob/master/public/ui-components/leaflet.html" target="_blank">code source de la page</a></li>
+                                    <li>
+                                        <a 
+                                            href="https://github.com/arbph-dev/codeIgniter-site/blob/master/public/assets/js/app/cmp/uicmp-leaflet.js"
+                                            target="_blank">
+                                            code source du script application
+                                        </a>
+                                    </li>
+                                </ul>
+
+                                <ul>
+                                    <li><a href="https://zealot.fr/ui-components/mermaid.html">Composant MERMAID</a></li>
+                                    <li><a href="https://github.com/arbph-dev/codeIgniter-site/blob/master/public/ui-components/mermaid.html" target="_blank">code source de la page</a></li>
+                                    <li><a href="https://github.com/arbph-dev/codeIgniter-site/blob/master/public/assets/js/app/cmp/uicmp-mermaid.js" target="_blank">code source du script application</a></li>
+                                </ul>
+                                
+                            </li>
+                            
+                        </ul>
+
+                        <h4>Intéraction entre composants</h4>
+                        <ul>
+                            <li><a href="https://zealot.fr/ui-components/apex-codeval.html">Intéraction APEX - CODEVAL</a></li>
+                            <li><a href="https://github.com/arbph-dev/codeIgniter-site/blob/master/public/ui-components/apex-codeval.html" target="_blank">code source de la page</a></li>
+                            <li><a href="https://github.com/arbph-dev/codeIgniter-site/blob/master/public/assets/js/app/cpd/apexcodeval.js" target="_blank">code source du script application</a></li>
+                        </ul>
+
+                    </div>
+                </section>
+
+                <section id="art0-s1" class="tab-content">
+                    <h3>Déploiement</h3>
+                    <div id="art0-s1-body">
+                        <ul>
+                            <li>Modification de la struture du document HTML : terminée</li>
+                            <li>Séparation des styles</li>
+                            <li>
+                                <a href="https://github.com/arbph-dev/codeIgniter-site/tree/master/doc/FRONTEND" target="_blank">Documentation en cours</a>
+                                
+
+                            </li>
+                        </ul>
+                        <!-- 
+                            main
+                        -->
+
+                    </div>
+                </section>
+
+                <section id="art0-s3" class="tab-content">
+                    <h3>Travaux</h3>
+                    <div id="art0-s3-body">
+                        <ul>
+                            <li>Intégrer higlightjs</li>
+                            <li>Documenter
+                                <ul>
+                                <li>Les fichiers des composants</li>
+                                </ul>
+                            </li>     
+                            <li>Taches
+                                <ul>
+                                <li>css , fichier ui.css , séparation des styles</li>
+                                </ul>
+                            </li>                                
+
+                        </ul>
+                        <!-- 
+                            main
+                        -->
+
+                    </div>
+                </section>
+            </div>
+        </article>
+
+
+
+
+
+
+    </main>
+
+    <div class="pagination-buttons"></div>
+    <!-- ====   FOOTER  ================================================ -->
+
+    <footer>
+        <div id="statusBar">
+            Bienvenue site en déploiement
+        </div> 
+    </footer>
+
+    <script type="module" src="/assets/js/app/app-test.js"></script>
+
+</body>
+
+</html>
