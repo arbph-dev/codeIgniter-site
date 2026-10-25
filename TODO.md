@@ -61,7 +61,17 @@ les fichiers actuels
 
 
 ---
+
 <!-- 
+
+on doit codifier les todo
+
+YYYY-MM-DD-XXX
+
+2026-10-25
+Codeval et phy
+
+
 # Points importants
 
 comment devenir superadmin car distinction existante : admin, superadmin
