@@ -61,7 +61,7 @@ les fichiers actuels
 
 
 ---
-
+<!-- 
 # Points importants
 
 comment devenir superadmin car distinction existante : admin, superadmin
@@ -104,3 +104,4 @@ ui panels / gestion affichage / active
       else{
         buttonTemp = create( 'button', { type: 'button', class: 'tab-btn', text: section } )
       }
+-->
