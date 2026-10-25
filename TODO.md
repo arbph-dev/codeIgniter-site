@@ -56,7 +56,7 @@ les fichiers actuels
   - **/assets/js/ui/**
     - **/assets/js/ui/workbench/**
       - **/assets/js/ui/workbench/auth/**
-        - [ToolbarAuthPanel.js]()
+        - [ToolbarAuthPanel.js](/public/assets/js/ui/workbench/auth/ToolbarAuthPanel.js)
           import ToolbarAuthPanel from '/assets/js/ui/workbench/auth/ToolbarAuthPanel.js'
 
 
