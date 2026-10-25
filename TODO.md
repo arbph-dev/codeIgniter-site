@@ -84,13 +84,15 @@ dépendances :
 - [domhelper.js](/public/assets/js/core/domhelper.js)
 	- import { byId, qs } from '/assets/js/core/domhelper.js'
 
+### API
+Dans [/assets/js/components/codeval.js](/public/assets/js/components/codeval.js) on définit les API. On utilise les API dans [apex-codeval.html](/public/ui-components/apex-codeval.html)
 
-Dans [/assets/js/components/apex.js](/public/assets/js/components/codeval.js) on définit les API
-On utilise les API dans [apex-codeval.html](/public/ui-components/apex-codeval.html)
-
+Initialise une instance moteurExemple de classe MoteurAsynchrone
+```js
 const moteurExemple = new api.PHYS.MoteurAsynchrone(
+```
 
-Trace un graphique
+Trace un graphique en utilisant apex
 ```js
 api.plot('APEX_LIGNE_3', { data: donneesCouple });
 ```
@@ -191,11 +193,11 @@ exemple - [apex-codeval.html](/public/ui-components/apex-codeval.html)
 #TODO
 
 - [ ] TODO 2026-10-25-001
-	- [/assets/js/components/apex.js](/public/assets/js/components/codeval.js) créer des librairies comme PHYS avec les éléments ajoutés (calcul de traitment d'eau) voir [apex-codeval.html](/public/ui-components/codeval.html)
+	- [/assets/js/components/codeval.js](/public/assets/js/components/codeval.js) créer des librairies comme PHYS avec les éléments ajoutés (calcul de traitment d'eau) voir [apex-codeval.html](/public/ui-components/codeval.html)
 - [ ] TODO 2026-10-25-002
-	- [/assets/js/components/apex.js](/public/assets/js/components/codeval.js) créer une librairie depuis PLOT en gérant le type de graphique
-
-
+	- [/assets/js/components/codeval.js](/public/assets/js/components/codeval.js) créer une librairie depuis PLOT en gérant le type de graphique
+- [ ] TODO 2026-10-25-003
+	- [/assets/js/components/codeval.js](/public/assets/js/components/codeval.js) intégrer https://convert.js.org/
 
 <!--
 
