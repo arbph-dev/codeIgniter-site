@@ -72,6 +72,9 @@ YYYY-MM-DD-XXX
 Codeval et phy
 
 
+https://github.com/arbph-dev/codeIgniter-appCms/blob/main/documentation/ROADMAP/SectionPanel.js
+
+
 # Points importants
 
 comment devenir superadmin car distinction existante : admin, superadmin
