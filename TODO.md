@@ -33,8 +33,8 @@ les fichiers actuels
     - **/assets/js/app/cpd/**
       - [apexcodeval.js](/public/assets/js/app/cpd/apexcodeval.js)  
 
-- **/assets/js/components/**
-	- [codeval.js](/public/assets/js/components/codeval.js)
+	- **/assets/js/components/**
+		- [codeval.js](/public/assets/js/components/codeval.js)
 
 
 
@@ -218,22 +218,26 @@ dépendances :
 ## TODO-2026-10-25-003
 intégrer https://convert.js.org/
 
-librairie via CDN
+- librairie via CDN dans [/assets/js/components/codeval.js](/public/assets/js/components/codeval.js)
 ```js
-    import convert from "https://cdn.skypack.dev/convert@5";
-    import convert from "https://esm.run/convert@5";
-    import convert from "https://cdn.jsdelivr.net/npm/convert@5";
-    import convert from "https://unpkg.com/convert@5";
-
-const result = `there are ${convert(55_800, 'seconds').to('hours')} hours remaining`
+import convert from 'https://cdn.jsdelivr.net/npm/convert-units@2.3.4/+esm'
+```
+- Ajout dans api
+```js
+const availableApi = {
+    call  : ()         => call(),
+    call2 : (data)     => call2(data),
+    PHYS,
+    convert, // TODO-2026-10-25-003
 ```
 
-### convert.js
+
+### convert.js => abdandon
 https://convert.js.org/ - https://github.com/jonahsnider/convert
 - + mise en oeuvre aisée via CDN<br/>
 - - Ne permet pas de gérer d'autres unités comme la concentration<br/>
 
-### convert-units
+### convert-units => OK
 https://www.npmjs.com/package/convert-units
 - + mise en oeuvre aisée via CDN<br/>
 - + Permet gérer d'autres unités comme la concentration<br/>
