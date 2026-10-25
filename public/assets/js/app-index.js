@@ -17,6 +17,7 @@ import { initCallout} from '/assets/js/components/callout.js'
 
 //ajout de auth
 import { bus } from '/assets/js/core/eventBus.js'
+import { byId, byName , qs , qsa , create , notice } from '/assets/js/core/domhelper.js'
 
 import { initAuthController } from '/assets/js/features/auth/auth.controller.js'
 import { authStore } from '/assets/js/features/auth/auth.store.js'
@@ -63,7 +64,6 @@ class AppIndex extends UiBase {
         console.info("AppIndex :: boot() = success")
         //initApex()        initCodeVal()        initCallout()
 
-
         initAuthController() // /public/assets/js/features/auth/auth.controller.js
         new ToolbarAuthPanel().init() 
 
@@ -88,7 +88,10 @@ class AppIndex extends UiBase {
         
         bus.publish('auth:check')
 
+        // ------- init composant avant app ?? attention des modules app pourait ajoute rdu con,tneu pour les composants
         initCallout()
+        // ----------------------------
+//        this.mountMotPanel()
 
     }
     onPanelShown(artIdx) { console.info("AppIndex :: onPanelShown() = artIdx " + artIdx) }
@@ -103,6 +106,9 @@ class AppIndex extends UiBase {
     async mountApplication() {
         console.log('Auth success; app can run')
         
+
+
+
     }
 
     // ============================================================
@@ -166,6 +172,12 @@ class AppIndex extends UiBase {
         `
     }
 
+
+
+
+
+
+
     // ============================================================
     // Tableau de bord utilisateur
 
@@ -199,7 +211,14 @@ class AppIndex extends UiBase {
         `
         // 2026-10-15 - ajout admin /users    
         if (isAdmin){ initUsersRenderer() }
-    }    
+    }
+    
+
+
+    
+
+
+
 }
 
 
