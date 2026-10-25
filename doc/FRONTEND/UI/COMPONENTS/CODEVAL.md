@@ -2,6 +2,26 @@
 mis en œuvre dans
 - **url**: https://zealot.fr/ui-components/codeval.html - **src**: [/ui-components/apex.html](/public/ui-components/codeval.html)
 
+```html
+<div id="CODEVAL_CNV1" class="cp_codeval">
+	<div id="CODEVAL_CNV1_TITRE" class="titre">Conversion unités</div>
+	<div id="CODEVAL_CNV1_SCRIPTCODE" class="scriptcode">
+		<textarea rows="3" cols="40">
+const timeRemainig = api.convert(1).from('l').to('ml')
+const result = `there are ${timeRemainig} mL in 1 L`
+		</textarea>
+	</div>
+	<div id="CODEVAL_CNV1_RESULT" class="result"></div>
+	<div class="cp_toolbar">
+		<button onclick="window.eventBusPublish(event,'codeval:toggle','CNV1')">Show</button>
+		<button onclick="window.eventBusPublish(event,'codeval:eval','CNV1')">Run</button>
+	</div>                              
+</div>
+
+```
+
+
+
 ## dépendances :
 - [/assets/js/components/apex.js](/public/assets/js/components/codeval.js)
 - [/assets/js/libs/physics.js](/public/assets/js/libs/physics.js)
