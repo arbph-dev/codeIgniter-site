@@ -21,6 +21,9 @@ import { byId, byName , qs , qsa , create , notice } from '/assets/js/core/domhe
 
 import { initAuthController } from '/assets/js/features/auth/auth.controller.js'
 import { authStore } from '/assets/js/features/auth/auth.store.js'
+import { MotPanel, UserPanel } from '/assets/js/features/auth/user.renderer.js'
+// js/features/auth/user.renderer.js
+
 import ToolbarAuthPanel       from '/assets/js/ui/workbench/auth/ToolbarAuthPanel.js'
 
 // 2026-10-15 - ajout admin /users    
@@ -54,6 +57,9 @@ class AppIndex extends UiBase {
         this.renderPagination()
         this.renderNavigation()
         this.renderMenu()
+
+        this.Panels = []
+
     }
 
     boot() {
@@ -91,7 +97,9 @@ class AppIndex extends UiBase {
         // ------- init composant avant app ?? attention des modules app pourait ajoute rdu con,tneu pour les composants
         initCallout()
         // ----------------------------
-        this.mountMotPanel()
+//        this.mountMotPanel()
+        this.mountPanels()
+
 
     }
     onPanelShown(artIdx) { console.info("AppIndex :: onPanelShown() = artIdx " + artIdx) }
@@ -236,8 +244,8 @@ class AppIndex extends UiBase {
     
     renderMotList( root ){
 
-        const motPanel_Bar = create('div', { class: 'cp_detail'  , text: 'motPanel_Bar'  })
-
+        //const motPanel_Bar = create('div', { class: 'cp_detail'  , text: 'motPanel_Bar'  })
+        const motPanel_Bar = create('div', { class: 'cp_detail' })
         motPanel_Bar.appendChild( notice('loading') )
 
         root.appendChild(motPanel_Bar)
@@ -257,6 +265,43 @@ class AppIndex extends UiBase {
 
     }
 
+
+/*
+MotPanel, UserPanel
+
+art3-s1-body
+art3-s0-body
+
+this.Panels = []
+
+*/
+
+    mountPanels(){
+        // art3-s0-body
+        this.Panels = []
+        
+        //this.Panels.push( 'art3-s0-body' )
+        //this.Panels.push( 'art3-s1-body' )
+
+
+        //const body = document.querySelector('#art3-s0-body')
+        // if (!body) return
+        
+        //const mp = new MotPanel( 'art3-s0-body' )
+        this.Panels.push( new MotPanel( 'art3-s0-body' ) )
+        this.Panels.push( new UserPanel( 'art3-s1-body' ) )
+
+        this.Panels.forEach(( p , i) => {
+            p.render()            
+        })
+
+        //MotPanel
+
+        //this.renderMotList(body)
+
+    }
+
+    
     
 
 
