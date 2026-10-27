@@ -29,7 +29,8 @@ import ToolbarAuthPanel       from '/assets/js/ui/workbench/auth/ToolbarAuthPane
 // 2026-10-15 - ajout admin /users    
 import { initUsersRenderer } from '/assets/js/features/admin/renderer.js'
 
-
+import { fetchMot } from '/assets/js/features/mot/mot.service.js'
+import { motStore } from '/assets/js/features/mot/mot.store.js' 
 /*
 2026-10-18 : 
 on ajoute tout les elements utiles du menu et on reogarnise PAGE_CONFIG par type selector, classe et ordre alphabétique
@@ -274,25 +275,23 @@ art3-s0-body
 
 this.Panels = []
 
+
+<div class="cp_panel_table"></div>
 */
 
     mountPanels(){
         // art3-s0-body
         this.Panels = []
         
-        //this.Panels.push( 'art3-s0-body' )
-        //this.Panels.push( 'art3-s1-body' )
-
-
-        //const body = document.querySelector('#art3-s0-body')
-        // if (!body) return
-        
-        //const mp = new MotPanel( 'art3-s0-body' )
         this.Panels.push( new MotPanel( 'art3-s0-body' ) )
         this.Panels.push( new UserPanel( 'art3-s1-body' ) )
 
         this.Panels.forEach(( p , i) => {
-            p.render()            
+            p.render()
+            if (i === 0 ){
+                p.onSelect( this.ConsLog )
+                //p.onSelect( AppConsLog )
+            }
         })
 
         //MotPanel
@@ -301,14 +300,47 @@ this.Panels = []
 
     }
 
-    
+    async ConsLog(a ){
+
+        console.log('AppIndex class had received : ' + a)
+
+        try {  
+            const result = await fetchMot({ q : a.q , page : 1, perPage : 20 })  
+            
+            /* 20260506-003 - plus efficace 
+            if (result.data) {  
+                motStore.data = result.data  
+                motStore.pagination = result.pagination  
+            } else {  
+                motStore.data = [result]  
+            }*/  
+            motStore.data       = result.data || [result]
+            motStore.pagination = result.pager //retour api
+
+
+            console.log('motStore.data : ' + motStore.data )
+            console.log('motStore.data.length : ' + motStore.data.length )
+            console.log('motStore.data[0].mot_id : ' + motStore.data[0].mot_id  )
+        } catch (err) {  
+            motStore.error = err.message //a conserver pour info ?
+        } finally {  
+            motStore.loading = false  
+        }       
+
+
+    }
     
 
 
 
 }
 
+function AppConsLog(a ){
+if (a == 'test_on_select'){ alert(a) }
 
+console.log('App had received : ' + a)
+
+}
 
 
 
